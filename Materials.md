@@ -1,6 +1,16 @@
 # 🎡 材質二三事
 
+☸ [Pinterest](https://www.pinterest.com/xuanenke/laser-cutting-ideas/)
+☸ [DmKT](https://dmkt.io/zh-TW)
+☸ [DxProjects](https://dxfprojects.com/)
+☸ [Creative Park](https://creativepark.canon/sc/index.html)
+☸ [Ponoko](https://www.ponoko.com/blog/design-ideas/laser-cutter-projects-ideas/)
+☸ [ThenounProject](https://thenounproject.com/)
+☸ [FreeP!K](https://www.freepik.com/)
+
+☸ Flux -- [Ador 線上指南](https://support.flux3dp.com/hc/zh-tw/categories/7104732498447-Ador-%E7%B7%9A%E4%B8%8A%E6%8C%87%E5%8D%97)
 ☸ Flux -- [材料技巧](https://support.flux3dp.com/hc/zh-tw/sections/360000226195-%E6%9D%90%E6%96%99%E6%8A%80%E5%B7%A7)
+
 
 ### 🎡 木材
 1. 樺木（Birch）：樺木是雷雕的常見選擇，因為它有平滑的表面和均勻的質地，這使得雷雕過程更加順暢。樺木板通常用於精細雕刻和複雜的設計。
