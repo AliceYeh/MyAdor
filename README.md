@@ -13,7 +13,7 @@
 ![TableBase3](./img/2024/231210%20TableBase-3.jpg)
 ![TableBase4](./img/2024/231210%20TableBase-4.jpg)
 
-![TableBase5](./img/2024/231210%20TableBase-5.jpg)
+![TableBase5](./img/2024/231210%20TableBase-5a.jpg)
 
 ## 🎡 231216 Photon MonoX Table base
 
