@@ -1,9 +1,16 @@
 # 🎡 My Flux Ador unboxing
 
-231221 Flux Ador/2W Infrared Laser Kit/Printing Module 開箱~
+231221 Flux Ador20W/2W Infrared Laser Kit/Printing Module 開箱~
 
 ![AdorUnboxing1](./img/2024/231221%20AdorUnboxing-1.png)
 ![AdorUnboxing2](./img/2024/231221%20AdorUnboxing-2.jpg)
+
+唉~ 為什麼沒人提醒雷雕小白, 功率要調~ 功率要調~ 功率要調~
+偶以為Sample功率都是調好滴, 就這様20W100%給它開下去, 就這樣連底板也給它雕下去了~
+
+![AdorSample1](./img/2024/231224%20AdorSample-1.png)
+![AdorSample2](./img/2024/231224%20AdorSample-2.png)
+
 
 ## 🎡 231210 Ador Table base
 
