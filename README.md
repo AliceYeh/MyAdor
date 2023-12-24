@@ -1,6 +1,6 @@
 # 🎡 My Flux Ador unboxing
 
-231221 Flux Ador20W/2W Infrared Laser Kit/Printing Module 開箱~
+231221 Flux Ador 20W/2W Infrared Laser Kit/Printing Module 開箱~
 
 ![AdorUnboxing1](./img/2024/231221%20AdorUnboxing-1.png)
 ![AdorUnboxing2](./img/2024/231221%20AdorUnboxing-2.jpg)
