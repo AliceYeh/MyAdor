@@ -10,6 +10,7 @@
 
 ☸ Flux -- [Ador 線上指南](https://support.flux3dp.com/hc/zh-tw/categories/7104732498447-Ador-%E7%B7%9A%E4%B8%8A%E6%8C%87%E5%8D%97)
 ☸ Flux -- [材料技巧](https://support.flux3dp.com/hc/zh-tw/sections/360000226195-%E6%9D%90%E6%96%99%E6%8A%80%E5%B7%A7)
+☸ Flux -- [101](https://www.youtube.com/playlist?list=PL97IZXQ17KZ9K5hAgtiAe9p-DhGFckf5M), [Curriculum](https://www.youtube.com/playlist?list=PL97IZXQ17KZ9K5hAgtiAe9p-DhGFckf5M), [Beam Studio](https://www.youtube.com/watch?v=Vs1UOeUBPXg&list=PL97IZXQ17KZ-E4Hz-AmUcVMxzaK7F1izy&index=1)
 
 ### 🎡 規格
 | 規　　格 | 🎀 Flux Ador 🎀 |
