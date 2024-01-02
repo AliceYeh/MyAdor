@@ -11,6 +11,11 @@
 ![AdorSample1](./img/2024/231224%20AdorSample-1.png)
 ![AdorSample2](./img/2024/231224%20AdorSample-2.png)
 
+## 🎡 240101 Ador Samples
+無敵難裝的印列模組, 要有咔的感覺與側邊完全切齊, 才能正確闔上~
+
+![AdorPuzzl](./img/2024/240101%20AdorPuzzle.jpg)
+
 ## 🎡 231210 Ador Table base
 
 電腦等級不夠, 太多字會跑不動, 只好用接滴~
@@ -25,8 +30,4 @@
 ## 🎡 231216 Photon MonoX Table base
 
 
-## 🎡 240101 Ador Samples
-無敵難裝的印列模組, 要有咔的感覺與側邊完全切齊, 才能正確闔上~
-
-![AdorPuzzl](./img/2024/240101%20AdorPuzzle.jpg)
 
