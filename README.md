@@ -12,7 +12,7 @@
 ![AdorSample2](./img/2024/231224%20AdorSample-2.png)
 
 ## 🎡 240101 Ador Samples
-無敵難裝的印列模組, 要有咔的感覺與側邊完全切齊, 才能正確闔上~
+無敵難裝的印列模組, 要有咔的感覺與側邊完全切齊, 蓋子才能正確闔上~
 
 ![AdorPuzzl](./img/2024/240101%20AdorPuzzle.jpg)
 
