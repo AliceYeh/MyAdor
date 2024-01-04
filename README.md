@@ -15,7 +15,7 @@
 無敵難裝的印列模組, 要有咔的感覺與側邊完全切齊, 蓋子才能正確闔上~ 紙板 P75/S8
 
 ![AdorPuzzl](./img/2024/240101%20AdorPuzzle.jpg)
-![AdorPhotoFrame](./img/2024/240104 AdorPhotoFrame.jpg)
+![AdorPhotoFrame](./img/2024/240104%20AdorPhotoFrame.jpg)
 
 ## 🎡 231210 Ador Table base
 
