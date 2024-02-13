@@ -33,7 +33,10 @@
 
 ![TableBase5](./img/2024/231210%20TableBase-5a.jpg)
 
-## 🎡 231216 Photon MonoX Table base
+## 🎡 2402 Dragon Year
+厚度接近1cm雖然能印, 很容易被帶偏, 印出來就差強人意, 1cm以下就還不錯~
+![Dragon1](./img/2024/240213%20Dragon-1.jpg)
+![Dragon2](./img/2024/240213%20Dragon-2.jpg)
 
 
 
