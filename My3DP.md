@@ -3,8 +3,9 @@
 
 ![FailAirDuct](./img/2024/240922-FailAirDuct2.png)
 ![FailAirDuct](./img/2024/240922-FailAirDuct.png)
+
 一切就從 Ador 排氣孔開始, 不過是印個排氣孔, 為什麼買了 AC Kobra 3 combo 之後, 
-又買了一台 Bambu A1 mini combo, 在印了24h之後, 原本表現非常優逸的 Kobra3 就消極
+又買了一台 Bambu A1 mini combo, 在印了24h之後, 原本完美列印的 Kobra3 就消極
 怠工了, 整台該拆的都拆了。
 離第1台3DP也過去八年了, 全民3D列印的時代真的快來臨了, 全彩列印也快到了, 
 當九月看到多色列印機, 立馬就下單了, 本來是要買拓竹的 X1 Combo, 嫌購買太麻煩, 
