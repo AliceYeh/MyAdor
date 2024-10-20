@@ -87,6 +87,7 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ### 🏯 Slicer
 
 填充色板与翻页色板盒 [填充色板与翻页色板盒] (https://makerworld.com/zh/models/659130)
+
 ![填充色板與翻頁盒](./img/guide/241021-FillSwatch-300.png)
 
 
