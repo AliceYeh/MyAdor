@@ -13,7 +13,7 @@
 ([原STL](https://www.thingiverse.com/thing:2729076),
 [Kobra3 PLA 180-225 GCode](./img/guide/SmartTemperatureTower_PLA_180-225.gcode))
 
-| Bambu Studio 温度預覽粉漂亮, <br>可惜給看不給印。  | 壞了的噴嘴 印了個寂寞<br>發泡的温度塔, 只印了6層。  |
+| Bambu Studio 温度預覽粉漂亮, <br>可惜給看不給印。 還好有人搞出來了 [BambuLab A1 mini 温度塔](https://makerworld.com/zh/models/112623)  | 壞了的噴嘴 印了個寂寞<br>發泡的温度塔, 只印了6層。  |
 | ------- | ------- |
 | ![Bambu Studio 温度塔](./img/guide/SmartTemperatureTower_Preview-300.png) | ![發泡的温度塔](./img/guide/241010-FoamedTower-300.png) |
 | AC 亮白色的最佳温度是200℃, <br>215℃以上會拉絲, 185℃以下沒有光澤, <br>190℃不小心關了電源, 續印效果也還行。| AC 螢光綠 最佳温度185℃ (原195-205)<br>正面不能看, 反面完美。  |
@@ -31,9 +31,9 @@
 
 4. TPU温度塔  210-230℃ 熱床80℃
 
-| TPU 210-250℃ 熱床80℃ <br>最佳温度勉強算205/210℃吧, <br>再往下就印空了, 往上拉絲嚴重, <br>為了印個溫度塔, 連擠出機都要拆, 真素粉麻煩。<br>不過有了準確值, 印出來的 TPU 就都美美滴, 不枉搞半天的拆機。  | 
-| ------- |
-| ![TPU](./img/guide/241010-TPU-300.png) | 
+| TPU 210-250℃ 熱床80℃ <br>最佳温度勉強算205/210℃吧, <br>再往下就印空了, 往上拉絲嚴重, <br>為了印個溫度塔, 連擠出機都要拆, 真素粉麻煩。<br>不過有了準確值, 印出來的 TPU 就都美美滴, 不枉搞半天的拆機。  | A1 mini TPU 225℃ 不會發泡 但拉絲嚴重 | 
+| ------- | ------- |
+| ![TPU](./img/guide/241010-TPU-300.png) | ![A1 mini TPU](./img/guide/A1-241024-TPU-300.png) |
 
 ## 🎡 Kobra3 指南
 
@@ -65,7 +65,7 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 
 2. 雖然USB走線看起來還蠻堅固, 不過印個小件也花不了多少時間, 所以就當裝飾囉。
   [USB走线-左](https://makerworld.com/zh/models/447966)
-3. 右側走線是一定要印的, 會跟AMS第2個進料打架。 
+3. 右側走線是一定要印的, 會跟AMS第2個進料打架。 [A1系列90度线缆支架v2](https://makerworld.com/zh/models/662704)
 4. 🌟联轴器 [A1 & A1 Mini AMS 联轴器易修复适配器](https://makerworld.com/zh/models/505769)
 
 ![241006-USB走线L](./img/guide/241006-USBRouteL-300.png)
