@@ -4,6 +4,8 @@
 ![AnyCubic Kobra3 開箱](./img/guide/241005-ACKobra3Unbox-300.png)
 ![AnyCubic Kobra3 起手式](./img/guide/241005-ACStart-300.png)
 
+![SUNLU S4 干燥箱](./img/guide/241026-Dryer-300.png)
+
 ## 🎡 241010 校正碎碎唸
 在排除萬難之後, 總算印出第1個溫度塔, Kobra3 還是印的美美滴, 跑線是鐵架不穩, 
 附檔是 Kobra3 的 GCode, 因為 PrusaSlicer 的溫度塔切片, 無法在 Kobra3 列印, 
@@ -31,7 +33,7 @@
 
 4. TPU温度塔  210-230℃ 熱床80℃
 
-| TPU 210-250℃ 熱床80℃ <br>最佳温度勉強算205/210℃吧, <br>再往下就印空了, 往上拉絲嚴重, <br>為了印個溫度塔, 連擠出機都要拆, 真素粉麻煩。<br>不過有了準確值, 印出來的 TPU 就都美美滴, 不枉搞半天的拆機。  | A1 mini TPU 225℃ 比較透明不會發泡 但拉絲嚴重 | 
+| TPU 210-250℃ 熱床80℃ <br>最佳温度勉強算205/210℃吧, <br>再往下就印空了, 往上拉絲嚴重, <br>為了印個溫度塔, 連擠出機都要拆, 真素粉麻煩。<br>不過有了準確值, 印出來的 TPU 就都美美滴, 不枉搞半天的拆機。  | A1 mini TPU 225℃ 比較透明不會發泡 但拉絲嚴重, 比較起來還是210℃好看。 | 
 | ------- | ------- |
 | ![TPU](./img/guide/241010-TPU-300.png) | ![A1 mini TPU](./img/guide/A1-241024-TPU-300.png) |
 
@@ -84,20 +86,25 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 * 這個側盒是用 PLA 印的, 還是用 PETG 比較好, 側盒在列印時溫度頗高。
 [A1 mini 侧盒](https://makerworld.com/zh/models/80945)
 
-### 🏯 SPOOL
-
 ### 🏯 Slicer
 
-填充色板与翻页色板盒 [填充色板与翻页色板盒] (https://makerworld.com/zh/models/659130)
+好用滴填充色板与翻页色板盒 [填充色板与翻页色板盒](https://makerworld.com/zh/models/659130)
 
 ![填充色板與翻頁盒](./img/guide/241021-FillSwatch-300.png)
 
+### 🏯 SPOOL
+[参数化线轴适配器](https://makerworld.com/zh/models/495534)
+
+![AC線軸適配器](./img/guide/241025-ACSpool-300.png)
+![参数化线轴适配器](./img/guide/241025-VaseSpool-300.png)
 
 ### 🏯 工具
 
 * 很實用的热端套筒拆卸器, 拆硅胶必備。
-[A1 A1mini 热端套筒拆卸器](https://makerworld.com/zh/models/422022)
-刮刀是範例模型, 不過PLA太軟, 一遇熱沒多久就破口了。
-线夹是一定要印的。[线夹](https://makerworld.com/zh/models/96692)
+  [A1 A1mini 热端套筒拆卸器](https://makerworld.com/zh/models/422022)
+* 线夹是一定要印的。[线夹](https://makerworld.com/zh/models/96692)  
+* 刮刀是範例模型, 不過PLA太軟, 一遇熱沒多久就破口了。
 
+![热端套筒拆卸器](./img/guide/241006-Disassembler-300.png)
+![线夹](./img/guide/241006-CableClip-300.png)
 ![241006-Tools1](./img/guide/241006-Tools1-300.png)
