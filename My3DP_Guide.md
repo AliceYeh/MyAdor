@@ -4,9 +4,10 @@
 ![Flux](./img/guide/160323-Flux-300.png)
 ![AnyCubic MonoX](./img/guide/220205-AC-MonoX-4k-300.png)
 ![AnyCubic Kobra3 開箱](./img/guide/241005-ACKobra3Unbox-300.png)
-![AnyCubic Kobra3 起手式](./img/guide/241005-ACStart-300.png)
+![Bambu A1m 起手式](./img/guide/241006-Support1-300.png)
 
 ![SUNLU S4 干燥箱](./img/guide/241026-Dryer-300.png)
+![AnyCubic Kobra3 起手式](./img/guide/241005-ACStart-300.png)
 
 ## 🎡 241010 校正碎碎唸
 在排除萬難之後, 總算印出第1個溫度塔, Kobra3 還是印的美美滴, 跑線是鐵架不穩, 
@@ -64,15 +65,16 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 🏯 支架 | 🏯 AMS | 🏯 收納 | 🏯 SPOOL | 🏯 Slicer | 🏯 工具
 
 ### 🏯 支架 
-1. A1 mini 太輕, 鐵力士架不是很穩, 這個頂部安裝支架讓列印更穩, 跑線狀況少了很多。[A1 MINI AMS 10mm 更短的顶部安装支架](https://makerworld.com/zh/models/110341)
+1. A1 mini 太輕, 鐵力士架不是很穩, 這個頂部安裝支架讓列印更穩, 跑線狀況少了很多。🌟[A1 MINI AMS 10mm 更短的顶部安装支架](https://makerworld.com/zh/models/110341)
  
 ![241006-支架1](./img/guide/241006-Support1-300.png)
 ![241006-支架2](./img/guide/241006-Support2-300.png)
 
 2. 雖然USB走線看起來還蠻堅固, 不過印個小件也花不了多少時間, 所以就當裝飾囉。
   [USB走线-左](https://makerworld.com/zh/models/447966)
-3. 右側走線是一定要印的, 會跟AMS第2個進料打架。 [A1系列90度线缆支架v2](https://makerworld.com/zh/models/662704)
-4. 🌟联轴器 [A1 & A1 Mini AMS 联轴器易修复适配器](https://makerworld.com/zh/models/505769)
+3. v2
+右側走線是一定要印的, 會跟AMS第2個進料打架。 🌟[A1系列90度线缆支架v2](https://makerworld.com/zh/models/662704)
+4. 联轴器 🌟[A1 & A1 Mini AMS 联轴器易修复适配器](https://makerworld.com/zh/models/505769)
 
 ![241006-USB走线L](./img/guide/241006-USBRouteL-300.png)
 ![241007-USB走线R](./img/guide/241007-USBRouteR-300.png)
@@ -90,12 +92,12 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 
 ### 🏯 Slicer
 
-好用滴填充色板与翻页色板盒 [填充色板与翻页色板盒](https://makerworld.com/zh/models/659130)
+好用滴填充色板与翻页色板盒 🌟[填充色板与翻页色板盒](https://makerworld.com/zh/models/659130)
 
 ![填充色板與翻頁盒](./img/guide/241021-FillSwatch-300.png)
 
 ### 🏯 SPOOL
-[参数化线轴适配器](https://makerworld.com/zh/models/495534)
+🌟[参数化线轴适配器](https://makerworld.com/zh/models/495534)
 
 ![AC線軸適配器](./img/guide/241025-ACSpool-300.png)
 ![参数化线轴适配器](./img/guide/241025-VaseSpool-300.png)
@@ -103,7 +105,7 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ### 🏯 工具
 
 * 很實用的热端套筒拆卸器, 拆硅胶必備。
-  [A1 A1mini 热端套筒拆卸器](https://makerworld.com/zh/models/422022)
+  🌟[A1 A1mini 热端套筒拆卸器](https://makerworld.com/zh/models/422022)
 * 线夹是一定要印的。[线夹](https://makerworld.com/zh/models/96692)  
 * 刮刀是範例模型, 不過PLA太軟, 一遇熱沒多久就破口了。
 
