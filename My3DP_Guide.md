@@ -18,7 +18,7 @@
 ([原STL](https://www.thingiverse.com/thing:2729076),
 [Kobra3 PLA 180-225 GCode](./img/guide/SmartTemperatureTower_PLA_180-225.gcode))
 
-| Bambu Studio 温度預覽粉漂亮, <br>可惜給看不給印。 還好有人搞出來了 [BambuLab A1 mini 温度塔](https://makerworld.com/zh/models/112623)  | 壞了的噴嘴 印了個寂寞<br>發泡的温度塔, 只印了6層。  |
+| Bambu Studio 温度預覽粉漂亮, <br>可惜給看不給印。 還好有人搞出來了 [BambuLab A1 mini 温度塔](https://makerworld.com/zh/models/112623)  | AC壞了的噴嘴 印了個寂寞<br>發泡的温度塔, 只印了6層。  |
 | ------- | ------- |
 | ![Bambu Studio 温度塔](./img/guide/SmartTemperatureTower_Preview-300.png) | ![發泡的温度塔](./img/guide/241010-FoamedTower-300.png) |
 | AC 亮白色的最佳温度是200℃, <br>215℃以上會拉絲, 185℃以下沒有光澤, <br>190℃不小心關了電源, 續印效果也還行。| AC 螢光綠 最佳温度185℃ (原195-205)<br>正面不能看, 反面完美。  |
@@ -62,7 +62,7 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 
 
 ## 🎡 Bambu A1 mini 必印
-🏯 支架 | 🏯 AMS | 🏯 收納 | 🏯 SPOOL | 🏯 Slicer | 🏯 工具
+🏯 支架 | 🏯 AMS | 🏯 SPOOL | 🏯 Slicer | 🏯 收納 | 🏯 工具
 
 ### 🏯 支架 
 1. A1 mini 太輕, 鐵力士架不是很穩, 這個頂部安裝支架讓列印更穩, 跑線狀況少了很多。🌟[A1 MINI AMS 10mm 更短的顶部安装支架](https://makerworld.com/zh/models/110341)
@@ -72,8 +72,7 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 
 2. 雖然USB走線看起來還蠻堅固, 不過印個小件也花不了多少時間, 所以就當裝飾囉。
   [USB走线-左](https://makerworld.com/zh/models/447966)
-3. v2
-右側走線是一定要印的, 會跟AMS第2個進料打架。 🌟[A1系列90度线缆支架v2](https://makerworld.com/zh/models/662704)
+3. 右側走線是一定要印的, 會跟AMS第2個進料打架。 🌟[A1系列90度线缆支架v2](https://makerworld.com/zh/models/662704)
 4. 联轴器 🌟[A1 & A1 Mini AMS 联轴器易修复适配器](https://makerworld.com/zh/models/505769)
 
 ![241006-USB走线L](./img/guide/241006-USBRouteL-300.png)
@@ -81,6 +80,12 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ![241007-USB走线R](./img/guide/241007_Connector-300.png)
 
 ### 🏯 AMS
+
+### 🏯 SPOOL
+🌟[参数化线轴适配器](https://makerworld.com/zh/models/495534)
+
+![AC線軸適配器](./img/guide/241025-ACSpool-300.png)
+![参数化线轴适配器](./img/guide/241025-VaseSpool-300.png)
 
 ### 🏯 收納
 * 很方便的屎盆
@@ -96,16 +101,10 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 
 ![填充色板與翻頁盒](./img/guide/241021-FillSwatch-300.png)
 
-### 🏯 SPOOL
-🌟[参数化线轴适配器](https://makerworld.com/zh/models/495534)
-
-![AC線軸適配器](./img/guide/241025-ACSpool-300.png)
-![参数化线轴适配器](./img/guide/241025-VaseSpool-300.png)
-
 ### 🏯 工具
 
 * 很實用的热端套筒拆卸器, 拆硅胶必備。
-  🌟[A1 A1mini 热端套筒拆卸器](https://makerworld.com/zh/models/422022)
+  [A1 A1mini 热端套筒拆卸器](https://makerworld.com/zh/models/422022)
 * 线夹是一定要印的。[线夹](https://makerworld.com/zh/models/96692)  
 * 刮刀是範例模型, 不過PLA太軟, 一遇熱沒多久就破口了。
 
