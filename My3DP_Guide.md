@@ -47,8 +47,12 @@
 
 ## 🎡 A1m 指南 
 [A1 mini](https://wiki.bambulab.com/zh/a1-mini/manual/intro-a1-mini), [AMS lite](https://wiki.bambulab.com/zh/ams-lite), [耗材指南](https://wiki.bambulab.com/zh/general/filament-guide-material-table)
-
+[五通修理](https://www.youtube.com/watch?v=hmByMHddxLE)/
+[擠出機堵塞](https://www.youtube.com/watch?v=CLlT1RV-oJE)
 [X1喷嘴/热端堵塞](https://wiki.bambulab.com/zh/x1/troubleshooting/nozzle-clog), [更換熱端](https://www.bilibili.com/video/BV1k94y1Q78W/?t=23.056378&spm_id_from=333.1350.jump_directly)
+[熱端堵頭](https://www.youtube.com/watch?v=-bYwgUPOIq8)
+
+[Z上油](https://www.youtube.com/watch?v=SUs5zoRwFjw)
 
 [TPU 打印建议](https://wiki.bambulab.com/zh/knowledge-sharing/tpu-printing-guide)
 
