@@ -1,11 +1,13 @@
 # 🎡 校正碎碎唸 | 🎡 Kobra3 指南 | 🎡 A1m 指南 | 🎡 AC Kobra 3 必印 | 🎡 Bambu A1 mini 必印
+# 🎡 校正 | 🎡 切片
 
 ## 🎡 起手式
 ![Flux](./img/guide/160323-Flux-300.png)
-![AnyCubic MonoX](./img/guide/220205-AC-MonoX-4k-300.png)
+![AnyCubic MonoX](./img/guide/201111-AC-MonoX-4k-300.png)
 ![AnyCubic Kobra3 開箱](./img/guide/241005-ACKobra3Unbox-300.png)
 ![Bambu A1m 起手式](./img/guide/241006-Support1-300.png)
 
+![AnyCubic Wash&Cure](./img/guide/210406-AC-Wash-Cure.jpg)
 ![SUNLU S4 干燥箱](./img/guide/241026-Dryer-300.png)
 ![AnyCubic Kobra3 起手式](./img/guide/241005-ACStart-300.png)
 
@@ -13,6 +15,10 @@
 在排除萬難之後, 總算印出第1個溫度塔, Kobra3 還是印的美美滴, 跑線是鐵架不穩, 
 附檔是 Kobra3 的 GCode, 因為 PrusaSlicer 的溫度塔切片, 無法在 Kobra3 列印, 
 所以只好導出 Kobra3 的 GCode, 再手補溫度。
+
+[Ellis' Print Tuning Guide](https://ellis3dp.com/Print-Tuning-Guide/)
+[KobraGoNeo Insights - Calibration](https://1coderookie.github.io/KobraGoNeoInsights/calibration/)
+
 
 1. PLA温度塔 210-220℃ 
 ([原STL](https://www.thingiverse.com/thing:2729076),
@@ -43,12 +49,21 @@
 
 ## 🎡 Kobra3 指南
 
+[堵料檢測](https://cn.anycubic.com/upload/default/20240701/5ae0aebd133fc3ba4b03adc67c0ccf99.mp4)
+| [打印头断料检测板](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/material-break-detection-board-replacement-guide)
+| [挤出机更换](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/extruder-replacement)
+| [切刀更换](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/cutter-replacement)
+| [ACE Pro主板更换](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/ace-pro-mainboard-replacement-guide)
+| [电机更换](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/ace-pro-motor-replacement-guide)
+
+![挤出机螺丝,接线插头](./img/guide/AC-Extruder.png) 噴嘴螺絲在前
+![散热风扇连接线（红线）和信号灯连接线（黑线）](./img/guide/AC-Fan-Signal.png)
 
 
 ## 🎡 A1m 指南 
 [A1 mini](https://wiki.bambulab.com/zh/a1-mini/manual/intro-a1-mini), [AMS lite](https://wiki.bambulab.com/zh/ams-lite), [耗材指南](https://wiki.bambulab.com/zh/general/filament-guide-material-table)
 [五通修理](https://www.youtube.com/watch?v=hmByMHddxLE)/
-[擠出機堵塞](https://www.youtube.com/watch?v=CLlT1RV-oJE)
+[擠出機堵塞](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/extruder-replacement)[擠出機視頻](https://www.youtube.com/watch?v=CLlT1RV-oJE)
 [X1喷嘴/热端堵塞](https://wiki.bambulab.com/zh/x1/troubleshooting/nozzle-clog), [更換熱端](https://www.bilibili.com/video/BV1k94y1Q78W/?t=23.056378&spm_id_from=333.1350.jump_directly)
 [熱端堵頭](https://www.youtube.com/watch?v=-bYwgUPOIq8)
 
@@ -61,6 +76,7 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ![更換熱端](./img/guide/BambuHotEnd-200.png)
 
 ## 🎡 AC Kobra 3 必印
+
 
 
 
@@ -115,3 +131,10 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ![热端套筒拆卸器](./img/guide/241006-Disassembler-300.png)
 ![线夹](./img/guide/241006-CableClip-300.png)
 ![241006-Tools1](./img/guide/241006-Tools1-300.png)
+
+## 🎡 校正
+
+## 🎡 切片
+
+🖨️ [220608 Maker's Muse - Slicer defaults I ALWAYS change](https://www.youtube.com/watch?v=mE521Q4H6aY)
+	3:08 Perimeters 4:52 Infill 6:58 Elephant Foot 8:44 Seam Placement 11:36 Ensure Vertical Shell Thickness
