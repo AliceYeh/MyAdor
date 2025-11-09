@@ -1,4 +1,4 @@
-# MyBambu H2D
+# 🎋 Bambu H2D
 
 	Single: 325*320*325mm  Double: 300*320*325mm
 	Max Nozzle Temp: 350°C Bed: 120°C Chamber: 65°C
@@ -30,6 +30,10 @@
     [刀切模组辅助工具](https://wiki.bambulab.com/zh/h2/manual/cutting-module-assist-tool)
     [刀切模组材料介绍](https://wiki.bambulab.com/zh/h2/blade-cutter/material/types-and-examples-intro)
     
+
+---
+## 🎡 Bambu H2D 必印
+
 
 ---
 
