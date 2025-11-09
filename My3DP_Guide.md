@@ -1,4 +1,4 @@
-# 🎡 校正碎碎唸 | 🎡 Kobra3 指南 | 🎡 A1m 指南 | 🎡 AC Kobra 3 必印 | 🎡 Bambu A1 mini 必印
+# 🎡 校正碎碎唸 | 🎡 A1m 指南 | 🎡 Bambu A1 mini 必印
 # 🎡 校正 | 🎡 切片
 
 ## 🎡 起手式
@@ -47,19 +47,6 @@
 | ![TPU](./img/guide/241010-TPU-300.png) | ![A1 mini TPU](./img/guide/A1-241024-TPU-300.png) |
 
 
-## 🎡 Kobra3 指南
-
-[堵料檢測](https://cn.anycubic.com/upload/default/20240701/5ae0aebd133fc3ba4b03adc67c0ccf99.mp4)
-| [打印头断料检测板](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/material-break-detection-board-replacement-guide)
-| [挤出机更换](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/extruder-replacement)
-| [切刀更换](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/cutter-replacement)
-| [ACE Pro主板更换](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/ace-pro-mainboard-replacement-guide)
-| [电机更换](https://wiki.anycubic.com/zh/fdm-3d-printer/kobra-3-combo/ace-pro-motor-replacement-guide)
-
-![挤出机螺丝,接线插头](./img/guide/AC-Extruder.png) 噴嘴螺絲在前
-![散热风扇连接线（红线）和信号灯连接线（黑线）](./img/guide/AC-Fan-Signal.png)
-
-
 ## 🎡 A1m 指南 
 [A1 mini](https://wiki.bambulab.com/zh/a1-mini/manual/intro-a1-mini), [AMS lite](https://wiki.bambulab.com/zh/ams-lite), [耗材指南](https://wiki.bambulab.com/zh/general/filament-guide-material-table)
 [五通修理](https://www.youtube.com/watch?v=hmByMHddxLE)/
@@ -74,10 +61,6 @@
 PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 喷嘴, 首选 0.6mm 硬化钢喷嘴, 使用前将喷嘴设为 280℃, 用通针清洁喷嘴, 减少堵头风险。
 
 ![更換熱端](./img/guide/BambuHotEnd-200.png)
-
-## 🎡 AC Kobra 3 必印
-
-
 
 
 
