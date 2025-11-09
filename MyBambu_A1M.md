@@ -25,7 +25,7 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 
 ### 🏯 支架 
 
-1. 251105 換了 [可旋转顶部支架](https://makerworld.com/zh/models/845479) , 方便多了~ H2D 列印品質有比較好, 列印高物件還是要在密閉空間, 會比較穩定~
+1. 251105 換了 [可旋转顶部支架](https://makerworld.com/zh/models/845479) , 方便多了~ H2D 列印品質有比較好, 列印高物件還是要在密閉空間, 會比較穩定~ 低物件 A1m 感覺上還是比較穩, 剛上手 H2D 時真有給嗆到, 還好經過各種炒麵、堵頭、堵AMS, 近二個禮拜悲情的手動上料, 拆機之後還會鬧脾氣, 竟要重設AMS, 好在最後還是給摸順了~ XD~
 ![251105-支架1](./img/a1m/251105_A1m_Support1-300.jpg)
 
 1. 241006 A1 mini 太輕, 鐵力士架不是很穩, 這個頂部安裝支架讓列印更穩, 跑線狀況少了很多。🌟[A1 MINI AMS 10mm 更短的顶部安装支架](https://makerworld.com/zh/models/110341)
@@ -46,5 +46,6 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ### 🏯 AMS Lite
 
 1. 251107 終於把 [终极线轴密封箱——01型](https://makerworld.com/zh/models/486153) 給印上, 不用再裸奔了~
+
 ![251105-支架2](./img/a1m/251107_A1m_Support2-300.jpg)
 
