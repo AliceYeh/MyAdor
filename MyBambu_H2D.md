@@ -7,7 +7,7 @@
 
 ---
 ## 🧱 [H2D wiki](https://wiki.bambulab.com/zh/h2d)
-♨ BambuStudio (https://github.com/bambulab/BambuStudio)
+♨ BambuStudio https://github.com/bambulab/BambuStudio
 
 📚 [疏通热端](https://www.bilibili.com/video/BV1aX4y1L76J)
 📚 [更换热端](https://wiki.bambulab.com/zh/h2/maintenance/replace-hotend)
