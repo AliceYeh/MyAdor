@@ -10,7 +10,7 @@
 ![AnyCubic Wash&Cure](./img/guide/210406-AC-Wash-Cure.jpg)
 ![SUNLU S4 干燥箱](./img/guide/241026-Dryer-300.png)
 ![AnyCubic Kobra3 起手式](./img/guide/241005-ACStart-300.png)
-![Bambu H2D 起手式](./img/guide/241006-Support1-300.png)
+![Bambu H2D 起手式](./img/guide/251111-H2D-300.jpg)
 
 ## 🎡 241010 校正碎碎唸
 在排除萬難之後, 總算印出第1個溫度塔, Kobra3 還是印的美美滴, 跑線是鐵架不穩, 
