@@ -44,6 +44,14 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ![241007-USB走线R](./img/guide/241007-USBRouteR-300.png)
 ![241007-USB走线R](./img/guide/241007_Connector-300.png)
 
+### 🏯 收納
+* 很方便的屎盆
+
+![241006-屎盆](./img/guide/241006-ShitPot-300.png)
+
+* 這個側盒是用 PLA 印的, 還是用 PETG 比較好, 側盒在列印時溫度頗高。
+[A1 mini 侧盒](https://makerworld.com/zh/models/80945)
+
 ---
 ### 🏯 AMS Lite
 
