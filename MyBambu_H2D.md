@@ -35,6 +35,18 @@
 ---
 ## 🎡 Bambu H2D 必印
 
+### 🏯 工具
+* [H2D 空气过滤器](https://makerworld.com/zh/models/1337864)
+* [H2D 托盘](https://makerworld.com/zh/models/1872548)
+* [H2D 轴润滑](https://makerworld.com/zh/models/1783548)
+  
+![251125 H2D 空气过滤器](./img/h2d/251125_AirFilter-300.jpg)
+![251126-mattray](./img/h2d/251126-mattray-300.jpg)
+![251123 H2D 轴润滑](./img/h2d/251123_Tool-300.jpg)
+
+* [USB防尘塞](https://makerworld.com/zh/models/1929413)
+
+![251125_USBCap](./img/h2d/251125_USBCap.jpg)
 
 ---
 

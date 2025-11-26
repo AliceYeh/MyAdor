@@ -5,8 +5,8 @@
 ![Flux](./img/guide/160323-Flux-300.png)
 ![AnyCubic MonoX](./img/guide/201111-AC-MonoX-4k-300.png)
 ![AnyCubic Kobra3 開箱](./img/guide/241005-ACKobra3Unbox-300.png)
-![Bambu A1m 起手式](./img/guide/241006-Support1-300.png)
 
+![Bambu A1m 起手式](./img/guide/241006-Support1-300.png)
 ![AnyCubic Wash&Cure](./img/guide/210406-AC-Wash-Cure.jpg)
 ![SUNLU S4 干燥箱](./img/guide/241026-Dryer-300.png)
 ![AnyCubic Kobra3 起手式](./img/guide/241005-ACStart-300.png)
