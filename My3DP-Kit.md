@@ -30,10 +30,14 @@
   [A1 A1mini 热端套筒拆卸器](https://makerworld.com/zh/models/422022)
 * 线夹是一定要印的。[线夹](https://makerworld.com/zh/models/96692)  
 * 刮刀是範例模型, 不過PLA太軟, 一遇熱沒多久就破口了。
+* 換支可替換刮刀。[热床刮刀 XL](https://makerworld.com/zh/models/413220), [刮刀托盘](https://makerworld.com/zh/models/523675)
+* [打印板清洁器](https://makerworld.com/zh/models/386963)
 
 ![热端套筒拆卸器](./img/guide/241006-Disassembler-300.png)
 ![线夹](./img/guide/241006-CableClip-300.png)
 ![241006-Tools1](./img/guide/241006-Tools1-300.png)
+![251123-Scrapper](./img/kits/251123_Scrapper-300.jpg)
+![251126_Cleaner](./img/kits/251126_Cleaner-300.jpg)
 
 ## 🏯 SUNLU FilaDryer S4
 [SUNLU FilaDryer S4 支架](https://makerworld.com/zh/models/581222)
