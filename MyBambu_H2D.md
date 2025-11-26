@@ -46,7 +46,7 @@
 
 * [USB防尘塞](https://makerworld.com/zh/models/1929413)
 
-![251125_USBCap](./img/h2d/251125_USBCap.jpg)
+![251125_USBCap](./img/h2d/251125_USBCap-300.jpg)
 
 ---
 
