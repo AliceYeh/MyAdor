@@ -22,25 +22,33 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ---
 ## 🎡 Bambu A1 mini 必印
 
-🏯 支架 | 🏯 AMS | 🏯 SPOOL | 🏯 Slicer | 🏯 收納 | 🏯 工具
+🏯 支架 | 🏯 AMS Lite | 🏯 收納 
 
 ### 🏯 支架 
 
-1. 251105 換了 🌟[可旋转顶部支架](https://makerworld.com/zh/models/845479) , 方便多了~ H2D 列印品質有比較好, 列印高物件還是要在密閉空間, 會比較穩定~ 低物件 A1m 感覺上還是比較穩, 剛上手 H2D 時真有給嗆到, 還好經過各種炒麵、各種堵頭、堵AMS, 近二個禮拜悲情的手動上料, 該拆的都拆過了, 沒想到拆機之後還會鬧脾氣, 竟然要重設AMS, 好在最後還是給摸順了~ XD~
+- 251105 換了 🌟[可旋转顶部支架](https://makerworld.com/zh/models/845479) , 方便多了~ H2D 列印品質有比較好, 列印高物件還是要在密閉空間, 會比較穩定~ 低物件 A1m 感覺上還是比較穩, 剛上手 H2D 時真有給嗆到, 還好經過各種炒麵、各種堵頭、堵AMS, 近二個禮拜悲情的手動上料, 該拆的都拆過了, 沒想到拆機之後還會鬧脾氣, 竟然要重設AMS, 好在最後還是給摸順了~ XD~
 
 ![251105-支架1](./img/a1m/251105_A1m_Support1-300.jpg)
 
 
-2. 241006 A1 mini 太輕, 鐵力士架不是很穩, 這個頂部安裝支架讓列印更穩, 跑線狀況少了很多。🌟[A1 MINI AMS 10mm 更短的顶部安装支架](https://makerworld.com/zh/models/110341)
+- 241006 A1 mini 太輕, 鐵力士架不是很穩, 這個頂部安裝支架讓列印更穩, 跑線狀況少了很多。🌟[A1 MINI AMS 10mm 更短的顶部安装支架](https://makerworld.com/zh/models/110341)
  
 ![241006-支架1](./img/a1m/241006-Support1-300.png)
 ![241006-支架2](./img/a1m/241006-Support2-300.png)
 
-3. 雖然USB走線看起來還蠻堅固, 不過印個小件也花不了多少時間, 所以就當裝飾囉。
-  [USB走线-左](https://makerworld.com/zh/models/447966)
-4. 右側走線是一定要印的, 會跟AMS第2個進料打架。 🌟[A1系列90度线缆支架v2](https://makerworld.com/zh/models/662704)
 
-5. 联轴器 🌟[A1 & A1 Mini AMS 联轴器易修复适配器](https://makerworld.com/zh/models/505769)
+### 🏯 AMS Lite
+
+- 251107 終於把 🌟[终极线轴密封箱——01型](https://makerworld.com/zh/models/486153) 給印上, 不用再裸奔了~
+
+![251105-支架2](./img/a1m/251107_A1m_Support2-300.jpg)
+
+---
+1. 雖然USB走線看起來還蠻堅固, 不過印個小件也花不了多少時間, 所以就當裝飾囉。
+  [USB走线-左](https://makerworld.com/zh/models/447966)
+1. 右側走線是一定要印的, 會跟AMS第2個進料打架。 🌟[A1系列90度线缆支架v2](https://makerworld.com/zh/models/662704)
+
+2. 联轴器 🌟[A1 & A1 Mini AMS 联轴器易修复适配器](https://makerworld.com/zh/models/505769)
 
 ![241006-USB走线L](./img/guide/241006-USBRouteL-300.png)
 ![241007-USB走线R](./img/guide/241007-USBRouteR-300.png)
@@ -55,9 +63,5 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 [A1 mini 侧盒](https://makerworld.com/zh/models/80945)
 
 ---
-### 🏯 AMS Lite
 
-1. 251107 終於把 🌟[终极线轴密封箱——01型](https://makerworld.com/zh/models/486153) 給印上, 不用再裸奔了~
-
-![251105-支架2](./img/a1m/251107_A1m_Support2-300.jpg)
 
