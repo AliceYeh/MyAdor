@@ -35,10 +35,22 @@
 ---
 ## 🎡 Bambu H2D 必印
 
+🖨️ 增高架 🏯 工具
+
+### 🖨️ 增高架
+[H2D AMS增高架](https://makerworld.com/zh/models/1670171)
+超瘋狂的增高架 4447g 列印 10d2h33m 起~
+
+![Raiser-03](./img/h2d/Raiser-03_251207-300.jpg)
+![Raiser-07](./img/h2d/Raiser-07_251207-300.jpg)
+![Raiser-11](./img/h2d/Raiser-11_251206-300.jpg)
+![Raiser-12](./img/h2d/Raiser-12_251206-300.jpg)
+![Raiser-13](./img/h2d/Raiser-13_251207-300.jpg)
+
 ### 🏯 工具
-* [H2D 空气过滤器](https://makerworld.com/zh/models/1337864)
-* [H2D 托盘](https://makerworld.com/zh/models/1872548)
-* [H2D 轴润滑](https://makerworld.com/zh/models/1783548)
+* PETG [H2D 空气过滤器](https://makerworld.com/zh/models/1337864)
+* PETG [H2D 托盘](https://makerworld.com/zh/models/1872548)
+* PETG [H2D 轴润滑](https://makerworld.com/zh/models/1783548)
   
 ![251125 H2D 空气过滤器](./img/h2d/251125_AirFilter-300.jpg)
 ![251126-mattray](./img/h2d/251126-mattray-300.jpg)

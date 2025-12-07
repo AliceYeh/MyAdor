@@ -1,9 +1,10 @@
 # 🎡 3DP Kits
 
-🏯 Adapter 🏯 Spool 🏯 Filament 🏯 Tool
+🏯 Adapter 🏯 Spool 🏯 Filament 🏯 Tool 🏯 Dryer 🏯 SUNLU FilaDryer
 
 ## 🏯 Adapter
 🌟[参数化线轴适配器](https://makerworld.com/zh/models/495534)
+[花捲参数化线轴适配器](https://makerworld.com/zh/models/495534)
 [料卷转接环 65-80mm](https://makerworld.com/zh/models/627720)
 
 ![AC線軸適配器](./img/guide/241025-ACSpool-300.png)
@@ -11,9 +12,15 @@
 ![料卷转接环 65-80mm](./img/guide/251105_Adapter-300.jpg)
 
 ## 🏯 Spool
-[拓竹料盘](https://makerworld.com.cn/zh/models/125808)
+[拓竹料盘-1](https://makerworld.com.cn/zh/models/125808) 要對準紙捲的洞卡緊, 不然很容易側邊纒線~ 
+[拓竹料盘-2](https://makerworld.com/zh/models/1149528)
+[拓竹料盘-3](https://makerworld.com/zh/models/69170) 列印時間只要3hs, 雖然軟了點還是能用~
+[拓竹料盘-4](https://makerworld.com/zh/models/69170) 列印時間只要3hs, 雖然軟了點還是能用~
 
-![Spool](./img/kits/251101_Spool-300.jpg)
+![Spool-1](./img/kits/251101_Spool-300.jpg)
+![Spool-2](./img/kits/251205_Spool2-300.jpg)
+![Spool-3](./img/kits/251206_Spool3-300.jpg)
+![Spool-4](./img/kits/251206_Spool4-300.jpg)
 
 
 ## 🏯 Filament
@@ -38,6 +45,13 @@
 ![241006-Tools1](./img/guide/241006-Tools1-300.png)
 ![251123-Scrapper](./img/kits/251123_Scrapper-300.jpg)
 ![251126_Cleaner](./img/kits/251126_Cleaner-300.jpg)
+
+## 🏯 Dryer
+[硅胶干燥盒](https://makerworld.com/zh/models/1193993) Bambu 47.27mm ~ 62mm 含温度計, XL60mm
+
+![DryerCan 1](./img/kits/251130_DryerCan-1-300.jpg)
+![AMS2 Dryer](./img/kits/251202_AmsDryer-300.jpg)
+
 
 ## 🏯 SUNLU FilaDryer S4
 [SUNLU FilaDryer S4 支架](https://makerworld.com/zh/models/581222)
