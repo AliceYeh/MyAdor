@@ -22,7 +22,15 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ---
 ## 🎡 Bambu A1 mini 必印
 
-🏯 支架 | 🏯 AMS Lite | 🏯 收納 
+🏯 六通 🏯 支架 | 🏯 AMS Lite | 🏯 收納 
+
+### 🏯 六通 
+
+- 251214 原本用 [Y型分线器](https://makerworld.com/zh/models/938395) 接外掛料架, 不過退線時 PTFE 也跟著脫落, 又不能黏死很麻煩, 所以又換成 [六通](https://makerworld.com/zh/models/1310652) ~ 
+
+![A1m](./img/a1m/251214_100358-300.jpg)
+![六通](./img/a1m/251214_231030-300.jpg)
+
 
 ### 🏯 支架 
 
