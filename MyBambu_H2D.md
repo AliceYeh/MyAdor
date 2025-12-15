@@ -45,7 +45,8 @@ PETG
 
 ![Raiser-03](./img/h2d/Raiser-03_251207-300.jpg)
 
-為了省料把擦拭塔填充間隙改成 300, 右邊盒子列印正常, 左邊盒子擦拭塔炒麵了, 也有可能是 PETG 太滑, Brim 開的不夠 黏不住, 結果料沒省到又多粍了100g, 最後線不夠了, 用透明線頂著, 還好不突兀。
+為了省料把擦拭塔填充間隙改成 300, 右邊盒子列印正常, 左邊盒子擦拭塔連印二次都炒麵了, 最後因為線不夠了不想再重來一次, 
+就硬是把炒麵給炒完, 也有可能是 PETG 太滑, Brim 開的不夠 黏不住, 結果料沒省到又多粍了100g, 最後線不夠了, 用透明線頂著, 還好不突兀。
 
 ![Raiser-07](./img/h2d/Raiser-07_251207-300.jpg)
 ![Raiser-08](./img/h2d/Raiser-08_251211-300.jpg)
@@ -58,12 +59,12 @@ PA6-CF 收縮很厲害~
 ![Raiser-09](./img/h2d/Raiser-09_251211-300.jpg)
 ![Raiser-10](./img/h2d/Raiser-10_251212-300.jpg)
 
-TPU 用左噴嘴印TPU要有拆擠出機的心理準備, 至於列印品質左右沒差, 反而覺得裝在左邊比裝右噴嘴方便, 95A可以直接走緩沖機, 再軟些的線用上置掛架會比較好~ 
+TPU 用左噴嘴印TPU要有拆擠出機的心理準備, 至於列印品質左右沒差, 反而覺得裝在左邊比裝右噴嘴方便, 右噴嘴可以留給分色用, 95A可以直接走緩沖機, 再軟些的線用上置掛架會比較好~ 
 
 ![Raiser-05](./img/h2d/Raiser-05_251212-300.jpg)
 ![Raiser-06](./img/h2d/Raiser-06_251213-300.jpg)
 
-原廠的 TPU 配置牽絲嚴重疙瘩多, MakerWold 不少TPU配置都不錯, [完美打印TPU](https://makerworld.com/models/1602883) 4h47m, [高速TPU打印](https://makerworld.com/zh/models/476147) 2h30m 感覺上列印品質有好些, 疙瘩少些~
+原廠的 TPU 配置牽絲嚴重疙瘩多, MakerWold 不少TPU配置都不錯, [完美打印TPU](https://makerworld.com/models/1602883) 4h47m, [高速TPU打印](https://makerworld.com/zh/models/476147) 2h30m 感覺上列印品質有比完美列印好些, 疙瘩少些~
 
 ![Raiser-TPU](./img/h2d/Raiser-05_251213_225146-300.jpg)
 
