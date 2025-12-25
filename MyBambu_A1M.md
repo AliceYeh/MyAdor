@@ -22,7 +22,7 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ---
 ## 🎡 Bambu A1 mini 必印
 
-🏯 六通 🏯 支架 | 🏯 AMS Lite | 🏯 收納 
+🏯 六通 🏯 支架 🏯 AMS Lite/工具 🏯 收納 
 
 ### 🏯 六通 
 
@@ -45,7 +45,7 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ![241006-支架2](./img/a1m/241006-Support2-300.png)
 
 
-### 🏯 AMS Lite
+### 🏯 AMS Lite/工具
 
 - 251107 終於把 🌟[终极线轴密封箱——01型](https://makerworld.com/zh/models/486153) 給印上, 不用再裸奔了~
 
@@ -61,6 +61,10 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 ![241006-USB走线L](./img/guide/241006-USBRouteL-300.png)
 ![241007-USB走线R](./img/guide/241007-USBRouteR-300.png)
 ![241007-USB走线R](./img/guide/241007_Connector-300.png)
+
+[一体打印侧拉链](https://makerworld.com/zh/models/835521)
+
+
 
 ### 🏯 收納
 * 很方便的屎盆

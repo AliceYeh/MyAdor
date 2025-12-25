@@ -1,17 +1,19 @@
 # 🎡 3DP Kits
 
-🏯 Spool 🏯 Spool Adapter 🏯 Filament 🏯 Tool 🏯 Dryer 🏯 SUNLU
+🏯 Spool 🏯 Spool Adapter 🏯 Filament Holder 🏯 Filament 🏯 Tool 🏯 Dryer 🏯 SUNLU
 
 ## 🏯 Spool
 [拓竹料盘-1](https://makerworld.com.cn/zh/models/125808) 要對準紙捲的洞卡緊, 不然很容易側邊纒線~ 
 [拓竹料盘-2](https://makerworld.com/zh/models/1149528)
-[拓竹料盘-3](https://makerworld.com/zh/models/69170) 列印時間只要3hs, 雖然軟了點還是能用~
+[拓竹料盘-3](https://makerworld.com/zh/models/69170) 列印時間只要3hs, 雖然軟了點還是能用, 不過放 AMS Lite 很難拔~
 [拓竹料盘-4](https://makerworld.com/zh/models/69170) 
+[拓竹料盘-5](https://makerworld.com/zh/models/807070) 
 
 ![Spool-1](./img/kits/251101_Spool-300.jpg)
 ![Spool-2](./img/kits/251205_Spool2-300.jpg)
 ![Spool-3](./img/kits/251206_Spool3-300.jpg)
 ![Spool-4](./img/kits/251206_Spool4-300.jpg)
+![Spool-5](./img/kits/251217_Spool5-300.jpg)
 
 
 ## 🏯 Spool Adapter
@@ -19,9 +21,15 @@
 [花捲参数化线轴适配器](https://makerworld.com/zh/models/495534)
 [料卷转接环 65-80mm](https://makerworld.com/zh/models/627720)
 
-![AC線軸適配器](./img/guide/241025-ACSpool-300.png)
-![参数化线轴适配器](./img/guide/241025-VaseSpool-300.png)
-![料卷转接环 65-80mm](./img/guide/251105_Adapter-300.jpg)
+![AC線軸適配器](./img/kits/241025-ACSpool-300.png)
+![参数化线轴适配器](./img/kits/241025-VaseSpool-300.png)
+![料卷转接环 65-80mm](./img/kits/251105_Adapter-300.jpg)
+
+## 🏯 Filament Holder
+
+[耗材料架](https://makerworld.com/zh/models/1728033) 滑順度比較不夠, 但還可用~
+
+![Filament Holder 2](./img/kits//251222_FilamentHolder2-300.jpg)
 
 
 ## 🏯 Filament
