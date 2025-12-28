@@ -38,7 +38,7 @@
 🖨️ 增高架 🏯 工具 🏯 減震腳 🏯 AMS
 
 ### 🖨️ 增高架
-241225 [H2D AMS增高架](https://makerworld.com/zh/models/1670171)
+251225 [H2D AMS增高架](https://makerworld.com/zh/models/1670171)
 超瘋狂的增高架 4447g 列印 10d2h33m 起, 還好1111補了超多線~ XD~
 雖然雷點很多, 最後成果還是很不錯, 不完美的部分就再說囉~
 
