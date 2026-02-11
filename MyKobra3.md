@@ -11,6 +11,10 @@
 ![挤出机螺丝,接线插头](./img/guide/AC-Extruder.png) 噴嘴螺絲在前
 ![散热风扇连接线（红线）和信号灯连接线（黑线）](./img/guide/AC-Fan-Signal.png)
 
+[241110 Scratch3DP-Anycubic Kobra 3 New Hotend](https://www.youtube.com/watch?v=DanBaD-adh4)
+[250207 EricUbkd-Anycubic Kobra 3 print head disassembly](https://www.youtube.com/watch?v=3WINpBjToec)
+
+
 ---
 ## 🎡 AC Kobra 3 必印
 

@@ -85,9 +85,14 @@
 
 
 ### 🏯 工具
-* PETG [H2D 空气过滤器](https://makerworld.com/zh/models/1337864)
-* PETG [H2D 托盘](https://makerworld.com/zh/models/1872548)
-* PETG [H2D 轴润滑](https://makerworld.com/zh/models/1783548)
+* 251028 PETG [大型开放式废料斜槽](https://makerworld.com/zh/models/1316012)
+  沒大磁鐵 自封磁鐵, 外圓 18x5mm 挖空 12.14x4.5mm, 實際磁鐵 12x3.63mm, 公差約97.52%, 最後一層封頂前設暫停放磁鐵~ 
+![251125 H2D 廢料棤](./img/h2d/251028_WasteChute2-300.jpg)
+
+
+* 251125 PETG [H2D 空气过滤器](https://makerworld.com/zh/models/1337864)
+* 251126 PETG [H2D 托盘](https://makerworld.com/zh/models/1872548)
+* 251123 PETG [H2D 轴润滑](https://makerworld.com/zh/models/1783548)
   
 ![251125 H2D 空气过滤器](./img/h2d/251125_AirFilter-300.jpg)
 ![251126-mattray](./img/h2d/251126-mattray-300.jpg)
@@ -100,9 +105,16 @@
 ---
 ### 🏯 減震腳
 
+[HULA H2D减震底座](https://makerworld.com/models/1652209)
+260201 H2D 太重, 滾珠減震腳不是太穩定, 所以換了個比較穩定的減震底座~ 
+51202 15*32*12 培林x6 $228
+![260201_Foot-1](./img/h2d/260201_Foot-1-300.jpg)
+![260201_Foot-2](./img/h2d/260201_Foot-2-300.jpg)
+![260201_Foot-3](./img/h2d/260201_Foot-3-300.jpg)
+
 [减震块](https://makerworld.com/zh/models/1707194) 
 251227 A1M 減震腳, H2D 減震腳 
-原本只有滾珠用 TPU 列印, 剛好遇上 1227宜蘭外海7.0地震, PETG 太滑, 還好沒把 A1M 摔下桌, 就全部用 TPU 印了~ 
+原本只有滾珠用 TPU 列印, 剛好遇上 1227 宜蘭外海7.0地震, PETG 太滑, 還好沒把 A1M 摔下桌, 就全部用 TPU 印了~ 
 
 ![251227_FootA1-1](./img/h2d/251227_FootAbsorberA1-1-300.jpg)
 ![251227_FootA1-2](./img/h2d/251227_FootAbsorberA1-2-300.jpg)
