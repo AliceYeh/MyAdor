@@ -1,6 +1,6 @@
 # 🎡 3DP Kits
 
-🏯 Spool 🏯 Spool Adapter 🏯 Filament Holder 🏯 Filament 🏯 Tool 🏯 Dryer 🏯 SUNLU
+🏯 Spool 🏯 Spool Adapter 🏯 Filament Holder 🏯 Filament Shelf 🏯 Filament 🏯 Tool 🏯 Dryer 🏯 SUNLU
 
 ## 🏯 Spool
 [拓竹料盘-1](https://makerworld.com.cn/zh/models/125808) 要對準紙捲的洞卡緊, 不然很容易側邊纒線~ 
@@ -30,6 +30,29 @@
 [耗材料架](https://makerworld.com/zh/models/1728033) 滑順度比較不夠, 但還可用~
 
 ![Filament Holder 2](./img/kits//251222_FilamentHolder2-300.jpg)
+
+## 🏯 Filament Shelf
+
+很實用的 [垂直堆叠式耗材收纳](https://makerworld.com/zh/models/721386) 
+
+|  |  |  |
+|------|------|------|
+| 👽 .4毫米 - 4 料盘单元 - 版本 2 | 10 | 需放大 107% 才放得下線材紙盒 |
+| 👽 107%比例模型的方形锚 | 8 |  |
+| 👽 A1 mini 上的 8 颗螺丝和螺母 | 11 |  |
+| 👽 改进型紧固件工具（短款）0.6mm喷嘴 | 1 | 方便擰螺絲~ |
+|  |  |  |
+
+
+![料材架](./img/kits/260218_FilamentShelf-3,4-300.jpg)
+
+4料盤 321x230x227mm L812 16h27m 460g 超省料, 無需支撑~ 看起來單薄, 全部組合在一起還蠻穩固~
+
+![料材架1](./img/kits/260218_FilamentShelf-1-300.jpg)
+
+手殘尖嘴鉗沒拿好, 把 PETG 給敲壞了, 還好用膠帶給救回來了, 沒炒麵~
+
+![料材架2](./img/kits/260218_FilamentShelf-2-300.jpg)
 
 
 ## 🏯 Filament
