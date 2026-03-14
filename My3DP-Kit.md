@@ -1,6 +1,10 @@
 # 🎡 3DP Kits
 
-🏯 Spool 🏯 Spool Adapter 🏯 Filament Holder 🏯 Filament Shelf 🏯 Filament 🏯 Tool 🏯 Dryer 🏯 SUNLU
+🏯 3DP Routine 🏯 Spool 🏯 Spool Adapter 🏯 Filament Holder 🏯 Filament Shelf 🏯 Filament 🏯 Tool 🏯 Dryer 🏯 SUNLU
+
+## 🏯 3DP Routine
+
+🔔 250705 [Planet 3DP-A1M保養](https://www.youtube.com/watch?v=pEBO9f7tn3g)
 
 ## 🏯 Spool
 [拓竹料盘-1](https://makerworld.com.cn/zh/models/125808) 要對準紙捲的洞卡緊, 不然很容易側邊纒線~ 
@@ -33,14 +37,15 @@
 
 ## 🏯 Filament Shelf
 
-很實用的 [垂直堆叠式耗材收纳](https://makerworld.com/zh/models/721386) 
+很實用的頂天耗材架 [垂直堆叠式耗材收纳](https://makerworld.com/zh/models/721386)~ 
 
 |  |  |  |
 |------|------|------|
-| 👽 .4毫米 - 4 料盘单元 - 版本 2 | 10 | 需放大 107% 才放得下線材紙盒 |
+| 👽 .4毫米 - 4 料盘单元 - 版本 2 | 10 | 放大 107% 才放得下線材紙盒 |
 | 👽 107%比例模型的方形锚 | 8 |  |
 | 👽 A1 mini 上的 8 颗螺丝和螺母 | 11 |  |
 | 👽 改进型紧固件工具（短款）0.6mm喷嘴 | 1 | 方便擰螺絲~ |
+| 🔩 壁虎 | 8 |  |
 |  |  |  |
 
 
@@ -50,7 +55,7 @@
 
 ![料材架1](./img/kits/260218_FilamentShelf-1-300.jpg)
 
-手殘尖嘴鉗沒拿好, 把 PETG 給敲壞了, 還好用膠帶給救回來了, 沒炒麵~
+手殘尖嘴鉗沒拿好, 把 PETG 給敲壞了, 還好用膠帶給救回來了, 好在沒炒麵~
 
 ![料材架2](./img/kits/260218_FilamentShelf-2-300.jpg)
 
@@ -58,11 +63,17 @@
 ## 🏯 Filament
 
 好用滴填充色板与翻页色板盒 🌟[填充色板与翻页色板盒](https://makerworld.com/zh/models/659130)
-超方便的線材色卡集 🌟 [Bambu 线材色卡 v2](https://makerworld.com/zh/models/95837)
+超方便的線材色卡集 🌟 [Bambu 线材色卡 v2](https://makerworld.com/zh/models/95837), [色卡填充样式块](https://makerworld.com/zh/models/449718)
 
-![填充色板與翻頁盒](./img/guide/241021-FillSwatch-300.png)
-![Bambu 线材色卡 v2](./img/guide/251109_Filament-300.jpg)
+![填充色板與翻頁盒](./img/kits/241021-FillSwatch-300.png)
+![Bambu 线材色卡 v2](./img/kits/251109_Filament-300.jpg)
 
+色卡文字加厚 0.1 -> 0.2mm 比較好看~
+![FilamentCard2](./img/kits/260304_FilamentCard2-300.jpg)
+
+260308 Bambu 所有填充 [Bambu Lab 填充样品卡](https://makerworld.com/zh/models/1414413)
+![FilamentCard3](./img/kits/260308_FilamentCard3-300.jpg)
+![FilamentCard4](./img/kits/260308_FilamentCard4-300.jpg)
 ## 🏯 Tool
 
 * 很實用的热端套筒拆卸器, 拆硅胶必備。
