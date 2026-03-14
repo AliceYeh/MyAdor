@@ -23,13 +23,13 @@ PLA-CF, PETG, ABS, PLA Marble/Sparkle/Glow 不要使用 0.2mm/不锈钢/黄铜 �
 
 260228 [更换部件冷却风扇](https://wiki.bambulab.com/zh/a1-mini/maintenance/part-cooling-fan)
 
-[移除擠出機](./img/a1m/remove_the_extruder_on_a1-300.png)
+![移除擠出機](./img/a1m/remove_the_extruder_on_a1-300.png)
 
-260305 [Panda Knomi 3D Wiki](https://global.bttwiki.com/Panda_Knomi_3D.html#connect-panda-knomi-3d-to-the-same-wi-fi-as-the-printer), [熊猫Knomi显示屏上翻盖A1系列](https://makerworld.com/zh/models/1317500)
+260305 單純換心情~
+[Panda Knomi 3D Wiki](https://global.bttwiki.com/Panda_Knomi_3D.html#connect-panda-knomi-3d-to-the-same-wi-fi-as-the-printer), [熊猫Knomi显示屏上翻盖A1系列](https://makerworld.com/zh/models/1317500)
+Panda Juicer 硬化刚喷嘴/冰川/凍傷冷打板, 粉貴好用~
 
 ![Panda Knomi](./img/a1m/260305214530-300.jpg)
-
-Panda Juicer 硬化刚喷嘴/冰川/凍傷冷打板, 粉貴好用~
 ![Hotend](./img/a1m/260305212923-300.jpg)
 
 ---
