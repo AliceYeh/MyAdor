@@ -49,6 +49,22 @@
 
 ## 🎡 校正
 
+[高级顶层表面指南](https://makerworld.com/zh/models/2083080)
+
+拓竹 PA6-CF T250 L0.26 S90 F  無AMS
+![PA6-CF 頂層](./img/guide/toplayer/PA6-cF/260331_TopLayer-300.jpg)
+
+三綠 PA6-GF T240 L0.26 S100 F0.95 無AMS
+![PA6-GF 温度](./img/guide/toplayer/PA6-GF/260322_C-300.jpg)
+![PA6-GF 頂層](./img/guide/toplayer/PA6-GF/260330_TopLayer-300.jpg)
+
+三好 PETG G46
+![PETG G46-1](./img/guide/toplayer/PETG/260328_G46-1-300.jpg)
+![PETG G46-2](./img/guide/toplayer/PETG/260328_G46-2-300.jpg)
+![PETG G46-3](./img/guide/toplayer/PETG/260328_G46-3-300.jpg)
+![PETG G46-4](./img/guide/toplayer/PETG/260328_G46-4-300.jpg)
+![PETG G46-5](./img/guide/toplayer/PETG/260328_G46-5-300.jpg)
+
 ## 🎡 切片
 
 🖨️ [220608 Maker's Muse - Slicer defaults I ALWAYS change](https://www.youtube.com/watch?v=mE521Q4H6aY)

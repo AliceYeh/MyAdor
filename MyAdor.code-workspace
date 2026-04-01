@@ -22,7 +22,27 @@
 			"comments": "off",
 			"strings": "off",
 			"other": "off"
-		}
+		},
+		"peacock.color": "#0099bb",
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#0099bb",
+			"activityBar.background": "#0099bb",
+			"activityBar.foreground": "#e7e7e7",
+			"activityBar.inactiveForeground": "#e7e7e799",
+			"activityBarBadge.background": "#006080",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"commandCenter.border": "#e7e7e799",
+			"sash.hoverBorder": "#0099bb",
+			"statusBar.background": "#007a96",
+			"statusBar.foreground": "#e7e7e7",
+			"statusBarItem.hoverBackground": "#006080",
+			"statusBarItem.remoteBackground": "#007a96",
+			"statusBarItem.remoteForeground": "#e7e7e7",
+			"titleBar.activeBackground": "#007a96",
+			"titleBar.activeForeground": "#e7e7e7",
+			"titleBar.inactiveBackground": "#007a9699",
+			"titleBar.inactiveForeground": "#e7e7e799"
+		}		
 	},
 	"extensions": {
 		"recommendations": [

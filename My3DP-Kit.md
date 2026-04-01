@@ -35,6 +35,11 @@
 
 ![Filament Holder 2](./img/kits//251222_FilamentHolder2-300.jpg)
 
+251222 料架重組 [1KG/3KG 料卷的料盘支架](https://makerworld.com/zh/models/578232), 這組料架太寬常常線卡在側軸, 所以縮短軸寬度 79 -> 68mm, 不過有點改太緊, 可能改 70mm 比較合適~ 使用 608zz 還是比較絲滑, 這尺寸剛好3個料架都能使用~
+
+![Filament Holder 3](./img/kits//251222_FilamentHolder3-300.jpg)
+![Filament Holder 4](./img/kits//251222_FilamentHolder4-300.jpg)
+
 ## 🏯 Filament Shelf
 
 很實用的頂天耗材架 [垂直堆叠式耗材收纳](https://makerworld.com/zh/models/721386)~ 
