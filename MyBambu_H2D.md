@@ -38,6 +38,13 @@
 🖨️ 增高架 🏯 工具 🏯 減震腳 🏯 AMS
 
 ### 🖨️ 增高架
+
+260330 AMS 側放進線不順, 換了個置頂架 Panda Perch H2D ~
+
+![Panda Perch H2D](./img/h2d/260330_PandaPerch-1-300.jpg)
+![Panda Perch H2D](./img/h2d/260330_PandaPerch-2-300.jpg)
+![Panda Perch H2D](./img/h2d/260330_PandaPerch-3-300.jpg)
+
 251225 [H2D AMS增高架](https://makerworld.com/zh/models/1670171)
 超瘋狂的增高架 4447g 列印 10d2h33m 起, 還好1111補了超多線~ XD~
 雖然雷點很多, 最後成果還是很不錯, 不完美的部分就再說囉~
@@ -85,9 +92,14 @@
 
 
 ### 🏯 工具
+
+* 260420 換了 Perch 增高架, 原來的廢料斜槽也不能用了 [快拆废料垃圾桶](https://makerworld.com/zh/models/1261572)
+
 * 251028 PETG [大型开放式废料斜槽](https://makerworld.com/zh/models/1316012)
   沒大磁鐵 自封磁鐵, 外圓 18x5mm 挖空 12.14x4.5mm, 實際磁鐵 12x3.63mm, 公差約97.52%, 最後一層封頂前設暫停放磁鐵~ 
 
+![260420_WasteBin1](./img/h2d/260420_WasteBin1-300.jpg)
+![260420_WasteBin2](./img/h2d/260420_WasteBin2-300.jpg)
 ![251125 H2D 廢料棤](./img/h2d/251028_WasteChute2-300.jpg)
 
 
