@@ -35,7 +35,7 @@
 ---
 ## 🎡 Bambu H2D 必印
 
-🖨️ 增高架 🏯 工具 🏯 減震腳 🏯 AMS
+🖨️ 增高架 🏯 工具 🏯 減震腳 🏯 AMS 🏯 分流器 
 
 ### 🖨️ 增高架
 
@@ -93,7 +93,7 @@
 
 ### 🏯 工具
 
-* 260420 換了 Perch 增高架, 原來的廢料斜槽也不能用了 [快拆废料垃圾桶](https://makerworld.com/zh/models/1261572)
+* 260420 換了 Perch 增高架, 原來的廢料斜槽也不能用了, 再換個 [快拆废料垃圾桶](https://makerworld.com/zh/models/1261572)
 
 * 251028 PETG [大型开放式废料斜槽](https://makerworld.com/zh/models/1316012)
   沒大磁鐵 自封磁鐵, 外圓 18x5mm 挖空 12.14x4.5mm, 實際磁鐵 12x3.63mm, 公差約97.52%, 最後一層封頂前設暫停放磁鐵~ 
@@ -114,6 +114,11 @@
 * [USB防尘塞](https://makerworld.com/zh/models/1929413)
 
 ![251125_USBCap](./img/h2d/251125_USBCap-100.jpg)
+
+* [H2D/H2S防尘塞](https://makerworld.com/zh/models/1294704)
+
+![260426_Cap-2](./img/h2d/260426_Cap-2-300.jpg)
+
 
 ---
 ### 🏯 減震腳
@@ -136,8 +141,24 @@
 ---
 ### 🏯 AMS
 
+260503 AMS 弧形導軌 [AMS 无法回抽耗材错误修复](https://makerworld.com/zh/models/53037)
+
+![PTFEGuide](./img/h2d/260503_PTFEGuide-300.jpg)
+
+
+260508 [盖锁扣](https://makerworld.com/zh/models/1646325), [旋钮盖](https://makerworld.com/zh/models/631135)
+![AMSCap x2](./img/h2d/260508_AMSCapx2-300.jpg)
+
 避免纒線好工具, 三套 AMS/ACE Saver~ 幾捲 AC 的線都纒了, 只要一纒線似乎就沒什麼救了, 解開之後沒多久又繼續纒了, 就這樣反覆解線纒線解線纒線解線纒線, 到用完為止~
 [AMS超级除尘导向器保护器耗材助手 5x3mm](https://makerworld.com/zh/models/372977), 
 [AMS 2 Pro 保护器](https://makerworld.com/zh/models/1527515)
 
 ![251227_Saver](./img/h2d/251227_Saver-300.jpg)
+
+---
+### 🏯 分流器
+
+
+
+![260420_PTFEMount](./img/h2d/260420_PTFEMount-300.jpg)
+

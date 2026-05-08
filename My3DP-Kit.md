@@ -1,6 +1,6 @@
 # 🎡 3DP Kits
 
-🏯 3DP Routine 🏯 Spool 🏯 Spool Adapter 🏯 Filament Holder 🏯 Filament Shelf 🏯 Filament 🏯 Tool 🏯 Dryer 🏯 SUNLU
+🏯 3DP Routine 🏯 Spool 🏯 Spool Adapter 🏯 Spool Dryer 🏯 Filament Holder 🏯 Filament Shelf 🏯 Filament 🏯 Tool 🏯 Dryer 🏯 SUNLU
 
 ## 🏯 3DP Routine
 
@@ -28,6 +28,11 @@
 ![AC線軸適配器](./img/kits/241025-ACSpool-300.png)
 ![参数化线轴适配器](./img/kits/241025-VaseSpool-300.png)
 ![料卷转接环 65-80mm](./img/kits/251105_Adapter-300.jpg)
+
+## 🏯 Spool Dryer
+
+![Spool Dryer](./img/kits/260427_SpoolDryer-300.jpg)
+
 
 ## 🏯 Filament Holder
 
@@ -103,7 +108,18 @@
 [硅胶干燥盒 XL x9, Bambu x12](https://makerworld.com/zh/models/1193993) Bambu 47.27mm ~ 62mm 含温度計, XL60mm
 
 ![DryerCan 1](./img/kits/251130_DryerCan-1-300.jpg)
+
+[硅胶干燥料盘](https://makerworld.com/zh/models/2553405)
+[Bambu Lab AMS 干燥剂垫片 x9](https://makerworld.com/zh/models/1976927)
+
+![Spool Dryer](./img/kits/260427_SpoolDryer-300.jpg)
+![DrySpacer](./img/kits/260503_DrySpacer-300.jpg)
+
+[DRY PODS AMS2P](https://makerworld.com/zh/models/1261779)
+![AMS Dryer1](./img/kits/260503_AMS_Dryer1-300.jpg)
+![AMS Dryer2](./img/kits/260503_AMS_Dryer2-300.jpg)
 ![AMS2 Dryer](./img/kits/251202_AmsDryer-300.jpg)
+![AMS Dryer3](./img/kits/260503_AMS_Dryer3-300.jpg)
 
 
 ## 🏯 SUNLU 
