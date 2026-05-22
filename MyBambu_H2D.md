@@ -147,11 +147,11 @@
 
 
 260508 [盖锁扣](https://makerworld.com/zh/models/1646325), [旋钮盖](https://makerworld.com/zh/models/631135)
+
 ![AMSCap x2](./img/h2d/260508_AMSCapx2-300.jpg)
 
-避免纒線好工具, 三套 AMS/ACE Saver~ 幾捲 AC 的線都纒了, 只要一纒線似乎就沒什麼救了, 解開之後沒多久又繼續纒了, 就這樣反覆解線纒線解線纒線解線纒線, 到用完為止~
-[AMS超级除尘导向器保护器耗材助手 5x3mm](https://makerworld.com/zh/models/372977), 
-[AMS 2 Pro 保护器](https://makerworld.com/zh/models/1527515)
+251227 避免纒線好工具, 三套 AMS/ACE Saver~ 幾捲 AC 的線都纒了, 只要一纒線似乎就沒什麼救了, 解開之後沒多久又繼續纒了, 就這樣反覆解線纒線解線纒線解線纒線, 到用完為止~
+[AMS超级除尘导向器保护器耗材助手 5x3mm](https://makerworld.com/zh/models/372977), [AMS 2 Pro 保护器](https://makerworld.com/zh/models/1527515)
 
 ![251227_Saver](./img/h2d/251227_Saver-300.jpg)
 
