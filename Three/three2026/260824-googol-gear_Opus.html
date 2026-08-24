@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GOOGOL GEAR — 級聯減速齒輪列</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;500;700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#06080d;
+    --ink-2:#0b1018;
+    --steel:#aeb6c2;
+    --steel-dim:#5d6675;
+    --brass:#d9a441;
+    --oxide:#ff6a3d;
+    --glass:#6fd0ff;
+    --rule:rgba(174,182,194,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:
+      radial-gradient(120% 90% at 50% 8%, #14202f 0%, #0a0f18 45%, #05070c 100%);
+    color:var(--steel);
+    font-family:'Saira Condensed','Bahnschrift','DIN Alternate',system-ui,sans-serif;
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  canvas{display:block;position:fixed;inset:0}
+
+  /* ---------- 標題 ---------- */
+  .masthead{
+    position:fixed;top:0;left:0;padding:18px 22px;pointer-events:none;z-index:5;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-size:10px;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--steel-dim);
+  }
+  .wordmark{
+    font-size:clamp(30px,4.6vw,58px);font-weight:700;line-height:.92;
+    letter-spacing:.02em;color:#e8edf5;margin-top:6px;
+    text-shadow:0 0 34px rgba(111,208,255,.18);
+  }
+  .wordmark em{font-style:normal;color:var(--brass)}
+  .subhead{
+    margin-top:8px;max-width:44ch;font-size:13px;font-weight:300;
+    color:var(--steel-dim);line-height:1.5;
+  }
+
+  /* ---------- 儀表面板 ---------- */
+  .readout{
+    position:fixed;top:0;right:0;height:100%;width:min(370px,92vw);
+    background:linear-gradient(to left,rgba(6,9,14,.94),rgba(6,9,14,.78));
+    border-left:1px solid var(--rule);
+    display:flex;flex-direction:column;z-index:6;
+    backdrop-filter:blur(9px);
+  }
+  .readout header{padding:16px 18px 12px;border-bottom:1px solid var(--rule)}
+  .readout h2{
+    font-size:12px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--steel);
+  }
+  .drive{
+    margin-top:10px;display:flex;gap:18px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--steel-dim);
+  }
+  .drive b{display:block;color:var(--glass);font-weight:400;font-size:13px;margin-top:2px}
+
+  .rows{flex:1;overflow-y:auto;padding:4px 0 14px}
+  .row{
+    display:grid;grid-template-columns:44px 1fr;gap:10px;
+    padding:9px 18px;border-bottom:1px solid rgba(174,182,194,.07);
+    align-items:start;
+  }
+  .row .idx{
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--steel-dim);
+    padding-top:2px;letter-spacing:.04em;
+  }
+  .row .idx i{display:block;font-style:normal;font-size:9px;color:#3d4553;margin-top:3px}
+  .dial{
+    width:26px;height:26px;margin-top:5px;
+  }
+  .name{font-size:13px;color:#dfe6f0;letter-spacing:.06em}
+  .name span{color:var(--steel-dim);font-size:11px;margin-left:6px}
+  .data{
+    font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.65;
+    margin-top:3px;color:var(--steel-dim);
+  }
+  .data .k{display:inline-block;width:38px;color:#495264}
+  .rpm{color:var(--glass)}
+  .per{color:var(--brass)}
+  .fast{color:var(--oxide);font-size:10px;margin-left:6px}
+
+  .row.terminal{
+    background:linear-gradient(90deg,rgba(255,106,61,.10),transparent);
+    border-top:1px solid rgba(255,106,61,.35);
+    border-bottom:1px solid rgba(255,106,61,.35);
+  }
+  .row.terminal .name{color:var(--oxide)}
+  .row.terminal .per{color:var(--oxide)}
+  .gap-note{
+    padding:10px 18px;font-size:11px;color:#49525f;line-height:1.6;
+    font-family:'JetBrains Mono',monospace;
+    border-bottom:1px solid var(--rule);
+  }
+  .gap-note b{color:var(--steel-dim);font-weight:400}
+
+  /* ---------- 控制列 ---------- */
+  .controls{
+    border-top:1px solid var(--rule);padding:14px 18px 18px;
+    background:rgba(4,6,10,.7);
+  }
+  .warp-label{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-family:'JetBrains Mono',monospace;font-size:10px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--steel-dim);
+  }
+  .warp-label b{font-size:15px;color:var(--brass);font-weight:400;letter-spacing:0}
+  input[type=range]{
+    width:100%;margin:10px 0 4px;-webkit-appearance:none;appearance:none;
+    background:transparent;height:20px;cursor:pointer;
+  }
+  input[type=range]::-webkit-slider-runnable-track{
+    height:2px;background:linear-gradient(90deg,var(--glass),var(--brass));
+  }
+  input[type=range]::-moz-range-track{height:2px;background:linear-gradient(90deg,var(--glass),var(--brass))}
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;width:14px;height:14px;margin-top:-6px;border-radius:50%;
+    background:#e8edf5;box-shadow:0 0 0 1px #06080d,0 0 12px rgba(111,208,255,.6);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:14px;height:14px;border:none;border-radius:50%;background:#e8edf5;
+  }
+  input[type=range]:focus-visible{outline:2px solid var(--glass);outline-offset:4px}
+  .presets{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+  button{
+    flex:1;min-width:52px;padding:7px 4px;background:transparent;
+    border:1px solid var(--rule);color:var(--steel-dim);
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;
+    cursor:pointer;transition:.16s;
+  }
+  button:hover{border-color:var(--glass);color:var(--glass)}
+  button:focus-visible{outline:2px solid var(--glass);outline-offset:2px}
+  button.on{border-color:var(--brass);color:var(--brass);background:rgba(217,164,65,.08)}
+
+  .elapsed{
+    margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);
+    font-family:'JetBrains Mono',monospace;font-size:10px;color:#49525f;
+    letter-spacing:.16em;text-transform:uppercase;
+  }
+  .elapsed b{display:block;margin-top:4px;font-size:14px;color:var(--steel);
+    font-weight:400;letter-spacing:.02em;text-transform:none}
+
+  .hint{
+    position:fixed;left:22px;bottom:16px;z-index:5;pointer-events:none;
+    font-family:'JetBrains Mono',monospace;font-size:10px;color:#39414e;
+    letter-spacing:.14em;
+  }
+
+  .panel-toggle{
+    position:fixed;top:14px;right:14px;z-index:8;display:none;
+    width:auto;flex:none;padding:8px 12px;background:rgba(6,9,14,.9);
+  }
+
+  @media (max-width:820px){
+    .readout{
+      top:auto;bottom:0;height:min(56vh,470px);width:100%;
+      border-left:none;border-top:1px solid var(--rule);
+    }
+    .readout.hidden{transform:translateY(102%)}
+    .readout{transition:transform .3s ease}
+    .panel-toggle{display:block}
+    .subhead{display:none}
+    .hint{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .readout{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="eyebrow">複合齒輪列 · 每級 1:10</div>
+  <h1 class="wordmark">GOOGOL <em>GEAR</em></h1>
+  <p class="subhead">輸入軸每秒一圈。十級減速之後，末級齒輪一圈要走三個世紀 —— 而齒輪鏈還在霧裡繼續往下走。</p>
+</div>
+
+<button class="panel-toggle" id="toggle">數據 ▾</button>
+
+<aside class="readout" id="readout">
+  <header>
+    <h2>轉速讀數</h2>
+    <div class="drive">
+      <div>輸入軸<b id="inRpm">60.0 RPM</b></div>
+      <div>總減速比<b>1 : 10¹⁰</b></div>
+    </div>
+  </header>
+  <div class="rows" id="rows"></div>
+  <div class="controls">
+    <div class="warp-label"><span>時間倍率</span><b id="warpVal">×1</b></div>
+    <input type="range" id="warp" min="0" max="10" step="0.05" value="0" aria-label="時間倍率">
+    <div class="presets">
+      <button data-w="0" class="on">實時</button>
+      <button data-w="3">×10³</button>
+      <button data-w="6">×10⁶</button>
+      <button data-w="10">×10¹⁰</button>
+      <button id="pause">暫停</button>
+    </div>
+    <div class="elapsed">機器已運轉<b id="elapsed">0 秒</b></div>
+  </div>
+</aside>
+
+<div class="hint">拖曳旋轉 · 滾輪縮放</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+
+/* ══════════════════════════════════════════════
+   1. 傳動參數
+   ────────────────────────────────────────────
+   每一級：小齒輪 10 齒  →  大齒輪 100 齒   = 1:10
+   軸 0 為輸入軸(60 RPM)，軸 1…10 為十級輸出。
+   軸 i 週期 = 10^i 秒。 軸10 = 10^10 s ≈ 317 年。
+   要達到 10^100 秒需要 100 級 —— 霧中延伸的部分。
+   ══════════════════════════════════════════════ */
+const STAGES     = 10;
+const RATIO      = 10;
+const WHEEL_T    = 100;
+const PINION_T   = 10;
+const MODULE     = 0.16;
+const THICK      = 1.2;
+const R_WHEEL    = MODULE*WHEEL_T/2;      // 8
+const R_PINION   = MODULE*PINION_T/2;     // 0.8
+const PITCH      = R_WHEEL + R_PINION;    // 軸距 8.8
+const X0         = -PITCH*STAGES/2;
+const INPUT_RPS  = 1;                     // 輸入軸 1 圈/秒 = 60 RPM
+const MAX_VIS_W  = 11;                    // 視覺角速度上限 rad/s（超過即標記高速）
+
+/* ══════════════════════════════════════════════
+   2. 場景 / 渲染器 / 環境光照
+   ══════════════════════════════════════════════ */
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x070b12, 155, 330);
+
+const camera = new THREE.PerspectiveCamera(42, innerWidth/innerHeight, 0.5, 900);
+
+const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+document.body.appendChild(renderer.domElement);
+
+/* —— 程序化攝影棚環境貼圖：金屬質感的來源 —— */
+function studioEnv(){
+  const c = document.createElement('canvas');
+  c.width = 1024; c.height = 512;
+  const g = c.getContext('2d');
+
+  const sky = g.createLinearGradient(0,0,0,512);
+  sky.addColorStop(0.00,'#0d1522');
+  sky.addColorStop(0.42,'#2a3546');
+  sky.addColorStop(0.50,'#3d4a5e');
+  sky.addColorStop(0.58,'#141b26');
+  sky.addColorStop(1.00,'#05070b');
+  g.fillStyle = sky; g.fillRect(0,0,1024,512);
+
+  // 三盞柔光箱：白、冷藍、暖黃 —— 決定高光條紋的顏色
+  const box = (x,y,w,h,col,a)=>{
+    const rg = g.createRadialGradient(x,y,0,x,y,Math.max(w,h));
+    rg.addColorStop(0,'rgba('+col+','+a+')');
+    rg.addColorStop(1,'rgba('+col+',0)');
+    g.fillStyle = rg;
+    g.save(); g.translate(x,y); g.scale(1,h/w); g.beginPath();
+    g.arc(0,0,w,0,Math.PI*2); g.fill(); g.restore();
+  };
+  box(300, 120, 300, 90, '255,252,245', 1.0);
+  box(760, 165, 210, 70, '120,190,255', 0.85);
+  box(120, 300, 190, 60, '255,168,90', 0.55);
+  box(950, 330, 150, 50, '255,255,255', 0.35);
+
+  const tex = new THREE.CanvasTexture(c);
+  tex.mapping  = THREE.EquirectangularReflectionMapping;
+  tex.encoding = THREE.sRGBEncoding;
+
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  pmrem.compileEquirectangularShader();
+  const env = pmrem.fromEquirectangular(tex).texture;
+  tex.dispose(); pmrem.dispose();
+  return env;
+}
+scene.environment = studioEnv();
+
+/* —— 燈光 —— */
+scene.add(new THREE.HemisphereLight(0x9fc4ff, 0x0a0d14, 0.30));
+
+const key = new THREE.DirectionalLight(0xfff4e2, 1.7);
+key.position.set(-38, 54, 46);
+key.castShadow = true;
+key.shadow.mapSize.set(2048,2048);
+key.shadow.bias = -0.0006;
+Object.assign(key.shadow.camera,{left:-64,right:64,top:36,bottom:-30,near:1,far:200});
+key.shadow.camera.updateProjectionMatrix();
+scene.add(key);
+
+const rim = new THREE.DirectionalLight(0x74c6ff, 0.9);
+rim.position.set(52, 12, -40);
+scene.add(rim);
+
+const warm = new THREE.PointLight(0xffa257, 0.9, 90, 2);
+warm.position.set(-46, -4, 16);
+scene.add(warm);
+
+/* ══════════════════════════════════════════════
+   3. 齒輪幾何：真實的漸開線近似輪廓
+   ══════════════════════════════════════════════ */
+function gearGeometry(teeth, module, thickness, phase, lightening){
+  const rp = module*teeth/2;
+  const ra = rp + module;          // 齒頂圓
+  const rf = rp - 1.25*module;     // 齒根圓
+  const step = Math.PI*2/teeth;
+  const shape = new THREE.Shape();
+
+  for(let k=0;k<teeth;k++){
+    const c = phase + k*step;
+    const p = [
+      [rf, c - step*0.34],
+      [rp, c - step*0.26],
+      [ra, c - step*0.15],
+      [ra, c + step*0.15],
+      [rp, c + step*0.26],
+      [rf, c + step*0.34],
+      [rf, c + step*0.66]
+    ];
+    p.forEach(([r,a],i)=>{
+      const x = Math.cos(a)*r, y = Math.sin(a)*r;
+      (k===0 && i===0) ? shape.moveTo(x,y) : shape.lineTo(x,y);
+    });
+  }
+  shape.closePath();
+
+  // 軸孔
+  const bore = new THREE.Path();
+  bore.absarc(0,0, Math.max(0.30, rp*0.045), 0, Math.PI*2, true);
+  shape.holes.push(bore);
+
+  // 減重孔（僅大齒輪）
+  if(lightening){
+    for(let i=0;i<6;i++){
+      const a = i*Math.PI/3 + Math.PI/12;
+      const h = new THREE.Path();
+      h.absarc(Math.cos(a)*rp*0.62, Math.sin(a)*rp*0.62, rp*0.145, 0, Math.PI*2, true);
+      shape.holes.push(h);
+    }
+  }
+
+  const geo = new THREE.ExtrudeGeometry(shape,{
+    depth: thickness, bevelEnabled:true,
+    bevelThickness: module*0.45, bevelSize: module*0.45,
+    bevelSegments: 1, curveSegments: 20
+  });
+  geo.translate(0,0,-thickness/2);
+  geo.computeVertexNormals();
+  return geo;
+}
+
+/* —— 材質 —— */
+const matWheel = new THREE.MeshStandardMaterial({
+  color:0xb9c0ca, metalness:1.0, roughness:0.24, envMapIntensity:1.35
+});
+const matPinion = new THREE.MeshStandardMaterial({
+  color:0xd7a552, metalness:1.0, roughness:0.20, envMapIntensity:1.5
+});
+const matShaft = new THREE.MeshStandardMaterial({
+  color:0x6f7885, metalness:1.0, roughness:0.35, envMapIntensity:1.0
+});
+const matHub = new THREE.MeshStandardMaterial({
+  color:0x8d949f, metalness:1.0, roughness:0.30, envMapIntensity:1.1
+});
+const matFrame = new THREE.MeshStandardMaterial({
+  color:0x1b212b, metalness:0.85, roughness:0.55, envMapIntensity:0.7
+});
+const matTerminal = new THREE.MeshStandardMaterial({
+  color:0xd8dde5, metalness:1.0, roughness:0.16,
+  emissive:0xff5a2a, emissiveIntensity:0.16, envMapIntensity:1.6
+});
+
+/* —— 幾何快取（大小齒輪各一份，全部共用） —— */
+// 嚙合相位：小齒輪一齒指向 +x，大齒輪一齒槽對準 −x
+const geoWheel  = gearGeometry(WHEEL_T,  MODULE, THICK, Math.PI - Math.PI/WHEEL_T, true);
+const geoPinion = gearGeometry(PINION_T, MODULE, THICK, 0, false);
+const geoHub    = new THREE.CylinderGeometry(1.55,1.55, THICK*1.7, 40);
+geoHub.rotateX(Math.PI/2);
+const geoShaft  = new THREE.CylinderGeometry(0.30,0.30, 6.4, 24);
+geoShaft.rotateX(Math.PI/2);
+
+/* ══════════════════════════════════════════════
+   4. 組裝齒輪列
+   ══════════════════════════════════════════════ */
+const shafts = [];   // {group, revPerSec, dir, angle, x}
+
+function zWheel(i){ return (i%2)*1.9; }
+function zPinion(i){ return ((i+1)%2)*1.9; }
+
+for(let i=0;i<=STAGES;i++){
+  const grp = new THREE.Group();
+  grp.position.x = X0 + i*PITCH;
+
+  // 大齒輪（輸入軸沒有）
+  if(i>0){
+    const w = new THREE.Mesh(geoWheel, i===STAGES ? matTerminal : matWheel);
+    w.position.z = zWheel(i);
+    w.castShadow = w.receiveShadow = true;
+    grp.add(w);
+
+    const hub = new THREE.Mesh(geoHub, matHub);
+    hub.position.z = zWheel(i);
+    hub.castShadow = true;
+    grp.add(hub);
+  }
+
+  // 小齒輪（末級沒有，它是輸出端）
+  if(i<STAGES){
+    const p = new THREE.Mesh(geoPinion, matPinion);
+    p.position.z = zPinion(i);
+    p.castShadow = p.receiveShadow = true;
+    grp.add(p);
+  }
+
+  // 軸
+  const sh = new THREE.Mesh(geoShaft, matShaft);
+  sh.position.z = 0.95;
+  sh.castShadow = true;
+  grp.add(sh);
+
+  scene.add(grp);
+  shafts.push({
+    group: grp,
+    revPerSec: INPUT_RPS / Math.pow(RATIO, i),
+    dir: (i%2===0) ? 1 : -1,
+    angle: 0,
+    x: grp.position.x
+  });
+}
+
+/* —— 機座：底板 + 每軸的軸承立柱 —— */
+const bed = new THREE.Mesh(new THREE.BoxGeometry(PITCH*STAGES+26, 1.6, 26), matFrame);
+bed.position.set(0, -12.4, 0.9);
+bed.receiveShadow = true;
+scene.add(bed);
+
+const railGeo = new THREE.BoxGeometry(PITCH*STAGES+26, 0.5, 1.1);
+[-9.2, 10.9].forEach(z=>{
+  const r = new THREE.Mesh(railGeo, matShaft);
+  r.position.set(0, -11.4, z);
+  r.castShadow = r.receiveShadow = true;
+  scene.add(r);
+});
+
+shafts.forEach(s=>{
+  const post = new THREE.Mesh(new THREE.BoxGeometry(1.5, 11.6, 2.0), matFrame);
+  post.position.set(s.x, -5.8, -2.6);
+  post.castShadow = post.receiveShadow = true;
+  scene.add(post);
+  const brg = new THREE.Mesh(new THREE.CylinderGeometry(0.85,0.85,1.4,24), matHub);
+  brg.rotation.x = Math.PI/2;
+  brg.position.set(s.x, 0, -2.4);
+  brg.castShadow = true;
+  scene.add(brg);
+});
+
+/* —— 輸入端馬達 —— */
+const motor = new THREE.Group();
+const body = new THREE.Mesh(new THREE.CylinderGeometry(3.2,3.2,6.5,44), matFrame);
+body.rotation.x = Math.PI/2; body.castShadow = true;
+motor.add(body);
+for(let i=0;i<24;i++){
+  const fin = new THREE.Mesh(new THREE.BoxGeometry(0.16,0.75,5.6), matShaft);
+  const a = i*Math.PI/12;
+  fin.position.set(Math.cos(a)*3.3, Math.sin(a)*3.3, 0);
+  fin.rotation.z = a;
+  motor.add(fin);
+}
+motor.position.set(X0, 0, zPinion(0) - 5.2);
+scene.add(motor);
+
+/* ══════════════════════════════════════════════
+   5. 霧中延伸：第 11 級 → 第 100 級
+   ══════════════════════════════════════════════ */
+const ghosts = [];
+for(let k=1;k<=14;k++){
+  const m = new THREE.MeshStandardMaterial({
+    color:0x8e99a8, metalness:1.0, roughness:0.4,
+    transparent:true, opacity: Math.max(0.03, 0.46*Math.pow(0.80,k)),
+    envMapIntensity:0.8, depthWrite:false
+  });
+  const g = new THREE.Mesh(geoWheel, m);
+  g.position.set(X0 + (STAGES+k)*PITCH, 0, (k%2)*1.9);
+  g.rotation.z = k*0.31;
+  scene.add(g);
+  ghosts.push(g);
+}
+
+/* ══════════════════════════════════════════════
+   6. 文字標牌
+   ══════════════════════════════════════════════ */
+function labelSprite(lines, w, h, opts){
+  opts = opts||{};
+  const S = 2;
+  const c = document.createElement('canvas');
+  c.width = w*S*10; c.height = h*S*10;
+  const g = c.getContext('2d');
+
+  if(opts.plate){
+    g.fillStyle = 'rgba(6,9,14,.82)';
+    g.fillRect(0,0,c.width,c.height);
+    g.strokeStyle = opts.border || 'rgba(255,106,61,.75)';
+    g.lineWidth = 4;
+    g.strokeRect(3,3,c.width-6,c.height-6);
+  }
+  let y = c.height * (opts.top || 0.30);
+  lines.forEach(L=>{
+    g.textAlign = 'center';
+    g.font = (L.w||400)+' '+(L.s|| 40)+"px 'Saira Condensed','JetBrains Mono',sans-serif";
+    g.fillStyle = L.c || '#dfe6f0';
+    if(L.glow){ g.shadowColor = L.glow; g.shadowBlur = 26; }
+    g.fillText(L.t, c.width/2, y);
+    g.shadowBlur = 0;
+    y += (L.lh || (L.s||40)*1.28);
+  });
+
+  const tex = new THREE.CanvasTexture(c);
+  tex.encoding = THREE.sRGBEncoding;
+  tex.anisotropy = 4;
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({
+    map:tex, transparent:true, fog:false, depthTest: opts.depthTest!==false
+  }));
+  sp.scale.set(w,h,1);
+  return sp;
+}
+
+// 每軸的小編號牌
+shafts.forEach((s,i)=>{
+  const tag = labelSprite(
+    [{t: i===0 ? 'IN' : 'G'+i, s:44, w:700, c: i===STAGES ? '#ff8a5c' : '#98a3b3'}],
+    5, 2.6, {top:0.72}
+  );
+  tag.position.set(s.x, 10.6, 2.2);
+  scene.add(tag);
+});
+
+// 末級 → googol 銘牌
+const plaque = labelSprite([
+  {t:'⟶  再接 90 級  ⟶', s:30, w:400, c:'#6c7686', lh:52},
+  {t:'第 100 級', s:34, w:500, c:'#aeb6c2', lh:62},
+  {t:'10¹⁰⁰ 秒 / 圈', s:80, w:700, c:'#ff6a3d', glow:'rgba(255,106,61,.85)', lh:96},
+  {t:'一個古戈爾秒 · 3.17×10⁹² 年', s:28, w:300, c:'#7d8798'}
+], 30, 15, {plate:true, top:0.20});
+plaque.position.set(X0 + (STAGES+2.0)*PITCH, 14, 6);
+scene.add(plaque);
+
+// 末級真實讀數牌
+const realTag = labelSprite([
+  {t:'本機末級 G10', s:30, w:500, c:'#8b95a5', lh:48},
+  {t:'10¹⁰ 秒 / 圈', s:56, w:700, c:'#d9a441', lh:74},
+  {t:'≈ 317 年', s:30, w:300, c:'#7d8798'}
+], 22, 10, {plate:true, border:'rgba(217,164,65,.6)', top:0.26});
+realTag.position.set(X0 + STAGES*PITCH, -18.5, 6);
+scene.add(realTag);
+
+/* ══════════════════════════════════════════════
+   7. 面板：建立列
+   ══════════════════════════════════════════════ */
+const SUP = {'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','+':''};
+function sup(n){ return String(n).split('').map(ch=>SUP[ch]!==undefined?SUP[ch]:ch).join(''); }
+function sci(v, digits){
+  if(v===0) return '0';
+  const e = Math.floor(Math.log10(Math.abs(v)));
+  if(e>=-2 && e<=3) return v.toPrecision(digits||3).replace(/\.?0+$/,'');
+  const m = v/Math.pow(10,e);
+  return m.toFixed(2)+'×10'+sup(e);
+}
+const YEAR = 31556952;
+function humanTime(s){
+  if(s < 90)        return s.toPrecision(3).replace(/\.?0+$/,'')+' 秒';
+  if(s < 5400)      return (s/60).toPrecision(3)+' 分';
+  if(s < 172800)    return (s/3600).toPrecision(3)+' 小時';
+  if(s < YEAR*1.5)  return (s/86400).toPrecision(3)+' 天';
+  const y = s/YEAR;
+  if(y < 1e3)  return y.toPrecision(3)+' 年';
+  if(y < 1e6)  return (y/1e3).toPrecision(3)+' 千年';
+  if(y < 1e9)  return (y/1e6).toPrecision(3)+' 百萬年';
+  if(y < 1e13) return (y/1e9).toPrecision(3)+' 十億年';
+  return sci(y)+' 年';
+}
+const UNIVERSE = 4.354e17; // 秒
+function vsUniverse(s){
+  const r = s/UNIVERSE;
+  if(r < 0.001) return '';
+  return ' · ' + sci(r) + ' 倍宇宙年齡';
+}
+
+const rowsEl = document.getElementById('rows');
+const cells = [];
+
+function dialSVG(){
+  return '<svg class="dial" viewBox="0 0 24 24" aria-hidden="true">'+
+    '<circle cx="12" cy="12" r="10" fill="none" stroke="rgba(174,182,194,.18)" stroke-width="1.5"/>'+
+    '<line x1="12" y1="12" x2="12" y2="3.4" stroke="#6fd0ff" stroke-width="1.6" stroke-linecap="round"/>'+
+  '</svg>';
+}
+
+for(let i=1;i<=STAGES;i++){
+  const row = document.createElement('div');
+  row.className = 'row' + (i===STAGES ? ' terminal' : '');
+  row.innerHTML =
+    '<div class="idx">'+String(i).padStart(2,'0')+'<i>級</i>'+dialSVG()+'</div>'+
+    '<div><div class="name">齒輪 G'+i+'<span>100 齒 ← 10 齒</span></div>'+
+    '<div class="data">'+
+      '<span class="k">轉速</span><span class="rpm"></span><span class="fast"></span><br>'+
+      '<span class="k">一圈</span><span class="per"></span>'+
+    '</div></div>';
+  rowsEl.appendChild(row);
+  cells.push({
+    rpm: row.querySelector('.rpm'),
+    per: row.querySelector('.per'),
+    fast: row.querySelector('.fast'),
+    hand: row.querySelector('.dial line')
+  });
+}
+
+const note = document.createElement('div');
+note.className = 'gap-note';
+note.innerHTML = '十級 1:10 = 減速比 10¹⁰。<br>要讓一圈長達 <b>10¹⁰⁰ 秒</b>，齒輪鏈必須有 <b>100 級</b> —— 就是霧裡繼續延伸的那 90 級。';
+rowsEl.appendChild(note);
+
+const term = document.createElement('div');
+term.className = 'row terminal';
+term.innerHTML =
+  '<div class="idx">100<i>級</i></div>'+
+  '<div><div class="name">GOOGOL GEAR<span>霧中末端</span></div>'+
+  '<div class="data">'+
+    '<span class="k">轉速</span><span class="rpm">1.00×10⁻¹⁰⁰ 圈/秒</span><br>'+
+    '<span class="k">一圈</span><span class="per">10¹⁰⁰ 秒 = 3.17×10⁹² 年</span><br>'+
+    '<span class="k"></span><span class="per">7.28×10⁸² 倍宇宙年齡</span>'+
+  '</div></div>';
+rowsEl.appendChild(term);
+
+/* ══════════════════════════════════════════════
+   8. 控制
+   ══════════════════════════════════════════════ */
+let warpExp = 0, warp = 1, paused = false, simTime = 0;
+const warpEl = document.getElementById('warp');
+const warpVal = document.getElementById('warpVal');
+const presetBtns = Array.from(document.querySelectorAll('.presets button[data-w]'));
+
+function setWarp(e, fromSlider){
+  warpExp = e;
+  warp = Math.pow(10, e);
+  warpVal.textContent = '×10' + (Math.abs(e-Math.round(e))<0.01 ? sup(Math.round(e)) : '^'+e.toFixed(1));
+  if(Math.round(e*100)===0) warpVal.textContent = '×1';
+  if(!fromSlider) warpEl.value = e;
+  presetBtns.forEach(b=>b.classList.toggle('on', Math.abs(+b.dataset.w - e) < 0.03));
+}
+warpEl.addEventListener('input', ()=> setWarp(+warpEl.value, true));
+presetBtns.forEach(b=> b.addEventListener('click', ()=> setWarp(+b.dataset.w, false)));
+
+const pauseBtn = document.getElementById('pause');
+pauseBtn.addEventListener('click', ()=>{
+  paused = !paused;
+  pauseBtn.textContent = paused ? '繼續' : '暫停';
+  pauseBtn.classList.toggle('on', paused);
+});
+
+document.getElementById('toggle').addEventListener('click', function(){
+  const p = document.getElementById('readout');
+  p.classList.toggle('hidden');
+  this.textContent = p.classList.contains('hidden') ? '數據 ▴' : '數據 ▾';
+});
+
+document.getElementById('inRpm').textContent = (INPUT_RPS*60).toFixed(1) + ' RPM';
+setWarp(0,false);
+
+/* ══════════════════════════════════════════════
+   9. 相機控制（自製軌道）
+   ══════════════════════════════════════════════ */
+const cam = {
+  theta:-0.30, phi:1.26, dist:112, tx:0, ty:0,
+  gTheta:-0.30, gPhi:1.26, gDist:112, gTx:0, gTy:0
+};
+function applyCamera(){
+  cam.theta += (cam.gTheta-cam.theta)*0.12;
+  cam.phi   += (cam.gPhi  -cam.phi  )*0.12;
+  cam.dist  += (cam.gDist -cam.dist )*0.12;
+  cam.tx    += (cam.gTx   -cam.tx   )*0.12;
+  cam.ty    += (cam.gTy   -cam.ty   )*0.12;
+  const sp = Math.sin(cam.phi);
+  camera.position.set(
+    cam.tx + cam.dist*sp*Math.sin(cam.theta),
+    cam.ty + cam.dist*Math.cos(cam.phi),
+    cam.dist*sp*Math.cos(cam.theta)
+  );
+  camera.lookAt(cam.tx, cam.ty, 0);
+}
+const pointers = new Map();
+let lastPinch = 0;
+renderer.domElement.addEventListener('pointerdown', e=>{
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  renderer.domElement.setPointerCapture(e.pointerId);
+});
+renderer.domElement.addEventListener('pointermove', e=>{
+  const p = pointers.get(e.pointerId); if(!p) return;
+  const dx = e.clientX-p.x, dy = e.clientY-p.y;
+  p.x = e.clientX; p.y = e.clientY;
+  if(pointers.size === 1){
+    cam.gTheta -= dx*0.005;
+    cam.gPhi = Math.min(Math.PI-0.25, Math.max(0.25, cam.gPhi - dy*0.005));
+  } else if(pointers.size === 2){
+    const a = Array.from(pointers.values());
+    const d = Math.hypot(a[0].x-a[1].x, a[0].y-a[1].y);
+    if(lastPinch) cam.gDist = Math.min(230, Math.max(18, cam.gDist * lastPinch/d));
+    lastPinch = d;
+  }
+});
+['pointerup','pointercancel','pointerleave'].forEach(ev=>
+  renderer.domElement.addEventListener(ev, e=>{ pointers.delete(e.pointerId); lastPinch = 0; })
+);
+renderer.domElement.addEventListener('wheel', e=>{
+  e.preventDefault();
+  cam.gDist = Math.min(230, Math.max(18, cam.gDist * (1 + Math.sign(e.deltaY)*0.09)));
+}, {passive:false});
+
+/* 開場運鏡 */
+cam.dist = 210; cam.theta = -1.0;
+
+/* ══════════════════════════════════════════════
+   10. 主迴圈
+   ══════════════════════════════════════════════ */
+const clock = new THREE.Clock();
+let uiTick = 0;
+
+function updateReadout(){
+  for(let i=1;i<=STAGES;i++){
+    const s = shafts[i], c = cells[i-1];
+    const rpm = s.revPerSec*60;
+    const period = 1/s.revPerSec;
+    c.rpm.textContent = sci(rpm) + ' RPM';
+    c.per.textContent = humanTime(period) + vsUniverse(period);
+    const trueW = 2*Math.PI*s.revPerSec*warp;
+    c.fast.textContent = trueW > MAX_VIS_W ? '⚡畫面已限速' : '';
+    const deg = -s.dir*s.angle*180/Math.PI;
+    c.hand.setAttribute('transform','rotate('+deg.toFixed(1)+' 12 12)');
+  }
+  document.getElementById('elapsed').textContent = humanTime(Math.max(simTime,0.001));
+}
+
+function tick(){
+  requestAnimationFrame(tick);
+  const dt = Math.min(clock.getDelta(), 0.05);
+
+  if(!paused){
+    simTime += dt*warp;
+    shafts.forEach(s=>{
+      const w = 2*Math.PI*s.revPerSec*warp;             // 真實角速度
+      const vis = Math.min(w, MAX_VIS_W);               // 畫面限速，避免頻閃
+      s.angle = (s.angle + vis*dt) % (Math.PI*2);
+      s.group.rotation.z = s.dir * s.angle;
+    });
+    ghosts.forEach((g,k)=>{ g.rotation.z += dt*0.05/(k+1); });
+  }
+
+  if(++uiTick % 6 === 0) updateReadout();
+  applyCamera();
+  renderer.render(scene, camera);
+}
+updateReadout();
+tick();
+
+addEventListener('resize', ()=>{
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+})();
+</script>
+</body>
+</html>

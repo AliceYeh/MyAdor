@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Googol Gear - 级联齿轮系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+        
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #info-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 20px;
+            border-radius: 10px;
+            color: #00ff00;
+            font-size: 12px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            width: 320px;
+        }
+        
+        #title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #00ff00;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .gear-row {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(0, 255, 0, 0.05);
+            border-left: 3px solid #00ff00;
+            border-radius: 3px;
+        }
+        
+        .gear-label {
+            color: #00ff00;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .gear-stat {
+            color: #00aa00;
+            font-size: 11px;
+            margin: 3px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .rpm {
+            color: #ffff00;
+        }
+        
+        .period {
+            color: #ff6600;
+        }
+        
+        #bottom-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #00ff00;
+            font-size: 13px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 400px;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 255, 0, 0.1);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 0, 0.5);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="title">⚙️ GOOGOL GEAR SYSTEM ⚙️</div>
+    <div id="info-panel"></div>
+    <div id="bottom-info">
+        <div>第1个齿轮转速: <span class="rpm" id="gear1-rpm">100 RPM</span></div>
+        <div style="margin-top: 10px; color: #ff8800; font-size: 12px;">
+            💡 每级减速比1:10，共10级<br>
+            最终齿轮周期: 10^100 秒
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // ============= 场景设置 =============
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0a12);
+        
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
+        camera.position.set(30, 20, 40);
+        camera.lookAt(0, 0, 0);
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFShadowShadowMap;
+        document.body.appendChild(renderer.domElement);
+        
+        // ============= 光源 =============
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        scene.add(ambientLight);
+        
+        const mainLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        mainLight.position.set(50, 50, 50);
+        mainLight.castShadow = true;
+        mainLight.shadow.mapSize.width = 2048;
+        mainLight.shadow.mapSize.height = 2048;
+        mainLight.shadow.camera.far = 200;
+        mainLight.shadow.camera.left = -100;
+        mainLight.shadow.camera.right = 100;
+        mainLight.shadow.camera.top = 100;
+        mainLight.shadow.camera.bottom = -100;
+        scene.add(mainLight);
+        
+        const pointLight1 = new THREE.PointLight(0x00ff00, 0.3, 150);
+        pointLight1.position.set(-50, 30, 50);
+        scene.add(pointLight1);
+        
+        const pointLight2 = new THREE.PointLight(0xff6600, 0.2, 150);
+        pointLight2.position.set(50, 30, -50);
+        scene.add(pointLight2);
+        
+        // ============= 齿轮创建函数 =============
+        function createGear(radius, teeth, thickness, innerRadius) {
+            const geometry = new THREE.CylinderGeometry(radius, radius, thickness, teeth * 2, 1);
+            
+            // 创建齿
+            const positions = geometry.attributes.position.array;
+            const count = positions.length / 3;
+            
+            for (let i = 0; i < count; i++) {
+                const x = positions[i * 3];
+                const y = positions[i * 3 + 1];
+                const z = positions[i * 3 + 2];
+                
+                const dist = Math.sqrt(x * x + z * z);
+                const angle = Math.atan2(z, x);
+                
+                if (Math.abs(y) > thickness / 2 - 0.05) {
+                    const toothPhase = (angle / (Math.PI / teeth)) % 2;
+                    if (toothPhase > 0.3 && toothPhase < 1.7) {
+                        const factor = 1 + 0.25 * Math.sin(toothPhase * Math.PI);
+                        const newDist = Math.max(dist * factor, innerRadius);
+                        positions[i * 3] = (newDist / dist) * x;
+                        positions[i * 3 + 2] = (newDist / dist) * z;
+                    }
+                }
+            }
+            
+            geometry.attributes.position.needsUpdate = true;
+            geometry.computeVertexNormals();
+            
+            // 金属材质
+            const material = new THREE.MeshStandardMaterial({
+                metalness: 0.95,
+                roughness: 0.15,
+                color: 0xcccccc,
+                envMapIntensity: 1.0
+            });
+            
+            const mesh = new THREE.Mesh(geometry, material);
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+            
+            return mesh;
+        }
+        
+        // ============= 数据计算 =============
+        const GEAR_COUNT = 10;
+        const TEETH = 50;
+        const REDUCTION_RATIO = 10;
+        const baseRadius = 5;
+        const thickness = 1;
+        
+        const gearData = [];
+        const gears = [];
+        let totalSpacing = 0;
+        
+        for (let i = 0; i < GEAR_COUNT; i++) {
+            const radius = baseRadius + i * 0.8;
+            const gear = createGear(radius, TEETH, thickness, radius * 0.4);
+            
+            const xPos = i * 15 - (GEAR_COUNT - 1) * 7.5;
+            gear.position.set(xPos, 0, 0);
+            gear.castShadow = true;
+            
+            scene.add(gear);
+            gears.push(gear);
+            
+            const reductionLevel = i;
+            const angularVelocity = 1 / Math.pow(REDUCTION_RATIO, reductionLevel); // rad/frame
+            
+            const rpmValue = (angularVelocity * 60) / (2 * Math.PI) * 60; // 近似
+            const periodSeconds = Math.pow(REDUCTION_RATIO, reductionLevel) * 2 * Math.PI;
+            
+            gearData.push({
+                gear: gear,
+                radius: radius,
+                angularVelocity: angularVelocity,
+                rpm: rpmValue,
+                periodSeconds: periodSeconds,
+                level: i + 1
+            });
+        }
+        
+        // ============= 地面 =============
+        const groundGeometry = new THREE.PlaneGeometry(200, 100);
+        const groundMaterial = new THREE.MeshStandardMaterial({
+            color: 0x1a1a2e,
+            metalness: 0.3,
+            roughness: 0.8
+        });
+        const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -12;
+        ground.receiveShadow = true;
+        scene.add(ground);
+        
+        // ============= UI 更新 =============
+        function updateInfoPanel() {
+            const infoPanel = document.getElementById('info-panel');
+            let html = '<div style="text-align: center; margin-bottom: 10px; color: #ffff00; font-size: 13px;">齿轮转速数据</div>';
+            
+            gearData.forEach((data, idx) => {
+                const period = data.periodSeconds;
+                let periodStr = '';
+                
+                if (idx < 3) {
+                    periodStr = period.toFixed(2) + ' 秒';
+                } else if (idx < 6) {
+                    periodStr = (period / 60).toFixed(2) + ' 分';
+                } else if (idx < 9) {
+                    periodStr = (period / 3600).toFixed(2) + ' 小时';
+                } else {
+                    periodStr = '10^100 秒 (∞)';
+                }
+                
+                html += `
+                    <div class="gear-row">
+                        <div class="gear-label">⚙️ 齿轮 ${idx + 1}</div>
+                        <div class="gear-stat"><span class="rpm">转速:</span> 10^-${idx} rad/s</div>
+                        <div class="gear-stat"><span class="period">周期:</span> ${periodStr}</div>
+                        <div class="gear-stat">齿数: ${TEETH} | 半径: ${data.radius.toFixed(1)}</div>
+                    </div>
+                `;
+            });
+            
+            infoPanel.innerHTML = html;
+        }
+        
+        updateInfoPanel();
+        
+        // ============= 动画循环 =============
+        let frameCount = 0;
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            frameCount++;
+            
+            gearData.forEach((data) => {
+                const angle = data.angularVelocity * frameCount;
+                data.gear.rotation.x = angle;
+            });
+            
+            renderer.render(scene, camera);
+        }
+        
+        animate();
+        
+        // ============= 窗口响应 =============
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+        
+        // ============= 交互 =============
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        
+        document.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            previousMousePosition = { x: e.clientX, y: e.clientY };
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - previousMousePosition.x;
+                const deltaY = e.clientY - previousMousePosition.y;
+                
+                const rotationMatrix = new THREE.Matrix4();
+                rotationMatrix.makeRotationY(deltaX * 0.005);
+                
+                const axis = new THREE.Vector3(0, 1, 0);
+                rotationMatrix.extractBasis(new THREE.Vector3(), axis, new THREE.Vector3());
+                
+                camera.position.applyMatrix4(rotationMatrix);
+                camera.lookAt(0, 5, 0);
+                
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            }
+        });
+        
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+        
+        document.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const direction = camera.position.clone().normalize();
+            const distance = camera.position.length();
+            const newDistance = distance + e.deltaY * 0.1;
+            
+            if (newDistance > 10 && newDistance < 150) {
+                camera.position.copy(direction.multiplyScalar(newDistance));
+                camera.lookAt(0, 5, 0);
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>
