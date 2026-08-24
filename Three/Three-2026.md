@@ -31,5 +31,6 @@
 [260824-saturn-ring-criterium.html](three2026/260824-saturn-ring-criterium.html)
 [260824-saturn-ring-criterium2.html](three2026/260824-saturn-ring-criterium2.html)
 ![260824-saturn-ring-criterium2.png](three2026/260824-saturn-ring-criterium2.png)
+[Preview](https://htmlpreview.github.io/?https://github.com/AliceYeh/MyAdor/blob/master/Three/three2026/260824-saturn-ring-criterium2.html)
 
 [Opus5 PR 8%+86%]
