@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>卜卦 · 金錢卦</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lacquer:#1b0d0b; --lacquer2:#3a1410; --gold:#d8b46a; --gold2:#a9803a; --bronze:#8a5a2b;
+  --paper:#f2e6cb; --paper2:#e2cfa4; --ink:#231a14; --ink2:#5d4934; --cinnabar:#b8322a; --cinnabar2:#d9473b;
+  --kai:'LXGW WenKai TC','標楷體','DFKai-SB','KaiTi',serif;
+  --song:'Noto Serif TC','PMingLiU','MingLiU',serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  min-height:100vh;color:var(--paper);font-family:var(--song);
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(160,45,25,.38), transparent 60%),
+    radial-gradient(ellipse at 50% 110%, rgba(110,25,12,.45), transparent 60%),
+    repeating-radial-gradient(circle at 50% 35%, rgba(255,220,160,.015) 0 2px, transparent 2px 7px),
+    var(--lacquer);
+}
+.band{height:18px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='18'><path d='M0 16H20V2H5V12H15V6H9V9' fill='none' stroke='%23a9803a' stroke-width='1.6'/></svg>") repeat-x center;opacity:.8}
+header{text-align:center;padding:22px 16px 6px}
+header h1{font-family:var(--kai);font-size:clamp(40px,7vw,68px);margin:4px 0 0;letter-spacing:.4em;text-indent:.4em;
+  color:var(--gold);text-shadow:0 0 18px rgba(216,180,106,.35),0 2px 0 #4a2a10}
+header p{margin:4px 0 10px;color:var(--paper2);font-family:var(--kai);letter-spacing:.2em;font-size:15px;opacity:.85}
+
+.wrap{max-width:1280px;margin:0 auto;padding:12px 16px 30px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:28px;align-items:start}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}}
+
+/* ---------- altar ---------- */
+.altar{display:flex;flex-direction:column;gap:12px;align-items:center}
+.ask{width:100%;max-width:560px;border:1px solid rgba(216,180,106,.35);border-radius:6px;padding:12px 14px;background:rgba(0,0,0,.25)}
+.ask .lbl{font-family:var(--kai);color:var(--gold);font-size:15px;margin-bottom:8px;letter-spacing:.1em}
+.cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.cats button{font-family:var(--kai);font-size:16px;color:var(--paper2);background:transparent;border:1px solid rgba(216,180,106,.4);
+  border-radius:3px;padding:4px 12px;cursor:pointer;transition:.2s}
+.cats button:hover{border-color:var(--gold)}
+.cats button.on{background:var(--cinnabar);border-color:var(--cinnabar2);color:#fff6e4}
+.ask input{width:100%;font-family:var(--kai);font-size:17px;padding:8px 10px;border-radius:3px;border:1px solid rgba(216,180,106,.4);
+  background:rgba(242,230,203,.08);color:var(--paper);outline:none}
+.ask input::placeholder{color:rgba(242,230,203,.45)}
+.ask input:focus{border-color:var(--gold)}
+#disc{width:100%;max-width:520px;height:auto;display:block;filter:drop-shadow(0 10px 30px rgba(0,0,0,.6))}
+#coins{width:100%;max-width:520px;height:auto;display:block;margin-top:-6px}
+.tosslbl{font-family:var(--kai);font-size:18px;color:var(--paper2);min-height:1.6em;text-align:center;letter-spacing:.06em}
+.tosslbl b{color:var(--gold)}
+.tosslbl .mv{color:var(--cinnabar2)}
+.controls{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center}
+#castBtn{font-family:var(--kai);font-size:26px;letter-spacing:.3em;text-indent:.3em;color:#fff3dc;cursor:pointer;
+  background:radial-gradient(circle at 40% 35%, #d9473b, #8e1f19);border:2px solid #e8c27a;border-radius:8px;padding:10px 26px;
+  box-shadow:0 0 0 4px rgba(184,50,42,.25),0 6px 18px rgba(0,0,0,.5);transition:.2s}
+#castBtn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 0 0 6px rgba(184,50,42,.3),0 8px 22px rgba(0,0,0,.6)}
+#castBtn:disabled{opacity:.55;cursor:default}
+.tog{display:flex;align-items:center;gap:6px;font-family:var(--kai);color:var(--paper2);cursor:pointer;user-select:none;font-size:16px}
+.tog input{accent-color:var(--cinnabar);width:16px;height:16px}
+#soundBtn{background:transparent;border:1px solid rgba(216,180,106,.4);color:var(--paper2);border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:17px}
+
+/* ---------- scroll ---------- */
+.scroll{position:relative;padding:18px 0}
+.scroll::before,.scroll::after{content:"";position:absolute;left:-10px;right:-10px;height:20px;border-radius:10px;z-index:2;
+  background:linear-gradient(180deg,#6b3b1a,#3b1d0b 55%,#24110a);box-shadow:0 4px 10px rgba(0,0,0,.5)}
+.scroll::before{top:4px}.scroll::after{bottom:4px}
+.knob{position:absolute;width:16px;height:30px;border-radius:5px;background:linear-gradient(90deg,#c9a052,#7a5320);z-index:3}
+.knob.tl{top:-1px;left:-24px}.knob.tr{top:-1px;right:-24px}.knob.bl{bottom:-1px;left:-24px}.knob.br{bottom:-1px;right:-24px}
+.paper{position:relative;color:var(--ink);padding:30px 30px 26px;min-height:560px;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45 0 0 0 0 .33 0 0 0 0 .18 0 0 0 .16 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    linear-gradient(90deg,rgba(120,80,30,.12),transparent 6%,transparent 94%,rgba(120,80,30,.12)),
+    var(--paper);
+  box-shadow:inset 0 0 40px rgba(120,80,30,.25)}
+@media (max-width:560px){.paper{padding:26px 16px 20px}.knob{display:none}.scroll::before,.scroll::after{left:-4px;right:-4px}}
+.paper h2{font-family:var(--kai);font-size:28px;margin:0 0 10px;letter-spacing:.15em;color:var(--ink)}
+.paper h3{font-family:var(--kai);font-size:21px;margin:22px 0 8px;color:var(--cinnabar);letter-spacing:.12em;
+  border-bottom:1px solid rgba(90,60,30,.3);padding-bottom:4px}
+.paper p{line-height:1.85;margin:6px 0}
+.meta{font-family:var(--kai);font-size:16px;color:var(--ink2);border-left:3px solid var(--cinnabar);padding-left:10px;margin-bottom:12px}
+.guarow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;position:relative}
+.guacard{text-align:center;min-width:110px}
+.guacard svg{width:78px;height:auto}
+.guacard .nm{font-family:var(--kai);font-size:24px;font-weight:700;margin-top:4px}
+.guacard .sub{font-size:13px;color:var(--ink2)}
+.guacard .tag{font-family:var(--kai);font-size:13px;color:#fff;background:var(--ink2);border-radius:2px;padding:0 6px;display:inline-block;margin-bottom:4px}
+.arrow{font-size:28px;color:var(--cinnabar);font-family:var(--kai)}
+.seal{margin-left:auto;width:96px;height:96px;border:4px double #fff1dc;outline:3px solid var(--cinnabar);background:var(--cinnabar);color:#fff1dc;
+  display:flex;align-items:center;justify-content:center;font-family:var(--kai);font-weight:700;writing-mode:vertical-rl;
+  font-size:38px;letter-spacing:.05em;transform:rotate(-6deg);box-shadow:0 2px 6px rgba(120,20,10,.35);opacity:.93}
+.seal.one{font-size:52px}
+.seal.stamp{animation:stamp .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes stamp{0%{transform:rotate(-6deg) scale(2.2);opacity:0}100%{transform:rotate(-6deg) scale(1);opacity:.93}}
+.rule{font-family:var(--kai);font-size:16px;color:var(--ink2)}
+.quote{font-family:var(--kai);font-size:20px;line-height:1.8;background:rgba(184,50,42,.08);border-left:4px solid var(--cinnabar);padding:8px 14px;margin:8px 0}
+.quote .src{font-size:14px;color:var(--cinnabar);margin-right:6px}
+.adv{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin-top:8px}
+.adv div{font-size:14px;border:1px solid rgba(90,60,30,.25);padding:6px 8px;border-radius:3px;line-height:1.6}
+.adv div b{font-family:var(--kai);color:var(--ink2);margin-right:4px}
+.adv div.on{background:rgba(184,50,42,.1);border-color:var(--cinnabar)}
+.adv div.on b{color:var(--cinnabar)}
+details{margin-top:14px;border-top:1px dashed rgba(90,60,30,.35);padding-top:8px}
+summary{font-family:var(--kai);font-size:20px;cursor:pointer;color:var(--ink);letter-spacing:.08em}
+summary::marker{color:var(--cinnabar)}
+.lines{list-style:none;padding:0;margin:8px 0}
+.lines li{padding:5px 8px;line-height:1.7;border-left:3px solid transparent;display:flex;gap:10px}
+.lines li .ln{font-family:var(--kai);color:var(--ink2);white-space:nowrap;min-width:3.4em}
+.lines li.mv .ln{color:var(--cinnabar)}
+.hl{background:rgba(184,50,42,.12);border-left-color:var(--cinnabar)!important}
+.hl.primary{background:rgba(184,50,42,.2);font-weight:600}
+p.hl{padding:4px 8px;border-left:3px solid var(--cinnabar)}
+.label{font-family:var(--kai);color:var(--cinnabar);margin-right:6px}
+.actions{margin-top:22px;text-align:center}
+.actions button{font-family:var(--kai);font-size:20px;letter-spacing:.2em;padding:8px 22px;border-radius:4px;cursor:pointer;
+  color:#fff3dc;background:var(--cinnabar);border:1px solid #7a1a14}
+.nobu{font-family:var(--kai);font-size:14px;color:var(--ink2);margin-top:8px}
+.intro table{border-collapse:collapse;margin:10px 0;font-size:15px}
+.intro td,.intro th{border:1px solid rgba(90,60,30,.3);padding:5px 10px;text-align:center}
+.intro th{font-family:var(--kai);background:rgba(90,60,30,.08)}
+
+/* ---------- hist ---------- */
+.hist{max-width:1280px;margin:0 auto;padding:0 16px 30px}
+.hist h2{font-family:var(--kai);color:var(--gold);letter-spacing:.2em;font-size:24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hist h2 small{font-size:13px;color:var(--paper2);opacity:.7;letter-spacing:0;font-family:var(--song)}
+.hist h2 button{margin-left:auto;font-family:var(--kai);font-size:14px;background:transparent;color:var(--paper2);border:1px solid rgba(216,180,106,.4);border-radius:3px;padding:3px 10px;cursor:pointer}
+.hlist{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.hlist li{border:1px solid rgba(216,180,106,.3);border-radius:5px;padding:9px 12px;background:rgba(0,0,0,.22);cursor:pointer;transition:.2s;display:flex;gap:12px;align-items:center}
+.hlist li:hover{border-color:var(--gold);background:rgba(216,180,106,.08)}
+.hlist .gl{font-size:34px;line-height:1;color:var(--gold);font-family:'Segoe UI Symbol','Noto Sans Symbols 2',sans-serif}
+.hlist .tx{flex:1;min-width:0}
+.hlist .t1{font-family:var(--kai);font-size:17px}
+.hlist .t2{font-size:12px;color:var(--paper2);opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hlist .g{font-family:var(--kai);color:#fff1dc;background:var(--cinnabar);padding:2px 6px;border-radius:2px;font-size:14px;white-space:nowrap}
+.empty{color:var(--paper2);opacity:.6;font-family:var(--kai)}
+footer{text-align:center;font-size:13px;color:var(--paper2);opacity:.6;padding:10px 16px 26px;font-family:var(--kai);letter-spacing:.08em}
+</style>
+</head>
+<body>
+<div class="band"></div>
+<header>
+  <h1>卜卦</h1>
+  <p>金錢卦 · 三錢六擲 · 以成一卦</p>
+</header>
+
+<main class="wrap">
+  <section class="altar">
+    <div class="ask">
+      <div class="lbl">問事 · 靜心默念所問之事</div>
+      <div class="cats" id="cats"></div>
+      <input id="q" maxlength="40" placeholder="所問何事？（可留空）">
+    </div>
+    <svg id="disc" viewBox="0 0 600 600" aria-label="先天八卦盤"></svg>
+    <svg id="coins" viewBox="0 0 600 230" aria-label="三枚銅錢"></svg>
+    <div class="tosslbl" id="tosslbl">三枚銅錢：字為二，背為三</div>
+    <div class="controls">
+      <button id="castBtn">起卦</button>
+      <label class="tog"><input type="checkbox" id="manual">逐爻手擲</label>
+      <button id="soundBtn" title="音效">🔇</button>
+    </div>
+  </section>
+
+  <section class="scroll">
+    <span class="knob tl"></span><span class="knob tr"></span><span class="knob bl"></span><span class="knob br"></span>
+    <div class="paper" id="reading"></div>
+  </section>
+</main>
+
+<section class="hist">
+  <h2>歷史卦象 <small id="storeMode"></small><button id="clearBtn">清除歷史</button></h2>
+  <ul class="hlist" id="hlist"></ul>
+</section>
+<div class="band"></div>
+<footer>易以道陰陽 · 本頁卦象解析僅供娛樂與自省參考，不作任何決策依據</footer>
+
+<script>
+'use strict';
+/* ================= 資料 ================= */
+const TRI = {
+  乾:{b:'111',img:'天'}, 兌:{b:'110',img:'澤'}, 離:{b:'101',img:'火'}, 震:{b:'100',img:'雷'},
+  巽:{b:'011',img:'風'}, 坎:{b:'010',img:'水'}, 艮:{b:'001',img:'山'}, 坤:{b:'000',img:'地'}
+};
+const GRADES = ['大吉','吉','小吉','平','小凶','凶','大凶'];
+const CATS = ['事業','感情','財運','健康','考試','其他'];
+
+// u 上卦, l 下卦, n 卦名, g 吉凶基準(0大吉…6大凶), j 卦辭, x 大象, y 六爻(初→上), b 白話, a 六類建議
+const HEX = [
+{u:'乾',l:'乾',n:'乾',g:0,j:'元亨利貞。',x:'天行健，君子以自強不息。',y:['潛龍勿用。','見龍在田，利見大人。','君子終日乾乾，夕惕若，厲无咎。','或躍在淵，无咎。','飛龍在天，利見大人。','亢龍有悔。'],use:'見群龍无首，吉。',b:'純陽剛健，如龍乘時而起。宜自強不息、積極進取；然盛極須防亢進，知進亦須知退。',a:'積極進取，可成大業，忌剛愎|宜主動表白，但勿強勢壓人|正財旺，量力而為勿貪|精力充沛，慎防過勞|全力以赴，可望高中|守正而行，持之以恆'},
+{u:'坤',l:'坤',n:'坤',g:1,j:'元亨，利牝馬之貞。君子有攸往，先迷後得主，利。西南得朋，東北喪朋。安貞吉。',x:'地勢坤，君子以厚德載物。',y:['履霜，堅冰至。','直方大，不習无不利。','含章可貞。或從王事，无成有終。','括囊，无咎无譽。','黃裳，元吉。','龍戰于野，其血玄黃。'],use:'利永貞。',b:'純陰柔順，厚德載物。宜跟隨輔佐、包容承載，不宜爭先；先迷後得，安守正道則吉。',a:'輔佐他人、配合團隊得利|溫柔包容，關係穩固|穩健儲蓄，不宜冒進|調養脾胃，宜靜養|按部就班，穩中求進|順勢而為，西南得助'},
+{u:'坎',l:'震',n:'屯',g:4,j:'元亨利貞，勿用有攸往，利建侯。',x:'雲雷屯，君子以經綸。',y:['磐桓，利居貞，利建侯。','屯如邅如，乘馬班如。匪寇婚媾，女子貞不字，十年乃字。','即鹿无虞，惟入于林中，君子幾不如舍，往吝。','乘馬班如，求婚媾，往吉，无不利。','屯其膏，小貞吉，大貞凶。','乘馬班如，泣血漣如。'],b:'萬物初生，雷雨交作，艱難重重。宜先穩住根基、廣求助力，不宜輕舉妄動。',a:'創業維艱，先打根基|好事多磨，需要耐心|資金吃緊，勿擴張|初病宜早治|基礎未穩，加緊準備|萬事起頭難，求助貴人'},
+{u:'艮',l:'坎',n:'蒙',g:3,j:'亨。匪我求童蒙，童蒙求我。初筮告，再三瀆，瀆則不告。利貞。',x:'山下出泉，蒙；君子以果行育德。',y:['發蒙，利用刑人，用說桎梏，以往吝。','包蒙吉，納婦吉，子克家。','勿用取女，見金夫，不有躬，无攸利。','困蒙，吝。','童蒙，吉。','擊蒙，不利為寇，利禦寇。'],b:'蒙昧未明、有待啟發之象。宜虛心求教；占問貴在至誠，一問即可，再三則瀆。',a:'多向前輩請益學習|彼此了解未深，慢慢來|不懂勿投，先學再做|留意孩童與慢性症|勤學可以開竅|問一次即可，勿反覆'},
+{u:'坎',l:'乾',n:'需',g:2,j:'有孚，光亨，貞吉。利涉大川。',x:'雲上於天，需；君子以飲食宴樂。',y:['需于郊，利用恆，无咎。','需于沙，小有言，終吉。','需于泥，致寇至。','需于血，出自穴。','需于酒食，貞吉。','入于穴，有不速之客三人來，敬之終吉。'],b:'雲上於天、雨尚未降，等待之象。前有險阻而心存誠信，耐心等候，時至自然亨通。',a:'時機未到，靜待良機|勿躁進，等待回應|守成等待，切忌急進|調養飲食，宜多休息|耐心準備，結果可期|稍安勿躁，終將有吉'},
+{u:'乾',l:'坎',n:'訟',g:5,j:'有孚，窒惕，中吉，終凶。利見大人，不利涉大川。',x:'天與水違行，訟；君子以作事謀始。',y:['不永所事，小有言，終吉。','不克訟，歸而逋，其邑人三百戶，无眚。','食舊德，貞厲，終吉。或從王事，无成。','不克訟，復即命，渝安貞，吉。','訟，元吉。','或錫之鞶帶，終朝三褫之。'],b:'天水違行，爭訟之象。即使有理也宜適可而止，堅持到底終凶；凡事謀之於始，可免爭端。',a:'防糾紛，避免與人爭執|口角多，宜退一步|防官非破財|鬱怒傷身，宜平心|防與人爭執而分心|和為貴，見好就收'},
+{u:'坤',l:'坎',n:'師',g:2,j:'貞，丈人吉，无咎。',x:'地中有水，師；君子以容民畜眾。',y:['師出以律，否臧凶。','在師中，吉无咎，王三錫命。','師或輿尸，凶。','師左次，无咎。','田有禽，利執言，无咎。長子帥師，弟子輿尸，貞凶。','大君有命，開國承家，小人勿用。'],b:'興師動眾之象。須有德高望重者統帥，師出有名、紀律嚴明方能吉而无咎。',a:'團隊作戰，聽從領導|需長輩主持撮合|大筆資金需謹慎|作息規律為要|紀律讀書可成|師出有名，嚴守紀律'},
+{u:'坎',l:'坤',n:'比',g:1,j:'吉。原筮，元永貞，无咎。不寧方來，後夫凶。',x:'地上有水，比；先王以建萬國，親諸侯。',y:['有孚比之，无咎。有孚盈缶，終來有它，吉。','比之自內，貞吉。','比之匪人。','外比之，貞吉。','顯比，王用三驅，失前禽，邑人不誡，吉。','比之无首，凶。'],b:'水在地上、相親相依之象。誠心結交則得人相助；遲疑落後則失其機。',a:'合作結盟，眾人相助|真誠相待，宜早表態|合夥得財|有人照應，恢復良好|結伴讀書，互相砥礪|親近賢者，莫遲疑'},
+{u:'巽',l:'乾',n:'小畜',g:3,j:'亨。密雲不雨，自我西郊。',x:'風行天上，小畜；君子以懿文德。',y:['復自道，何其咎，吉。','牽復，吉。','輿說輻，夫妻反目。','有孚，血去惕出，无咎。','有孚攣如，富以其鄰。','既雨既處，尚德載，婦貞厲。月幾望，君子征凶。'],b:'以小畜大，力量尚弱，如密雲而不雨。宜修養文德、累積實力，待時而發。',a:'小有阻滯，先累積實力|小摩擦，多溝通|小有積蓄，宜守|小恙無大礙|成績小進，再加把勁|蓄勢待發'},
+{u:'乾',l:'兌',n:'履',g:2,j:'履虎尾，不咥人，亨。',x:'上天下澤，履；君子以辨上下，定民志。',y:['素履，往无咎。','履道坦坦，幽人貞吉。','眇能視，跛能履，履虎尾，咥人，凶。武人為于大君。','履虎尾，愬愬，終吉。','夬履，貞厲。','視履考祥，其旋元吉。'],b:'如履虎尾而虎不傷人。小心謹慎、守禮循分，雖處險境亦可亨通。',a:'謹慎行事，守規矩|以禮相待，進退有度|謹慎理財|小心意外傷害|審慎答題|如履薄冰，可化險為夷'},
+{u:'坤',l:'乾',n:'泰',g:0,j:'小往大來，吉亨。',x:'天地交，泰；后以財成天地之道，輔相天地之宜，以左右民。',y:['拔茅茹，以其彙，征吉。','包荒，用馮河，不遐遺，朋亡，得尚于中行。','无平不陂，无往不復，艱貞无咎。勿恤其孚，于食有福。','翩翩，不富以其鄰，不戒以孚。','帝乙歸妹，以祉元吉。','城復于隍，勿用師。自邑告命，貞吝。'],b:'天地相交、上下通達，小往大來。萬事亨通，然須居安思危，以防泰極否來。',a:'順利亨通，宜大力推進|和諧美滿，宜論婚嫁|財源廣進|身心康泰|順利上榜|安泰吉祥，居安思危'},
+{u:'乾',l:'坤',n:'否',g:5,j:'否之匪人，不利君子貞，大往小來。',x:'天地不交，否；君子以儉德辟難，不可榮以祿。',y:['拔茅茹，以其彙，貞吉亨。','包承，小人吉，大人否亨。','包羞。','有命无咎，疇離祉。','休否，大人吉。其亡其亡，繫于苞桑。','傾否，先否後喜。'],b:'天地不交、上下閉塞之象。君子宜儉德避難、韜光養晦，忍耐以待否極泰來。',a:'阻滯不通，宜守不宜攻|溝通不良，宜冷靜|財路閉塞，勿投資|氣血不暢，宜檢查|發揮不佳，調整心態|否極泰來，忍耐待變'},
+{u:'乾',l:'離',n:'同人',g:1,j:'同人于野，亨。利涉大川，利君子貞。',x:'天與火，同人；君子以類族辨物。',y:['同人于門，无咎。','同人于宗，吝。','伏戎于莽，升其高陵，三歲不興。','乘其墉，弗克攻，吉。','同人，先號咷而後笑，大師克相遇。','同人于郊，无悔。'],b:'與人同心之象。宜光明正大、廣結同道，不宜結黨營私；志同則可涉大川。',a:'同心協力，合作可成|志同道合，可成佳偶|合資有利|群體活動有益健康|結伴學習有益|廣結善緣'},
+{u:'離',l:'乾',n:'大有',g:0,j:'元亨。',x:'火在天上，大有；君子以遏惡揚善，順天休命。',y:['无交害，匪咎，艱則无咎。','大車以載，有攸往，无咎。','公用亨于天子，小人弗克。','匪其彭，无咎。','厥孚交如，威如，吉。','自天祐之，吉无不利。'],b:'火在天上，光照萬物，所有者大。大有收穫之時，宜遏惡揚善、謙以持盈。',a:'事業興盛，得上信任|感情豐盛圓滿|財富豐收|身體健旺|成績優異|大吉大利，謙以保之'},
+{u:'坤',l:'艮',n:'謙',g:1,j:'亨，君子有終。',x:'地中有山，謙；君子以裒多益寡，稱物平施。',y:['謙謙君子，用涉大川，吉。','鳴謙，貞吉。','勞謙君子，有終吉。','无不利，撝謙。','不富以其鄰，利用侵伐，无不利。','鳴謙，利用行師，征邑國。'],b:'高山藏於地中，謙虛之象。滿招損、謙受益，君子以謙終得善果。',a:'謙虛得人和，終有成|以退為進，贏得好感|穩健得財|調和身心|虛心求學可成|謙卑者無往不利'},
+{u:'震',l:'坤',n:'豫',g:2,j:'利建侯行師。',x:'雷出地奮，豫；先王以作樂崇德，殷薦之上帝，以配祖考。',y:['鳴豫，凶。','介于石，不終日，貞吉。','盱豫，悔。遲有悔。','由豫，大有得。勿疑，朋盍簪。','貞疾，恆不死。','冥豫，成有渝，无咎。'],b:'雷出地奮，和樂之象。宜預作準備、順勢而動；但忌耽於逸樂而喪志。',a:'預先規劃可成|愉悅相處，勿放縱|宜預算規劃|勿過度享樂|勿鬆懈，預習為要|樂而有節'},
+{u:'兌',l:'震',n:'隨',g:1,j:'元亨利貞，无咎。',x:'澤中有雷，隨；君子以嚮晦入宴息。',y:['官有渝，貞吉。出門交有功。','係小子，失丈夫。','係丈夫，失小子。隨有求得，利居貞。','隨有獲，貞凶。有孚在道，以明，何咎。','孚于嘉，吉。','拘係之，乃從維之。王用亨于西山。'],b:'隨時順勢之象。擇善而從則无咎；當動則動、當息則息。',a:'順勢跟隨，擇主而事|隨緣相處，自然而然|順勢操作|作息隨時令|跟隨良師|隨遇而安，擇善而從'},
+{u:'艮',l:'巽',n:'蠱',g:4,j:'元亨，利涉大川。先甲三日，後甲三日。',x:'山下有風，蠱；君子以振民育德。',y:['幹父之蠱，有子，考无咎，厲終吉。','幹母之蠱，不可貞。','幹父之蠱，小有悔，无大咎。','裕父之蠱，往見吝。','幹父之蠱，用譽。','不事王侯，高尚其事。'],b:'器皿生蟲、積弊已久之象。宜振作革新、整頓舊弊，謀定而後動。',a:'積弊需改革整頓|舊問題需正視處理|清理舊帳|留意腸胃|補強弱點|除舊布新'},
+{u:'坤',l:'兌',n:'臨',g:1,j:'元亨利貞。至于八月有凶。',x:'澤上有地，臨；君子以教思无窮，容保民无疆。',y:['咸臨，貞吉。','咸臨，吉无不利。','甘臨，无攸利。既憂之，无咎。','至臨，无咎。','知臨，大君之宜，吉。','敦臨，吉无咎。'],b:'以上臨下、陽氣漸長，盛大將至。宜把握時機；然盛極有衰，須預防後患。',a:'升遷有望，把握時機|感情漸入佳境|財運漸旺|好轉中，勿大意|成績上揚|好運將臨，防盛極而衰'},
+{u:'巽',l:'坤',n:'觀',g:3,j:'盥而不薦，有孚顒若。',x:'風行地上，觀；先王以省方觀民設教。',y:['童觀，小人无咎，君子吝。','闚觀，利女貞。','觀我生，進退。','觀國之光，利用賓于王。','觀我生，君子无咎。','觀其生，君子无咎。'],b:'風行地上、周遍觀察之象。宜冷靜觀察、反省自身，以誠敬服人。',a:'宜先觀察再行動|多觀察對方心意|觀望為宜|定期檢查|觀摩學習|靜觀其變'},
+{u:'離',l:'震',n:'噬嗑',g:3,j:'亨。利用獄。',x:'雷電噬嗑；先王以明罰敕法。',y:['屨校滅趾，无咎。','噬膚滅鼻，无咎。','噬腊肉，遇毒，小吝，无咎。','噬乾胏，得金矢，利艱貞，吉。','噬乾肉，得黃金，貞厲，无咎。','何校滅耳，凶。'],b:'口中有物、咬合而後通之象。有阻隔須果斷排除，宜明法而行。',a:'排除障礙，依規處理|有阻隔，需化解|防法律糾紛|留意口腔牙齒|啃下難關|果斷解決問題'},
+{u:'艮',l:'離',n:'賁',g:2,j:'亨。小利有攸往。',x:'山下有火，賁；君子以明庶政，无敢折獄。',y:['賁其趾，舍車而徒。','賁其須。','賁如濡如，永貞吉。','賁如皤如，白馬翰如，匪寇婚媾。','賁于丘園，束帛戔戔，吝，終吉。','白賁，无咎。'],b:'山下有火、文采飾美之象。小事有利；重實質勿只重外表，返璞歸真最為上。',a:'包裝有益，實力為本|外表之外更重內涵|勿為虛榮花費|留意皮膚|形式之外要有實學|文質彬彬'},
+{u:'艮',l:'坤',n:'剝',g:6,j:'不利有攸往。',x:'山附於地，剝；上以厚下安宅。',y:['剝床以足，蔑貞凶。','剝床以辨，蔑貞凶。','剝之，无咎。','剝床以膚，凶。','貫魚，以宮人寵，无不利。','碩果不食，君子得輿，小人剝廬。'],b:'陰盛陽衰、層層剝落之象。不宜有所作為，宜厚下安宅、保存實力以待來復。',a:'衰退之時，宜守|感情生變，宜修補|防損失|體力衰弱，宜保養|成績下滑，穩住基本|碩果僅存，保本為上'},
+{u:'坤',l:'震',n:'復',g:1,j:'亨。出入无疾，朋來无咎。反復其道，七日來復，利有攸往。',x:'雷在地中，復；先王以至日閉關，商旅不行，后不省方。',y:['不遠復，无祇悔，元吉。','休復，吉。','頻復，厲无咎。','中行獨復。','敦復，无悔。','迷復，凶，有災眚。用行師，終有大敗，以其國君凶，至于十年不克征。'],b:'一陽來復、生機重現之象。宜回歸正道、循序漸進，轉機已至。',a:'復甦轉機已現|舊情可復|財運回升|康復有望|重新出發|七日來復，周而復始'},
+{u:'乾',l:'震',n:'无妄',g:3,j:'元亨利貞。其匪正有眚，不利有攸往。',x:'天下雷行，物與无妄；先王以茂對時育萬物。',y:['无妄，往吉。','不耕穫，不菑畬，則利有攸往。','无妄之災，或繫之牛，行人之得，邑人之災。','可貞，无咎。','无妄之疾，勿藥有喜。','无妄，行有眚，无攸利。'],b:'不妄為之象。順天守正則吉；心存僥倖、妄動貪求則招災。',a:'守本分，勿投機|真誠以待，勿算計|勿投機，防意外損失|勿亂服藥|實力為本，勿存僥倖|守正自安'},
+{u:'艮',l:'乾',n:'大畜',g:1,j:'利貞，不家食吉，利涉大川。',x:'天在山中，大畜；君子以多識前言往行，以畜其德。',y:['有厲，利已。','輿說輹。','良馬逐，利艱貞。曰閑輿衛，利有攸往。','童牛之牿，元吉。','豶豕之牙，吉。','何天之衢，亨。'],b:'天在山中，所蓄者大。宜蓄德養才、厚積薄發，可外出謀發展。',a:'累積實力，可成大器|穩定經營|積財有成|養精蓄銳|厚積薄發|多識前言往行'},
+{u:'艮',l:'震',n:'頤',g:2,j:'貞吉。觀頤，自求口實。',x:'山下有雷，頤；君子以慎言語，節飲食。',y:['舍爾靈龜，觀我朵頤，凶。','顛頤，拂經，于丘頤，征凶。','拂頤，貞凶，十年勿用，无攸利。','顛頤，吉。虎視眈眈，其欲逐逐，无咎。','拂經，居貞吉，不可涉大川。','由頤，厲吉，利涉大川。'],b:'頤養之象。觀其所養可知其人；宜自食其力、慎言語、節飲食。',a:'自食其力|互相照顧|量入為出|注意飲食與口腔|自主學習|慎言節食'},
+{u:'兌',l:'巽',n:'大過',g:4,j:'棟橈，利有攸往，亨。',x:'澤滅木，大過；君子以獨立不懼，遯世无悶。',y:['藉用白茅，无咎。','枯楊生稊，老夫得其女妻，无不利。','棟橈，凶。','棟隆，吉。有它吝。','枯楊生華，老婦得其士夫，无咎无譽。','過涉滅頂，凶，无咎。'],b:'棟樑彎曲、負荷過重之象。非常之時需非常之舉，獨立不懼，亦須防過猶不及。',a:'壓力過大，需調整|關係失衡|勿過度擴張|過勞，宜減負|勿超負荷|過猶不及'},
+{u:'坎',l:'坎',n:'坎',g:5,j:'習坎，有孚，維心亨，行有尚。',x:'水洊至，習坎；君子以常德行，習教事。',y:['習坎，入于坎窞，凶。','坎有險，求小得。','來之坎坎，險且枕，入于坎窞，勿用。','樽酒簋貳，用缶，納約自牖，終无咎。','坎不盈，祇既平，无咎。','係用徽纆，寘于叢棘，三歲不得，凶。'],b:'重重險陷之象。唯有誠信、心志堅定，習於險而不失其信，方能度過。',a:'險阻重重，堅持本心|感情多波折|防陷阱虧損|注意腎與泌尿|難關重重，需堅持|心誠則可渡險'},
+{u:'離',l:'離',n:'離',g:1,j:'利貞，亨。畜牝牛，吉。',x:'明兩作，離；大人以繼明照于四方。',y:['履錯然，敬之无咎。','黃離，元吉。','日昃之離，不鼓缶而歌，則大耋之嗟，凶。','突如其來如，焚如，死如，棄如。','出涕沱若，戚嗟若，吉。','王用出征，有嘉折首，獲匪其醜，无咎。'],b:'光明附麗之象，如日月麗天。宜柔順守正、依附正道，則光明亨通。',a:'光明發展，宜表現|熱情相依|財運明朗|注意心火與眼目|文思敏捷|附麗得所'},
+{u:'兌',l:'艮',n:'咸',g:1,j:'亨，利貞，取女吉。',x:'山上有澤，咸；君子以虛受人。',y:['咸其拇。','咸其腓，凶，居吉。','咸其股，執其隨，往吝。','貞吉悔亡。憧憧往來，朋從爾思。','咸其脢，无悔。','咸其輔頰舌。'],b:'少男少女相感之象。以虛懷感人，心意相通；婚嫁吉。',a:'心意相通，合作順利|兩情相悅，宜婚嫁|靠人脈得財|身心放鬆|靈感佳|以誠感人'},
+{u:'震',l:'巽',n:'恆',g:2,j:'亨，无咎，利貞，利有攸往。',x:'雷風，恆；君子以立不易方。',y:['浚恆，貞凶，无攸利。','悔亡。','不恆其德，或承之羞，貞吝。','田无禽。','恆其德，貞，婦人吉，夫子凶。','振恆，凶。'],b:'恆久之象。持之以恆則亨通；宜立定方向，不輕易改變。',a:'持之以恆|長久穩定|穩定收入|慢性病需耐心|堅持學習|守常不變'},
+{u:'乾',l:'艮',n:'遯',g:4,j:'亨，小利貞。',x:'天下有山，遯；君子以遠小人，不惡而嚴。',y:['遯尾，厲，勿用有攸往。','執之用黃牛之革，莫之勝說。','係遯，有疾厲，畜臣妾吉。','好遯，君子吉，小人否。','嘉遯，貞吉。','肥遯，无不利。'],b:'陰長陽退，君子宜退避之象。適時退隱、遠離小人，不惡而嚴。',a:'宜退不宜進|宜保持距離|退出觀望|靜養為宜|調整目標|知進退，避鋒芒'},
+{u:'震',l:'乾',n:'大壯',g:2,j:'利貞。',x:'雷在天上，大壯；君子以非禮弗履。',y:['壯于趾，征凶，有孚。','貞吉。','小人用壯，君子用罔，貞厲。羝羊觸藩，羸其角。','貞吉悔亡，藩決不羸，壯于大輿之輹。','喪羊于易，无悔。','羝羊觸藩，不能退，不能遂，无攸利，艱則吉。'],b:'陽剛壯盛之象。宜守正，非禮勿動；忌恃強妄進，如羝羊觸藩進退兩難。',a:'勢強宜守正|勿強勢逼人|勿冒進|防血壓肝火|實力強，勿輕敵|壯而不躁'},
+{u:'離',l:'坤',n:'晉',g:1,j:'康侯用錫馬蕃庶，晝日三接。',x:'明出地上，晉；君子以自昭明德。',y:['晉如摧如，貞吉。罔孚，裕无咎。','晉如愁如，貞吉。受茲介福，于其王母。','眾允，悔亡。','晉如鼫鼠，貞厲。','悔亡，失得勿恤，往吉无不利。','晉其角，維用伐邑，厲吉无咎，貞吝。'],b:'旭日出於地上，晉升之象。光明進取、受上眷顧，宜自昭明德。',a:'晉升有望|感情升溫|財運上升|日漸康復|進步顯著|旭日東昇'},
+{u:'坤',l:'離',n:'明夷',g:5,j:'利艱貞。',x:'明入地中，明夷；君子以蒞眾，用晦而明。',y:['明夷于飛，垂其翼。君子于行，三日不食。有攸往，主人有言。','明夷，夷于左股，用拯馬壯，吉。','明夷于南狩，得其大首，不可疾貞。','入于左腹，獲明夷之心，于出門庭。','箕子之明夷，利貞。','不明晦，初登于天，後入于地。'],b:'光明入地、明而受傷之象。宜韜光養晦、艱貞自守，外柔內明以度時艱。',a:'受壓抑，宜隱忍|心事難明，宜含蓄|防暗中損失|注意眼疾與心情|發揮受限，穩住|用晦而明'},
+{u:'巽',l:'離',n:'家人',g:1,j:'利女貞。',x:'風自火出，家人；君子以言有物，而行有恆。',y:['閑有家，悔亡。','无攸遂，在中饋，貞吉。','家人嗃嗃，悔厲吉；婦子嘻嘻，終吝。','富家，大吉。','王假有家，勿恤吉。','有孚威如，終吉。'],b:'家道之象。各正其位則家和；言有物、行有恆，由內而外。',a:'先求內部和諧|家庭美滿|持家理財|家人照顧|家人支持|家和萬事興'},
+{u:'離',l:'兌',n:'睽',g:4,j:'小事吉。',x:'上火下澤，睽；君子以同而異。',y:['悔亡，喪馬勿逐，自復；見惡人无咎。','遇主于巷，无咎。','見輿曳，其牛掣，其人天且劓，无初有終。','睽孤，遇元夫，交孚，厲无咎。','悔亡，厥宗噬膚，往何咎。','睽孤，見豕負塗，載鬼一車，先張之弧，後說之弧，匪寇婚媾，往遇雨則吉。'],b:'火上澤下、彼此乖離之象。小事可行、大事難成；宜求同存異。',a:'意見分歧，小事可行|彼此不合，多包容|小額可為|身心失調|分心，需專注|求同存異'},
+{u:'坎',l:'艮',n:'蹇',g:5,j:'利西南，不利東北；利見大人，貞吉。',x:'山上有水，蹇；君子以反身修德。',y:['往蹇，來譽。','王臣蹇蹇，匪躬之故。','往蹇，來反。','往蹇，來連。','大蹇，朋來。','往蹇，來碩，吉；利見大人。'],b:'前有險山、行路艱難之象。見險而止，宜反身修德、求貴人相助。',a:'進展受阻，暫停檢討|感情受阻|財運不順|注意腿足|困難多，求師相助|見險而止，反求諸己'},
+{u:'震',l:'坎',n:'解',g:1,j:'利西南，无所往，其來復吉。有攸往，夙吉。',x:'雷雨作，解；君子以赦過宥罪。',y:['无咎。','田獲三狐，得黃矢，貞吉。','負且乘，致寇至，貞吝。','解而拇，朋至斯孚。','君子維有解，吉；有孚于小人。','公用射隼于高墉之上，獲之，无不利。'],b:'雷雨大作、險難解除之象。宜及早行動，寬以待人，赦過宥罪。',a:'困局化解|誤會冰釋|債務可解|病癒|壓力解除|宜早不宜遲'},
+{u:'艮',l:'兌',n:'損',g:2,j:'有孚，元吉，无咎，可貞，利有攸往。曷之用？二簋可用享。',x:'山下有澤，損；君子以懲忿窒欲。',y:['已事遄往，无咎，酌損之。','利貞，征凶，弗損益之。','三人行，則損一人；一人行，則得其友。','損其疾，使遄有喜，无咎。','或益之十朋之龜，弗克違，元吉。','弗損益之，无咎，貞吉，利有攸往，得臣无家。'],b:'損下益上之象。有誠信則雖損亦吉；宜懲忿窒欲，有捨方有得。',a:'先付出後收穫|為對方付出|有支出，宜節制|減重節欲|捨棄雜念|有捨才有得'},
+{u:'巽',l:'震',n:'益',g:0,j:'利有攸往，利涉大川。',x:'風雷，益；君子以見善則遷，有過則改。',y:['利用為大作，元吉，无咎。','或益之十朋之龜，弗克違，永貞吉。王用享于帝，吉。','益之用凶事，无咎。有孚中行，告公用圭。','中行，告公從，利用為依遷國。','有孚惠心，勿問元吉。有孚惠我德。','莫益之，或擊之，立心勿恆，凶。'],b:'損上益下、風雷相助之象。利有所往；見善則遷、有過則改，日新其德。',a:'大有助益，宜大展身手|感情增進|獲利可期|有益健康|進步神速|日新又新'},
+{u:'兌',l:'乾',n:'夬',g:3,j:'揚于王庭，孚號，有厲。告自邑，不利即戎，利有攸往。',x:'澤上於天，夬；君子以施祿及下，居德則忌。',y:['壯于前趾，往不勝為咎。','惕號，莫夜有戎，勿恤。','壯于頄，有凶。君子夬夬，獨行遇雨，若濡有慍，无咎。','臀无膚，其行次且。牽羊悔亡，聞言不信。','莧陸夬夬，中行无咎。','无號，終有凶。'],b:'五陽決一陰，決斷之象。宜公開表明、果斷處理，但勿以武力強決。',a:'果斷處理，勿拖延|當斷則斷|決斷但防風險|防急症|果斷作答|決而能和'},
+{u:'乾',l:'巽',n:'姤',g:4,j:'女壯，勿用取女。',x:'天下有風，姤；后以施命誥四方。',y:['繫于金柅，貞吉。有攸往，見凶。羸豕孚蹢躅。','包有魚，无咎，不利賓。','臀无膚，其行次且，厲，无大咎。','包无魚，起凶。','以杞包瓜，含章，有隕自天。','姤其角，吝，无咎。'],b:'一陰遇五陽，不期而遇之象。防小人滲入、防微杜漸；女壯勿娶。',a:'防小人|邂逅但勿輕許|防意外支出|防感染|勿分心|防微杜漸'},
+{u:'兌',l:'坤',n:'萃',g:1,j:'亨。王假有廟，利見大人，亨，利貞。用大牲吉，利有攸往。',x:'澤上於地，萃；君子以除戎器，戒不虞。',y:['有孚不終，乃亂乃萃，若號，一握為笑，勿恤，往无咎。','引吉，无咎，孚乃利用禴。','萃如嗟如，无攸利，往无咎，小吝。','大吉，无咎。','萃有位，无咎。匪孚，元永貞，悔亡。','齎咨涕洟，无咎。'],b:'澤上於地、萬物薈萃之象。人才聚集、宜見大人；亦須戒備不虞。',a:'人才聚集，可成大事|聚會結緣|聚財|注意群聚感染|群策群力|聚而有防'},
+{u:'坤',l:'巽',n:'升',g:0,j:'元亨，用見大人，勿恤，南征吉。',x:'地中生木，升；君子以順德，積小以高大。',y:['允升，大吉。','孚乃利用禴，无咎。','升虛邑。','王用亨于岐山，吉无咎。','貞吉，升階。','冥升，利于不息之貞。'],b:'地中生木、逐步上升之象。順勢積小以成高大，見大人、南行吉。',a:'步步高升|感情穩步成長|財運漸升|日益好轉|成績上升|積小以高大'},
+{u:'兌',l:'坎',n:'困',g:5,j:'亨，貞，大人吉，无咎。有言不信。',x:'澤无水，困；君子以致命遂志。',y:['臀困于株木，入于幽谷，三歲不覿。','困于酒食，朱紱方來，利用亨祀，征凶，无咎。','困于石，據于蒺藜，入于其宮，不見其妻，凶。','來徐徐，困于金車，吝，有終。','劓刖，困于赤紱，乃徐有說，利用祭祀。','困于葛藟，于臲卼，曰動悔有悔，征吉。'],b:'澤中無水、困窮之象。言語難以取信，唯大人守正可吉；困而不失其志。',a:'困頓受制，守正待時|感情困頓|財困，節流|體虛困乏|困難多，堅持|困而不失其志'},
+{u:'坎',l:'巽',n:'井',g:3,j:'改邑不改井，无喪无得，往來井井。汔至，亦未繘井，羸其瓶，凶。',x:'木上有水，井；君子以勞民勸相。',y:['井泥不食，舊井无禽。','井谷射鮒，甕敝漏。','井渫不食，為我心惻，可用汲。王明，並受其福。','井甃，无咎。','井冽，寒泉食。','井收勿幕，有孚元吉。'],b:'井水養人而不窮之象。宜修身自養、持守不變；功虧一簣則凶。',a:'穩定工作，持續進修|平淡長久|穩定收入|注意飲水衛生|持續汲取知識|修井以養民'},
+{u:'兌',l:'離',n:'革',g:2,j:'巳日乃孚，元亨利貞，悔亡。',x:'澤中有火，革；君子以治歷明時。',y:['鞏用黃牛之革。','巳日乃革之，征吉，无咎。','征凶，貞厲，革言三就，有孚。','悔亡，有孚改命，吉。','大人虎變，未占有孚。','君子豹變，小人革面，征凶，居貞吉。'],b:'水火相息、變革之象。時機成熟方能取信於人；順天應人，革故鼎新。',a:'宜改革轉型|關係需要改變|調整策略|改變習慣|改變方法|順時變革'},
+{u:'離',l:'巽',n:'鼎',g:0,j:'元吉，亨。',x:'木上有火，鼎；君子以正位凝命。',y:['鼎顛趾，利出否，得妾以其子，无咎。','鼎有實，我仇有疾，不我能即，吉。','鼎耳革，其行塞，雉膏不食，方雨虧悔，終吉。','鼎折足，覆公餗，其形渥，凶。','鼎黃耳金鉉，利貞。','鼎玉鉉，大吉，无不利。'],b:'以木巽火、烹飪成新之象。鼎新養賢，宜正位凝命，大吉。',a:'得位重用|穩固結合|財運豐厚|調養得宜|功成名就|鼎新革故'},
+{u:'震',l:'震',n:'震',g:3,j:'亨。震來虩虩，笑言啞啞。震驚百里，不喪匕鬯。',x:'洊雷，震；君子以恐懼修省。',y:['震來虩虩，後笑言啞啞，吉。','震來厲，億喪貝，躋于九陵，勿逐，七日得。','震蘇蘇，震行无眚。','震遂泥。','震往來厲，億无喪，有事。','震索索，視矍矍，征凶。震不于其躬，于其鄰，无咎。婚媾有言。'],b:'洊雷震動之象。驚恐之後轉為笑語；宜恐懼修省，臨危不亂。',a:'有變動，保持鎮定|起伏中見驚喜|防波動|防驚嚇|突變不慌|處變不驚'},
+{u:'艮',l:'艮',n:'艮',g:3,j:'艮其背，不獲其身，行其庭，不見其人，无咎。',x:'兼山，艮；君子以思不出其位。',y:['艮其趾，无咎，利永貞。','艮其腓，不拯其隨，其心不快。','艮其限，列其夤，厲薰心。','艮其身，无咎。','艮其輔，言有序，悔亡。','敦艮，吉。'],b:'兩山重疊、止之象。當止則止、當行則行；思不出其位。',a:'宜暫停觀望|暫緩為宜|宜停止投資|靜養|按部就班|知止而後有定'},
+{u:'巽',l:'艮',n:'漸',g:1,j:'女歸吉，利貞。',x:'山上有木，漸；君子以居賢德善俗。',y:['鴻漸于干，小子厲，有言，无咎。','鴻漸于磐，飲食衎衎，吉。','鴻漸于陸，夫征不復，婦孕不育，凶；利禦寇。','鴻漸于木，或得其桷，无咎。','鴻漸于陵，婦三歲不孕，終莫之勝，吉。','鴻漸于陸，其羽可用為儀，吉。'],b:'鴻雁漸飛、循序漸進之象。按部就班，水到渠成；女嫁吉。',a:'循序漸進|水到渠成，宜婚|穩步增長|逐漸痊癒|按部就班|漸進可成'},
+{u:'震',l:'兌',n:'歸妹',g:5,j:'征凶，无攸利。',x:'澤上有雷，歸妹；君子以永終知敝。',y:['歸妹以娣，跛能履，征吉。','眇能視，利幽人之貞。','歸妹以須，反歸以娣。','歸妹愆期，遲歸有時。','帝乙歸妹，其君之袂，不如其娣之袂良，月幾望，吉。','女承筐无實，士刲羊无血，无攸利。'],b:'少女從長男，動而不以正之象。征凶无攸利；宜知其終而預見其弊。',a:'位置不當，勿冒進|名分不正，慎重|防損失|注意婦科|勿走偏門|永終知敝'},
+{u:'震',l:'離',n:'豐',g:2,j:'亨，王假之，勿憂，宜日中。',x:'雷電皆至，豐；君子以折獄致刑。',y:['遇其配主，雖旬无咎，往有尚。','豐其蔀，日中見斗，往得疑疾，有孚發若，吉。','豐其沛，日中見沬，折其右肱，无咎。','豐其蔀，日中見斗，遇其夷主，吉。','來章，有慶譽，吉。','豐其屋，蔀其家，闚其戶，闃其无人，三歲不覿，凶。'],b:'雷電皆至、豐盛之象，如日中天。宜把握當下；日中則昃，盛極須防衰。',a:'鼎盛之時，把握機會|熱烈|豐收|日中則昃，勿透支|成績豐碩|盛極防衰'},
+{u:'離',l:'艮',n:'旅',g:4,j:'小亨，旅貞吉。',x:'山上有火，旅；君子以明慎用刑，而不留獄。',y:['旅瑣瑣，斯其所取災。','旅即次，懷其資，得童僕貞。','旅焚其次，喪其童僕，貞厲。','旅于處，得其資斧，我心不快。','射雉一矢亡，終以譽命。','鳥焚其巢，旅人先笑後號咷。喪牛于易，凶。'],b:'山上有火、行旅在外之象。小事可亨；客居他鄉宜謹慎守正、不可自大。',a:'外派奔波|聚少離多|旅途支出多|旅途保重|異地應考|守正可安'},
+{u:'巽',l:'巽',n:'巽',g:2,j:'小亨，利有攸往，利見大人。',x:'隨風，巽；君子以申命行事。',y:['進退，利武人之貞。','巽在床下，用史巫紛若，吉无咎。','頻巽，吝。','悔亡，田獲三品。','貞吉悔亡，无不利。无初有終。先庚三日，後庚三日，吉。','巽在床下，喪其資斧，貞凶。'],b:'隨風相繼、無孔不入之象。柔順而能入；宜申命行事、見大人。',a:'順從上意，執行力佳|溫柔以待|小利可得|注意呼吸道|多請教|順而能入'},
+{u:'兌',l:'兌',n:'兌',g:1,j:'亨，利貞。',x:'麗澤，兌；君子以朋友講習。',y:['和兌，吉。','孚兌，吉，悔亡。','來兌，凶。','商兌未寧，介疾有喜。','孚于剝，有厲。','引兌。'],b:'兩澤相麗、喜悅之象。和悅待人、以誠相交；宜朋友講習。',a:'人和事順|歡喜相處|財喜臨門|心情愉快|交流切磋|和悅以誠'},
+{u:'巽',l:'坎',n:'渙',g:3,j:'亨。王假有廟，利涉大川，利貞。',x:'風行水上，渙；先王以享于帝立廟。',y:['用拯馬壯，吉。','渙奔其机，悔亡。','渙其躬，无悔。','渙其群，元吉。渙有丘，匪夷所思。','渙汗其大號，渙王居，无咎。','渙其血，去逖出，无咎。'],b:'風行水上、離散之象。宜凝聚人心、立廟祭祀；渙而後聚，可涉大川。',a:'人心渙散，宜凝聚|感情疏離，多關心|財易散|注意寒濕|分心，宜收心|渙而後聚'},
+{u:'坎',l:'兌',n:'節',g:2,j:'亨。苦節不可貞。',x:'澤上有水，節；君子以制數度，議德行。',y:['不出戶庭，无咎。','不出門庭，凶。','不節若，則嗟若，无咎。','安節，亨。','甘節，吉；往有尚。','苦節，貞凶，悔亡。'],b:'澤上有水、容量有度之象。適度節制則亨；過度苦節則不可長久。',a:'節制有度|進退有分寸|開源節流|節制飲食|規劃時間|節而有度'},
+{u:'巽',l:'兌',n:'中孚',g:1,j:'豚魚吉，利涉大川，利貞。',x:'澤上有風，中孚；君子以議獄緩死。',y:['虞吉，有它不燕。','鳴鶴在陰，其子和之；我有好爵，吾與爾靡之。','得敵，或鼓或罷，或泣或歌。','月幾望，馬匹亡，无咎。','有孚攣如，无咎。','翰音登于天，貞凶。'],b:'中心誠信之象，誠可感及豚魚。以誠待人，可涉大川。',a:'誠信得信任|真心相待|誠信得財|身心平和|心誠則成|誠則靈'},
+{u:'震',l:'艮',n:'小過',g:3,j:'亨，利貞。可小事，不可大事。飛鳥遺之音，不宜上宜下，大吉。',x:'山上有雷，小過；君子以行過乎恭，喪過乎哀，用過乎儉。',y:['飛鳥以凶。','過其祖，遇其妣；不及其君，遇其臣，无咎。','弗過防之，從或戕之，凶。','无咎，弗過遇之，往厲必戒，勿用永貞。','密雲不雨，自我西郊，公弋取彼在穴。','弗遇過之，飛鳥離之，凶，是謂災眚。'],b:'小有過越之象。可小事、不可大事；宜下不宜上，謙恭儉約為吉。',a:'小事可為，大事緩議|小摩擦，宜低調|小財可得|小病勿輕忽|防小錯|宜下不宜上'},
+{u:'坎',l:'離',n:'既濟',g:2,j:'亨小，利貞。初吉終亂。',x:'水在火上，既濟；君子以思患而預防之。',y:['曳其輪，濡其尾，无咎。','婦喪其茀，勿逐，七日得。','高宗伐鬼方，三年克之，小人勿用。','繻有衣袽，終日戒。','東鄰殺牛，不如西鄰之禴祭，實受其福。','濡其首，厲。'],b:'水火相濟、事已成之象。初吉終亂，宜守成，思患而預防之。',a:'已有成果，宜守成|圓滿之中防變|守成為上|維持現狀|已就緒，勿大意|思患預防'},
+{u:'離',l:'坎',n:'未濟',g:3,j:'亨。小狐汔濟，濡其尾，无攸利。',x:'火在水上，未濟；君子以慎辨物居方。',y:['濡其尾，吝。','曳其輪，貞吉。','未濟，征凶，利涉大川。','貞吉，悔亡，震用伐鬼方，三年有賞于大國。','貞吉，无悔，君子之光，有孚，吉。','有孚于飲酒，无咎。濡其首，有孚失是。'],b:'火在水上、事未完成之象。慎辨物居方、謹慎收尾，終將有成。',a:'尚未完成，繼續努力|關係未定|尚未獲利|未愈，續治|尚需努力|未濟終濟'}
+];
+const BYBITS = {};
+HEX.forEach((h,i)=>{
+  h.no = i+1;
+  h.bits = TRI[h.l].b + TRI[h.u].b;              // 初→上
+  h.full = h.u===h.l ? h.n+'為'+TRI[h.u].img : TRI[h.u].img+TRI[h.l].img+h.n;
+  h.adv = h.a.split('|');
+  BYBITS[h.bits] = h;
+});
+const POS = ['初','二','三','四','五','上'];
+function lineName(i, yang){
+  const yy = yang?'九':'六';
+  return i===0 ? '初'+yy : i===5 ? '上'+yy : yy+POS[i];
+}
+const glyph = h => String.fromCodePoint(0x4DC0 + h.no - 1);
+const esc = s => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ================= 占斷 ================= */
+function analyse(vals){                       // vals: [6,7,8,9]×6 初→上
+  const mainBits = vals.map(v=>v%2).join('');
+  const chgBits  = vals.map(v=>v===9?0:v===6?1:v%2).join('');
+  const main = BYBITS[mainBits], chg = BYBITS[chgBits];
+  const mv = [], st = [];
+  vals.forEach((v,i)=> (v===6||v===9 ? mv : st).push(i));
+  const k = mv.length;
+  const hl = [];                              // {w:'main'|'chg', t:'gua'|'line'|'use', i, p:primary}
+  let rule;
+  if(k===0){ rule='六爻皆靜，以本卦卦辭占。'; hl.push({w:'main',t:'gua',p:1}); }
+  else if(k===1){ rule='一爻動，以本卦動爻之爻辭占。'; hl.push({w:'main',t:'line',i:mv[0],p:1}); }
+  else if(k===2){ rule='二爻動，以本卦二動爻之爻辭占，以上爻為主。';
+    hl.push({w:'main',t:'line',i:mv[1],p:1},{w:'main',t:'line',i:mv[0]}); }
+  else if(k===3){ rule='三爻動，以本卦及之卦卦辭占：本卦為貞（體），之卦為悔（用）。';
+    hl.push({w:'main',t:'gua',p:1},{w:'chg',t:'gua'}); }
+  else if(k===4){ rule='四爻動，以之卦二不變爻之爻辭占，以下爻為主。';
+    hl.push({w:'chg',t:'line',i:st[0],p:1},{w:'chg',t:'line',i:st[1]}); }
+  else if(k===5){ rule='五爻動，以之卦不變之一爻爻辭占。'; hl.push({w:'chg',t:'line',i:st[0],p:1}); }
+  else if(main.use){ rule='六爻皆動，'+(main.no===1?'乾卦以「用九」':'坤卦以「用六」')+'占。'; hl.push({w:'main',t:'use',p:1}); }
+  else { rule='六爻皆動，以之卦卦辭占。'; hl.push({w:'chg',t:'gua',p:1}); }
+
+  // 吉凶
+  let base = k<=2 ? main.g : k===3 ? Math.round((main.g+chg.g)/2) : chg.g;
+  let adj = 0;
+  const lineTexts = hl.filter(h=>h.t!=='gua').map(h=> h.t==='use' ? main.use : (h.w==='main'?main:chg).y[h.i]);
+  if(k===3) mv.forEach(i=>lineTexts.push(main.y[i]));
+  lineTexts.forEach(t=>{ adj += (t.includes('凶')?1:0) - (t.includes('吉')?1:0); });
+  adj = Math.max(-2, Math.min(2, adj));
+  const grade = Math.max(0, Math.min(6, base+adj));
+  return {vals, main, chg, mv, st, k, hl, rule, grade, focus: k>=4 ? chg : main};
+}
+function textOf(a, h){
+  const hx = h.w==='main'?a.main:a.chg;
+  if(h.t==='gua') return {src:hx.n+'·卦辭', tx:hx.j};
+  if(h.t==='use') return {src:hx.n+'·'+(hx.no===1?'用九':'用六'), tx:hx.use};
+  return {src:hx.n+'·'+lineName(h.i, hx.bits[h.i]==='1'), tx:hx.y[h.i]};
+}
+const isHL = (a,w,t,i) => a.hl.find(h=>h.w===w && h.t===t && (i===undefined || h.i===i));
+
+/* ================= SVG 工具 ================= */
+const NS='http://www.w3.org/2000/svg';
+function el(tag, attrs={}, parent){
+  const e=document.createElementNS(NS,tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  if(parent) parent.appendChild(e);
+  return e;
+}
+function hexSVG(bits, mv=[], color='#231a14'){
+  let s=`<svg viewBox="0 0 100 112" xmlns="${NS}">`;
+  for(let i=0;i<6;i++){
+    const y = 100 - i*18, c = mv.includes(i) ? '#b8322a' : color;
+    if(bits[i]==='1') s+=`<rect x="8" y="${y-5}" width="84" height="10" fill="${c}"/>`;
+    else s+=`<rect x="8" y="${y-5}" width="36" height="10" fill="${c}"/><rect x="56" y="${y-5}" width="36" height="10" fill="${c}"/>`;
+  }
+  return s+'</svg>';
+}
+
+/* ================= 八卦盤 ================= */
+const disc = document.getElementById('disc');
+disc.innerHTML = `
+<defs>
+  <radialGradient id="bronze" cx="50%" cy="45%" r="60%">
+    <stop offset="0" stop-color="#7a4e24"/><stop offset=".7" stop-color="#4a2a12"/><stop offset="1" stop-color="#2a160a"/>
+  </radialGradient>
+  <linearGradient id="goldG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f4d99a"/><stop offset=".5" stop-color="#d0a450"/><stop offset="1" stop-color="#8a6022"/>
+  </linearGradient>
+  <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+    <stop offset=".6" stop-color="#e9b24a" stop-opacity="0"/><stop offset=".86" stop-color="#ffcf6a" stop-opacity=".55"/><stop offset="1" stop-color="#ffcf6a" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<circle cx="300" cy="300" r="300" fill="url(#halo)" id="halo" opacity="0"/>
+<g transform="translate(300,300)">
+  <g id="ring"></g>
+  <g id="core"></g>
+  <g id="hexC"></g>
+</g>`;
+const ring = disc.querySelector('#ring'), core = disc.querySelector('#core'), hexC = disc.querySelector('#hexC'), halo = disc.querySelector('#halo');
+(function buildRing(){
+  el('circle',{r:292,fill:'url(#bronze)',stroke:'url(#goldG)','stroke-width':4},ring);
+  el('circle',{r:283,fill:'none',stroke:'#a9803a','stroke-width':1},ring);
+  for(let i=0;i<64;i++) el('line',{x1:0,y1:-283,x2:0,y2:i%8===0?-272:-277,stroke:'#c9a052','stroke-width':i%8===0?2:1,transform:`rotate(${i*5.625+22.5})`},ring);
+  el('circle',{r:196,fill:'#2b130c',stroke:'url(#goldG)','stroke-width':2.5},ring);
+  el('circle',{r:152,fill:'none',stroke:'#a9803a','stroke-width':1.5},ring);
+  const order = [['乾',0],['巽',45],['坎',90],['艮',135],['坤',180],['震',225],['離',270],['兌',315]];
+  order.forEach(([name,ang])=>{
+    const g = el('g',{transform:`rotate(${ang})`},ring);
+    const b = TRI[name].b;
+    for(let j=0;j<3;j++){
+      const r = 208 + j*18;                   // 初爻在內
+      if(b[j]==='1') el('rect',{x:-38,y:-r-5.5,width:76,height:11,rx:1.5,fill:'url(#goldG)'},g);
+      else { el('rect',{x:-38,y:-r-5.5,width:32,height:11,rx:1.5,fill:'url(#goldG)'},g);
+             el('rect',{x:6,y:-r-5.5,width:32,height:11,rx:1.5,fill:'url(#goldG)'},g); }
+    }
+    const t = el('text',{x:0,y:-262,'text-anchor':'middle','dominant-baseline':'central',fill:'#f2e6cb','font-size':22,'font-family':"'LXGW WenKai TC','標楷體',serif",'font-weight':700},g);
+    t.textContent = name;
+    const t2 = el('text',{x:0,y:-174,'text-anchor':'middle','dominant-baseline':'central',fill:'#d8b46a','font-size':20,'font-family':"'LXGW WenKai TC','標楷體',serif"},g);
+    t2.textContent = TRI[name].img;
+    // 分隔線
+    el('line',{x1:0,y1:-154,x2:0,y2:-194,stroke:'#a9803a','stroke-width':1,transform:'rotate(22.5)'},g);
+  });
+})();
+(function buildCore(){
+  el('circle',{r:150,fill:'#1a0c08'},core);
+  const tj = el('g',{id:'taiji'},core);
+  el('circle',{r:112,fill:'#1c1310',stroke:'url(#goldG)','stroke-width':3},tj);
+  el('path',{d:'M0,-110 A110,110 0 0,1 0,110 A55,55 0 0,1 0,0 A55,55 0 0,0 0,-110 Z',fill:'#efe2c3'},tj);
+  el('circle',{cx:0,cy:-55,r:16,fill:'#efe2c3'},tj);
+  el('circle',{cx:0,cy:55,r:16,fill:'#1c1310'},tj);
+})();
+const taiji = disc.querySelector('#taiji');
+
+/* idle 動畫 */
+let ringAng = 0, ringExtra = 0, tjAng = 0, last = performance.now();
+function loop(now){
+  const dt = Math.min(64, now-last); last = now;
+  ringAng = (ringAng + dt*0.004) % 360;
+  tjAng = (tjAng - dt*0.015) % 360;
+  ring.setAttribute('transform',`rotate(${ringAng+ringExtra})`);
+  taiji.setAttribute('transform',`rotate(${tjAng})`);
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+function tween(ms, fn){
+  return new Promise(res=>{
+    const t0 = performance.now();
+    (function f(now){
+      const t = Math.min(1,(now-t0)/ms);
+      fn(t);
+      t<1 ? requestAnimationFrame(f) : res();
+    })(t0);
+  });
+}
+const easeOut = t => 1-Math.pow(1-t,3);
+const easeInOut = t => t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+
+async function spinDisc(){
+  ring.setAttribute('filter','url(#glow)');
+  await tween(1700, t=>{
+    const e = easeInOut(t);
+    ringExtra = 720*e;
+    halo.setAttribute('opacity', Math.sin(Math.PI*t)*0.9);
+    taiji.setAttribute('opacity', 1-e);
+  });
+  ringExtra = 0;
+  ring.removeAttribute('filter');
+  halo.setAttribute('opacity',0);
+}
+function resetCenter(showTaiji){
+  hexC.innerHTML='';
+  taiji.setAttribute('opacity', showTaiji?1:0);
+}
+async function drawLine(i, v, animate=true){
+  const y = 66 - i*26, yang = v%2===1, moving = v===6||v===9;
+  const col = moving ? '#d9473b' : '#efe2c3';
+  const segs = yang ? [[-62,62]] : [[-62,-10],[10,62]];
+  const paths = segs.map(([a,b])=>el('line',{x1:a,y1:y,x2:b,y2:y,stroke:col,'stroke-width':13,'stroke-linecap':'butt'},hexC));
+  let mark;
+  if(moving){
+    mark = el('text',{x:84,y:y,'text-anchor':'middle','dominant-baseline':'central',fill:'#d9473b','font-size':20,'font-weight':700},hexC);
+    mark.textContent = v===9?'○':'×';
+  }
+  if(!animate) return;
+  const lens = segs.map(([a,b])=>b-a);
+  paths.forEach((p,k)=>{p.setAttribute('stroke-dasharray',lens[k]);p.setAttribute('stroke-dashoffset',lens[k]);});
+  if(mark) mark.setAttribute('opacity',0);
+  const total = lens.reduce((s,x)=>s+x,0);
+  await tween(420, t=>{
+    let d = easeOut(t)*total;
+    paths.forEach((p,k)=>{ const u=Math.min(lens[k],Math.max(0,d)); p.setAttribute('stroke-dashoffset',lens[k]-u); d-=lens[k]; });
+    if(mark) mark.setAttribute('opacity',t);
+  });
+}
+function drawHexStatic(vals){
+  resetCenter(false);
+  vals.forEach((v,i)=>drawLine(i,v,false));
+}
+
+/* ================= 銅錢 ================= */
+const coinsSvg = document.getElementById('coins');
+coinsSvg.innerHTML = `
+<defs>
+  <radialGradient id="coinG" cx="40%" cy="35%" r="70%">
+    <stop offset="0" stop-color="#f0cd85"/><stop offset=".45" stop-color="#b98a3e"/><stop offset="1" stop-color="#5e3c15"/>
+  </radialGradient>
+  <radialGradient id="coinB" cx="40%" cy="35%" r="70%">
+    <stop offset="0" stop-color="#d9b06a"/><stop offset=".5" stop-color="#9c7031"/><stop offset="1" stop-color="#4d3010"/>
+  </radialGradient>
+</defs>`;
+const COINX = [150,300,450], RESTY = 130;
+const coins = COINX.map((x,ci)=>{
+  const shadow = el('ellipse',{cx:x,cy:RESTY+62,rx:50,ry:9,fill:'rgba(0,0,0,.45)'},coinsSvg);
+  const g = el('g',{transform:`translate(${x},${RESTY})`},coinsSvg);
+  const s = el('g',{},g);
+  const mk = (fill)=>{
+    const f = el('g',{},s);
+    el('circle',{r:54,fill,stroke:'#4a2e0e','stroke-width':2},f);
+    el('circle',{r:48,fill:'none',stroke:'#e6c27a','stroke-width':1.2,opacity:.7},f);
+    el('rect',{x:-15,y:-15,width:30,height:30,fill:'#1b0d0b',stroke:'#4a2e0e','stroke-width':2},f);
+    el('rect',{x:-19,y:-19,width:38,height:38,fill:'none',stroke:'#e6c27a','stroke-width':1.2,opacity:.7},f);
+    return f;
+  };
+  const front = mk('url(#coinG)');
+  [['天',0,-33],['地',0,33],['通',33,0],['寶',-33,0]].forEach(([c,x2,y2])=>{
+    const t = el('text',{x:x2,y:y2,'text-anchor':'middle','dominant-baseline':'central','font-size':19,'font-weight':700,fill:'#3d2408','font-family':"'LXGW WenKai TC','標楷體',serif"},front);
+    t.textContent = c;
+  });
+  const back = mk('url(#coinB)');
+  el('path',{d:'M-6,-34 a8,8 0 1,0 12,0 a6,6 0 1,1 -12,0',fill:'#3d2408',opacity:.7},back); // 月紋
+  el('circle',{cx:0,cy:33,r:4,fill:'#3d2408',opacity:.7},back);                             // 星紋
+  back.style.display='none';
+  return {x, g, s, front, back, shadow, side:0};               // side 0=字 1=背
+});
+function setSide(c, side){ c.front.style.display = side?'none':''; c.back.style.display = side?'':'none'; }
+
+async function tossCoins(targets){
+  const plan = coins.map((c,ci)=>{
+    const diff = c.side!==targets[ci] ? 1 : 0;
+    const half = 6 + 2*Math.floor(Math.random()*3) + diff;      // 半圈數
+    return {c, half, h: 110 + Math.random()*40, start:c.side, dx:(Math.random()-.5)*30};
+  });
+  await tween(1000, t=>{
+    plan.forEach(p=>{
+      const jump = 4*t*(1-t);
+      const y = RESTY - p.h*jump;
+      const x = p.c.x + p.dx*Math.sin(Math.PI*t);
+      const phase = p.half*Math.PI*easeOut(t);
+      const flips = Math.floor(phase/Math.PI + .5);
+      setSide(p.c, (p.start + flips) % 2);
+      const sx = Math.max(.06, Math.abs(Math.cos(phase)));
+      p.c.g.setAttribute('transform',`translate(${x},${y})`);
+      p.c.s.setAttribute('transform',`scale(${sx},1)`);
+      const sh = 1 - .55*jump;
+      p.c.shadow.setAttribute('rx',50*sh); p.c.shadow.setAttribute('opacity',.4+.6*sh);
+      p.c.shadow.setAttribute('cx',x);
+    });
+  });
+  plan.forEach((p,ci)=>{
+    p.c.side = targets[ci]; setSide(p.c,p.c.side);
+    p.c.g.setAttribute('transform',`translate(${p.c.x},${RESTY})`);
+    p.c.s.setAttribute('transform','scale(1,1)');
+    p.c.shadow.setAttribute('cx',p.c.x);
+  });
+  clink();
+  await tween(160, t=>{ coins.forEach(c=>c.g.setAttribute('transform',`translate(${c.x},${RESTY - 8*Math.sin(Math.PI*t)})`)); });
+}
+
+/* ================= 音效 ================= */
+let soundOn = false, actx = null;
+function clink(){
+  if(!soundOn) return;
+  try{
+    actx = actx || new (window.AudioContext||window.webkitAudioContext)();
+    const now = actx.currentTime;
+    for(let c=0;c<3;c++){
+      const t0 = now + c*0.045 + Math.random()*0.02;
+      [1, 2.76, 5.4, 8.9].forEach((m,k)=>{
+        const o = actx.createOscillator(), g = actx.createGain();
+        o.type='sine'; o.frequency.value = (1650 + Math.random()*250)*m;
+        g.gain.setValueAtTime(0.0001,t0);
+        g.gain.exponentialRampToValueAtTime(0.12/(k+1),t0+0.004);
+        g.gain.exponentialRampToValueAtTime(0.0001,t0+0.35/(k*0.6+1));
+        o.connect(g).connect(actx.destination); o.start(t0); o.stop(t0+0.5);
+      });
+    }
+  }catch(e){}
+}
+
+/* ================= 儲存 ================= */
+const Store = {
+  mode:'local', KEY:'gossip_hist',
+  init(){
+    try{
+      document.cookie='gossip_t=1;path=/;max-age=60;SameSite=Lax';
+      this.mode = document.cookie.indexOf('gossip_t=1')>=0 ? 'cookie' : 'local';
+      document.cookie='gossip_t=;path=/;max-age=0;SameSite=Lax';
+    }catch(e){ this.mode='local'; }
+  },
+  load(){
+    try{
+      let s=null;
+      if(this.mode==='cookie'){
+        const m = document.cookie.match(/(?:^|;\s*)gossip_hist=([^;]*)/);
+        s = m ? decodeURIComponent(m[1]) : null;
+      } else s = localStorage.getItem(this.KEY);
+      const a = s ? JSON.parse(s) : [];
+      return Array.isArray(a) ? a.filter(r=>r && /^[6-9]{6}$/.test(r.v)) : [];
+    }catch(e){ return []; }
+  },
+  save(arr){
+    arr = arr.slice(0,20);
+    try{
+      if(this.mode==='cookie'){
+        let s;
+        while(true){ s = encodeURIComponent(JSON.stringify(arr)); if(s.length<3800 || !arr.length) break; arr.pop(); }
+        document.cookie = `gossip_hist=${s};path=/;max-age=31536000;SameSite=Lax`;
+      } else localStorage.setItem(this.KEY, JSON.stringify(arr));
+    }catch(e){}
+    return arr;
+  },
+  clear(){
+    try{
+      if(this.mode==='cookie') document.cookie='gossip_hist=;path=/;max-age=0;SameSite=Lax';
+      else localStorage.removeItem(this.KEY);
+    }catch(e){}
+  }
+};
+Store.init();
+let hist = Store.load();
+
+/* ================= UI ================= */
+const $ = id => document.getElementById(id);
+const reading = $('reading'), castBtn = $('castBtn'), manual = $('manual'), tossLbl = $('tosslbl');
+let cat = 0;
+$('cats').innerHTML = CATS.map((c,i)=>`<button data-i="${i}" class="${i===0?'on':''}">${c}</button>`).join('');
+$('cats').addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b || busy) return;
+  cat = +b.dataset.i;
+  [...$('cats').children].forEach(x=>x.classList.toggle('on', x===b));
+});
+$('soundBtn').addEventListener('click', ()=>{
+  soundOn = !soundOn; $('soundBtn').textContent = soundOn?'🔈':'🔇';
+  if(soundOn) clink();
+});
+
+function fmtTime(sec){
+  const d = new Date(sec*1000), p = n=>String(n).padStart(2,'0');
+  return `${d.getFullYear()}/${p(d.getMonth()+1)}/${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+function valName(v){ return {6:'老陰 ×',7:'少陽',8:'少陰',9:'老陽 ○'}[v]; }
+
+function renderIntro(){
+  reading.innerHTML = `<div class="intro">
+    <h2>卜卦須知</h2>
+    <p>靜心澄慮，默念所問之事，擇一類別，按下「起卦」。</p>
+    <p>三枚銅錢連擲六次，由<b>初爻</b>（下）至<b>上爻</b>（上）成卦。字面計二，背面計三，三錢相加：</p>
+    <table>
+      <tr><th>三錢</th><th>和</th><th>爻</th><th>畫</th></tr>
+      <tr><td>三背</td><td>九</td><td>老陽（動）</td><td style="color:var(--cinnabar)">━━━ ○</td></tr>
+      <tr><td>二字一背</td><td>七</td><td>少陽</td><td>━━━</td></tr>
+      <tr><td>一字二背</td><td>八</td><td>少陰</td><td>━ ━</td></tr>
+      <tr><td>三字</td><td>六</td><td>老陰（動）</td><td style="color:var(--cinnabar)">━ ━ ×</td></tr>
+    </table>
+    <p>老陽變陰、老陰變陽，動爻變後所成之卦為「之卦」。本頁依朱熹《易學啟蒙》之例，判讀應占之辭。</p>
+    <p class="nobu">《蒙》曰：「初筮告，再三瀆，瀆則不告。」一事一占，誠則靈。</p>
+  </div>`;
+}
+
+function renderReading(rec, stamp){
+  const vals = rec.v.split('').map(Number);
+  const a = analyse(vals);
+  const {main, chg, k} = a;
+  const gname = GRADES[a.grade];
+  const quotes = a.hl.map(h=>{ const q=textOf(a,h); return `<div class="quote${h.p?' primary':''}"><span class="src">【${q.src}】</span>${esc(q.tx)}</div>`; }).join('');
+  const linesHTML = (hx, w) => {
+    let s = '<ul class="lines">';
+    for(let i=0;i<6;i++){
+      const yang = hx.bits[i]==='1';
+      const isMv = w==='main' && a.mv.includes(i);
+      const h = isHL(a,w,'line',i);
+      s += `<li class="${isMv?'mv ':''}${h?'hl'+(h.p?' primary':''):''}"><span class="ln">${lineName(i,yang)}${isMv?(vals[i]===9?' ○':' ×'):''}</span><span>${esc(hx.y[i])}</span></li>`;
+    }
+    if(hx.use){ const h=isHL(a,w,'use'); s += `<li class="${h?'hl primary':''}"><span class="ln">${hx.no===1?'用九':'用六'}</span><span>${esc(hx.use)}</span></li>`; }
+    return s+'</ul>';
+  };
+  const guaBlock = (hx, w, open) => `
+    <details ${open?'open':''}>
+      <summary>${w==='main'?'本卦':'之卦'} · 第${hx.no}卦 ${hx.full}</summary>
+      <p class="${isHL(a,w,'gua')?'hl primary':''}"><span class="label">卦辭</span>${esc(hx.j)}</p>
+      <p><span class="label">象曰</span>${esc(hx.x)}</p>
+      <p><span class="label">白話</span>${esc(hx.b)}</p>
+      ${linesHTML(hx,w)}
+    </details>`;
+  const f = a.focus;
+  reading.innerHTML = `
+    <div class="meta">所問：【${CATS[rec.c]||'其他'}】${rec.q?esc(rec.q):'（默念於心）'}　·　${fmtTime(rec.t)}</div>
+    <div class="guarow">
+      <div class="guacard"><div class="tag">本卦</div>${hexSVG(main.bits,a.mv)}<div class="nm">${main.n}</div><div class="sub">${main.full}<br>上${main.u}下${main.l}</div></div>
+      ${k? `<div class="arrow">→</div><div class="guacard"><div class="tag">之卦</div>${hexSVG(chg.bits)}<div class="nm">${chg.n}</div><div class="sub">${chg.full}<br>上${chg.u}下${chg.l}</div></div>`:''}
+      <div class="seal${gname.length===1?' one':''}${stamp?' stamp':''}">${gname}</div>
+    </div>
+    <div class="sub" style="font-size:13px;color:var(--ink2);margin-top:6px">六爻（初→上）：${vals.map(valName).join('、')}</div>
+    <h3>占斷</h3>
+    <p class="rule">${a.rule}</p>
+    ${quotes}
+    <h3>解說 · ${f.n}</h3>
+    <p>${esc(f.b)}</p>
+    <div class="adv">${CATS.map((c,i)=>`<div class="${i===rec.c?'on':''}"><b>${c}</b>${esc(f.adv[i])}</div>`).join('')}</div>
+    ${guaBlock(main,'main',k<4)}
+    ${k? guaBlock(chg,'chg',k>=3):''}
+    <div class="actions">
+      <button id="againBtn">再卜一卦</button>
+      <div class="nobu">不二占：《蒙》曰「初筮告，再三瀆，瀆則不告」。同一件事請勿反覆占問，宜依初占自省而行。</div>
+    </div>`;
+  $('againBtn').addEventListener('click', ()=>{
+    resetForNew();
+    document.querySelector('.altar').scrollIntoView({behavior:'smooth'});
+  });
+}
+
+function renderHistory(){
+  $('storeMode').textContent = `（${Store.mode==='cookie'?'cookie':'localStorage'} 保存，最近 20 筆）`;
+  const ul = $('hlist');
+  if(!hist.length){ ul.innerHTML = '<li class="empty" style="cursor:default;border:none;background:none">尚無卦象紀錄</li>'; return; }
+  ul.innerHTML = hist.map((r,idx)=>{
+    const a = analyse(r.v.split('').map(Number));
+    return `<li data-i="${idx}">
+      <span class="gl">${glyph(a.main)}${a.k?'→'+glyph(a.chg):''}</span>
+      <span class="tx"><div class="t1">${a.main.n}${a.k?' 之 '+a.chg.n:''}</div>
+      <div class="t2">${fmtTime(r.t)} · ${CATS[r.c]||'其他'}${r.q?' · '+esc(r.q):''}</div></span>
+      <span class="g">${GRADES[a.grade]}</span></li>`;
+  }).join('');
+}
+$('hlist').addEventListener('click', e=>{
+  const li = e.target.closest('li[data-i]'); if(!li || busy) return;
+  const r = hist[+li.dataset.i];
+  renderReading(r,false);
+  drawHexStatic(r.v.split('').map(Number));
+  tossLbl.innerHTML = `重看：${fmtTime(r.t)}`;
+  if(window.innerWidth<900) document.querySelector('.scroll').scrollIntoView({behavior:'smooth'});
+});
+$('clearBtn').addEventListener('click', ()=>{
+  if(!hist.length || !confirm('確定清除全部歷史卦象？')) return;
+  hist = []; Store.clear(); renderHistory();
+});
+
+/* ================= 卜卦流程 ================= */
+let busy = false, vals = [], waiting = false, curQ = '', curT = 0;
+function resetForNew(){
+  vals = []; waiting = false; busy = false;
+  resetCenter(true);
+  castBtn.textContent = '起卦'; castBtn.disabled = false; manual.disabled = false;
+  tossLbl.innerHTML = '三枚銅錢：字為二，背為三';
+  renderIntro();
+}
+function rnd3(){
+  const a = new Uint8Array(3);
+  (window.crypto||window.msCrypto).getRandomValues(a);
+  return [...a].map(x=>x&1);                       // 0=字 1=背
+}
+async function throwOne(){
+  const i = vals.length;
+  const faces = rnd3();
+  tossLbl.innerHTML = `第 <b>${i+1}</b> 爻 · 擲錢中…`;
+  await tossCoins(faces);
+  const v = faces.reduce((s,f)=>s+(f?3:2),0);
+  vals.push(v);
+  const fx = faces.map(f=>f?'背':'字').join('');
+  const mv = v===6||v===9;
+  tossLbl.innerHTML = `${lineName(i, v%2===1)}：${fx} = <b>${v}</b> <span class="${mv?'mv':''}">${valName(v)}</span>`;
+  await drawLine(i, v, true);
+}
+async function finish(){
+  const rec = {t:curT, c:cat, q:curQ, v:vals.join('')};
+  hist.unshift(rec);
+  hist = Store.save(hist);
+  renderHistory();
+  renderReading(rec, true);
+  castBtn.textContent = '再卜一卦'; castBtn.disabled = false;
+  manual.disabled = false; busy = false; waiting = false;
+  if(window.innerWidth<900) setTimeout(()=>document.querySelector('.scroll').scrollIntoView({behavior:'smooth'}), 400);
+}
+castBtn.addEventListener('click', async ()=>{
+  if(waiting){                                     // 手擲模式下一爻
+    waiting = false; castBtn.disabled = true;
+    await throwOne();
+    if(vals.length===6) return finish();
+    waiting = true; castBtn.disabled = false; castBtn.textContent = `擲第${vals.length+1}爻`;
+    return;
+  }
+  if(busy) return;
+  if(vals.length===6){ resetForNew(); return; }    // 「再卜一卦」
+  busy = true; vals = [];
+  curQ = $('q').value.trim().slice(0,30); curT = Math.floor(Date.now()/1000);
+  castBtn.disabled = true; manual.disabled = true;
+  reading.innerHTML = `<h2>卦象將成</h2><p class="rule">【${CATS[cat]}】${curQ?esc(curQ):'（默念於心）'}</p><p>誠心正意，靜待錢落……</p>`;
+  hexC.innerHTML = '';
+  tossLbl.innerHTML = '八卦盤運轉中…';
+  await spinDisc();
+  if(manual.checked){
+    waiting = true; castBtn.disabled = false; castBtn.textContent = '擲第1爻';
+    tossLbl.innerHTML = '逐爻手擲：請按「擲第1爻」';
+    return;
+  }
+  for(let i=0;i<6;i++){ await throwOne(); await sleep(180); }
+  finish();
+});
+
+renderIntro();
+renderHistory();
+</script>
+</body>
+</html>
