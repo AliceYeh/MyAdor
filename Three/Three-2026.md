@@ -48,6 +48,7 @@
 以 cookie 記錄歷史卦象(cookie 不可用時退回 localStorage), 保留最近 20 筆(時間、類別、所問、本卦→之卦、吉凶),
 點擊可重看解析, 可清除歷史。
 銅錢音效以 Web Audio 合成, 預設關閉可切換; 提供「再卜一卦」並提示「不二占」; 頁尾註明僅供娛樂與自省參考。
+加上古爻錢 favicon.ico(圓形方孔青銅古錢, 16/32/48px), 以 data URI 內嵌於 HTML 確保 Preview 亦能顯示。
 
 [261123-gossip.html](three2026/261123-gossip.html)
 [Preview](https://htmlpreview.github.io/?https://github.com/AliceYeh/MyAdor/blob/master/Three/three2026/261123-gossip.html)
